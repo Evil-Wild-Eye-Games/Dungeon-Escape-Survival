@@ -208,4 +208,3 @@ while True: #----This while loop will keep the game alive & run until is told to
     else:
         print("\nI couldn't reconize your input. Try Again!") #----This will run when the inputted string does not match any of the following statements above.----
         time.sleep(2) #----Pauses the program for a number of specified seconds before continuing to execute----
-        
