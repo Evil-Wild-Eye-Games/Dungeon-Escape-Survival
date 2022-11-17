@@ -1,9 +1,12 @@
 #---Program Name will change once a propername is thought of.-----
+#---Character Selection might be removed at some point due to amount of playable characters will be 1----
 import time, random
 #----Above this line is our imports.----
 money = random.randint (400,9999) #----The player will recive a random amunt of gold that is specified in the range. The gold will be used to buy various items in the game to help the player along their adventures.
 storelist = ["Item 1", "Item 2", "Item 3", "Item 4"] #----This will contain items that our player will purchase to help them on their journey. Items in this list are placeholders for now.----
 characterlist = ["Character 1", "Character 2", "Character 3", "Character 4"] #----This will contain the playable characters in the game. This listing will be a placeholder for now.----
+player_inventory = ["Item Slot 1", "Item Slot 2", "Item Slot 3", "Item Slot 4"] #----This will contain the player inventory, this will be later developed----
+player_objectives = ["Objective 1", "Objective 2", "Objective 3", "Objective 4"] #----This will contain player objectives / quests, this will be later developed----
 characterselection = True #----This is set to True until a character is selected by the player----
 store = True
 store_item_counter = 0 #----This value is set to 0 until items are purchased from the shop by the player----
@@ -120,22 +123,22 @@ while True: #----This while loop will keep the game alive & run until is told to
                 print("North")
                 x += 1
                 print(x, y)
-                time.sleep(6)
+                time.sleep(3)
             elif a == "South":
                 print("South")
                 x -= 1
                 print(x, y)
-                time.sleep(6)
+                time.sleep(3)
             elif a == "East":
                 print("East")
                 y += 1
                 print(x, y)
-                time.sleep(6)
+                time.sleep(3)
             elif a == "West":
                 print("West")
                 y -= 1
                 print(x, y)
-                time.sleep(6)
+                time.sleep(3)
             break
     elif menu == "Store": #----This may move somewhere else in the game structure at some point, this may also be accessible as a Main Menu command----
         while store == True:
