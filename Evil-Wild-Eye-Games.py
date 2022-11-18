@@ -1,17 +1,34 @@
-#---Program Name will change once a propername is thought of.-----
-#---Character Selection might be removed at some point due to amount of playable characters will be 1----
-import time, random
+#----Program Name will change once a propername is thought of.-----
+#----Character Selection might be removed at some point due to amount of playable characters will be 1----
+import time, random, webbrowser
 #----Above this line is our imports.----
+groupname = "\nEvil Wild Eye Games\n"
 money = random.randint (400,9999) #----The player will recive a random amunt of gold that is specified in the range. The gold will be used to buy various items in the game to help the player along their adventures.
 storelist = ["Item 1", "Item 2", "Item 3", "Item 4"] #----This will contain items that our player will purchase to help them on their journey. Items in this list are placeholders for now.----
 characterlist = ["Character 1", "Character 2", "Character 3", "Character 4"] #----This will contain the playable characters in the game. This listing will be a placeholder for now.----
 player_inventory = ["Item Slot 1", "Item Slot 2", "Item Slot 3", "Item Slot 4"] #----This will contain the player inventory, this will be later developed----
 player_objectives = ["Objective 1", "Objective 2", "Objective 3", "Objective 4"] #----This will contain player objectives / quests, this will be later developed----
-characterselection = True #----This is set to True until a character is selected by the player----
-store = True
+characterselection = False #True #----This is set to True until a character is selected by the player----
+direction_n_count = 0
+direction_s_count = 0
+direction_e_count = 0
+direction_w_count = 0
+travel = True #----When set to True the player can move around the world that they can't even see----
+travel_history = [] #----Stores the players travel history----
+store = True #----When set to True the player can access the store----
 store_item_counter = 0 #----This value is set to 0 until items are purchased from the shop by the player----
-x = 0
-y = 0
+unreconized_statement = "\nI couldn't reconize your input. Try Again!"
+broke_message = "\nYour too broke for this!"
+store_chosen_item = "\nYou chose: "
+store_confimination_item_purchase_question = "Are you sure that you want to buy this item?"
+store_confirm_item_selection = "\nPlease press 0 to confirm your selection or press any other number to select a different item: "
+store_item_purchased = "\nYou have confimed the purchase of"
+money_left = "You have"
+money_left_to_spend = "Dollars left to spend. If you need more, continue on your journey."
+store_selection_return = "\nReturning to the store selection."
+direction_going = "\nYour going"
+x = 0 #----East and West coordinates----
+y = 0 #----North and South coordinates----
 #----Main Variables are above this line.----
 print("""????????????????????????????????????????????????????????????????????????????????????????????????????
 ????????????????????????????????????????????????????????????????????????????????????????????????????
@@ -62,7 +79,7 @@ print("""???????????????????????????????????????????????????????????????????????
 ????????????????????????????????????????????????????????????????????????????????????????????????????""")
 #----Above this line is the Evil Wild Eye Games Logo for the moment, on the other hand the other logo was too advanced for the Ascii Art that was made.----
 time.sleep(2) #----Pauses the program for a number of specified seconds before continuing to execute----
-print("\nEvil Wild Eye Games\n") #----Group name prints here----
+print(groupname) #----Group name prints here----
 time.sleep(2) #----Pauses the program for a number of specified seconds before continuing to execute----
 print(""" _____                                 ______                      ______                       _     _                  
 (_____)                       _       / _____)                    |  ___ \                     | |   | |                 
@@ -74,11 +91,11 @@ print(""" _____                                 ______                      ____
 #----Game name goes above this line inside of the print command.----
 time.sleep(2) #----Pauses the program for a number of specified seconds before continuing to execute----
 while True: #----This while loop will keep the game alive & run until is told to stop. Also below this line there is a menu system & character selection system----
-    menu = str(input("\nWelcome to our game!\n \nType in Play to start the game. \nType in Enable Cheats to use cheats while playing the game. \nType in Store to use the store. \nType in Exit to stop the game. \nYour choice goes here: "))
-    if menu == "Play":
+    menu = int(input("\nWelcome to our game!\n\nType in 1 to start the game.\nType in 2 to use the store.\nType in 3 to use cheats while playing the game.\nType in 4 for help.\nType in 5 to stop the game.\n\nYour choice goes here: "))
+    if menu == 1: #----Game Start----
         print("\nThe game is now starting!\n")
         time.sleep(2) #----Pauses the program for a number of specified seconds before continuing to execute----
-        #print("") #----Dale start off the backstory from the monster breaking out of the lab inside of a print command as a start.----
+        #----Dale start the story from this line----
         time.sleep(0) #----Pauses the program for a number of specified seconds before continuing to execute----
         while characterselection == True: #----This while loop contains the character selection system----
             print(characterlist)
@@ -117,97 +134,126 @@ while True: #----This while loop will keep the game alive & run until is told to
                     print("\nReturning to the character selection.")
             else: #----Runs when nothing else matches any statement specified with numbers in this case with character selection----
                 print("\nThe character specified doesn't exist.")
-        while characterselection != True: #----This will run after the player has selected a character----
-            a = str(input("\nYou are at coordinates 0, 0 . Do you want to move North, South, East, or West?\nType in your choice here: "))
-            if a == "North":
-                print("North")
-                x += 1
-                print(x, y)
-                time.sleep(3)
-            elif a == "South":
-                print("South")
-                x -= 1
-                print(x, y)
-                time.sleep(3)
-            elif a == "East":
-                print("East")
+        while travel == True: #----This will run after the player has selected a character----
+            travel_direction_count = [direction_n_count, "North", direction_s_count, "South", direction_e_count, "East", direction_w_count, "West"] #----Stores the players current travel session----
+            print("\nYou are at coordinates", (x, y))
+            direction_input = str(input("\nDo you want to move North, South, East, or West?\nTo move North press W\nTo move South press S\nTo move East press D\nTo move West press A\nType in Travel History to view your travel history.\nType in your choice here: "))
+            if direction_input == "W":
+                print(direction_going, "North")
                 y += 1
-                print(x, y)
-                time.sleep(3)
-            elif a == "West":
-                print("West")
+                travel_history.append("North")
+                direction_n_count += 1
+                time.sleep(1.5)
+            elif direction_input == "S":
+                print(direction_going, "South")
                 y -= 1
-                print(x, y)
-                time.sleep(3)
-            break
-    elif menu == "Store": #----This may move somewhere else in the game structure at some point, this may also be accessible as a Main Menu command----
+                travel_history.append("South")
+                direction_s_count += 1
+                time.sleep(1.5)
+            elif direction_input == "D":
+                print(direction_going, "East")
+                x += 1
+                travel_history.append("East")
+                direction_e_count += 1
+                time.sleep(1.5)
+            elif direction_input == "A":
+                print(direction_going, "West")
+                x -= 1
+                travel_history.append("West")
+                direction_w_count += 1
+                time.sleep(1.5)
+            elif direction_input == "Travel History":
+                print(travel_history)
+                time.sleep(5)
+            elif direction_input == "Travel Direction Count":
+                print(travel_direction_count)
+                time.sleep(5)
+            else:
+                print(unreconized_statement, "\nDid you capitalize the letter?")
+                time.sleep(2)
+    elif menu == 2: #----This may move somewhere else in the game structure at some point, this may also be accessible as a Main Menu command----
         while store == True:
             print(storelist)
-            shop_input = int(input("\nEnter a number from 0 - 3 to buy items from this shop.\nEnter number 99 to view the shop list if needed.\nGive me a number: "))
-            if shop_input == 0:
-                print("\nYou chose: ", storelist[0], "Are you sure that you want to buy this item?")
-                shopselect_confirm = int(input("\nPlease press 0 to confirm your selection or press any other number to select a different item: "))
-                if shopselect_confirm == 0:
+            store_input = int(input("\nEnter a number from 0 - 3 to buy items from the store.\nEnter number 99 to leave the store.\nGive me a number: "))
+            if store_input == 0:
+                print(store_chosen_item, storelist[0], store_confimination_item_purchase_question)
+                storeselect_confirm = int(input(store_confirm_item_selection))
+                if storeselect_confirm == 0:
                     if money < 10:
-                       print("\nYour too broke for this!") 
+                       print(broke_message) 
                        time.sleep(2)
                     elif money >= 10:
                         money -= 10
-                        print("\nYou have confimed the purchase of ", storelist[0], "You have ", money, "Dollars left to spend. If you need more, continue on your journey.")
+                        print(store_item_purchased, storelist[0], money_left, money, money_left_to_spend)
                         store_item_counter += 1 #----This adds 1 to the shop selection variable so when the loop tries to run again, it will stop----
                         time.sleep(2)
                 else:
-                    print("\nReturning to the shop selection.")
-            elif shop_input == 1:
-                print("\nYou chose: ", storelist[1], "Are you sure that you want to buy this item?")
-                shopselect_confirm = int(input("\nPlease press 0 to confirm your selection or press any other number to select a different item: "))
+                    print(store_selection_return)
+                    time.sleep(2)
+            elif store_input == 1:
+                print(store_chosen_item, storelist[1], store_confimination_item_purchase_question)
+                shopselect_confirm = int(input(store_confirm_item_selection))
                 if shopselect_confirm == 0:
                     if money < 20:
-                       print("\nYour too broke for this!") 
+                       print(broke_message) 
                        time.sleep(2)
                     elif money >= 20:
                         money -= 20
-                        print("\nYou have confimed the purchase of ", storelist[1], "You have ", money, "Dollars left to spend. If you need more, continue on your journey.")
+                        print(store_item_purchased, storelist[1], money_left, money, money_left_to_spend)
                         store_item_counter += 1 #----This adds 1 to the shop selection variable so when the loop tries to run again, it will stop----
                         time.sleep(2)
                 else:
-                    print("\nReturning to the shop selection.")
-            elif shop_input == 2:
-                print("\nYou chose: ", storelist[2], "Are you sure that you want to buy this item?")
-                shopselect_confirm = int(input("\nPlease press 0 to confirm your selection or press any other number to select a different item: "))
+                    print(store_selection_return)
+                    time.sleep(2)
+            elif store_input == 2:
+                print(store_chosen_item, storelist[2], store_confimination_item_purchase_question)
+                shopselect_confirm = int(input(store_confirm_item_selection))
                 if shopselect_confirm == 0:
                     if money < 30:
-                       print("\nYour too broke for this!") 
+                       print(broke_message) 
                        time.sleep(2)
                     elif money >= 30:
                         money -= 30
-                        print("\nYou have confimed the purchase of ", storelist[2], "You have ", money, "Dollars left to spend. If you need more, continue on your journey.")
+                        print(store_item_purchased, storelist[2], money_left, money, money_left_to_spend)
                         store_item_counter += 1 #----This adds 1 to the shop selection variable so when the loop tries to run again, it will stop----
                         time.sleep(2)
                 else:
-                    print("\nReturning to the shop selection.")
-            elif shop_input == 3:
-                print("\nYou chose: ", storelist[3], "Are you sure that you want to buy this item?")
-                shopselect_confirm = int(input("\nPlease press 0 to confirm your selection or press any other number to select a different item: "))
+                    print(store_selection_return)
+                    time.sleep(2)
+            elif store_input == 3:
+                print(store_chosen_item, storelist[3], store_confimination_item_purchase_question)
+                shopselect_confirm = int(input(store_confirm_item_selection))
                 if shopselect_confirm == 0:
                     if money < 40:
-                       print("\nYour too broke for this!") 
+                       print(broke_message) 
                        time.sleep(2)
                     elif money >= 40:
                         money -= 40
-                        print("\nYou have confimed the purchase of ", storelist[3], "You have ", money, "Dollars left to spend. If you need more, continue on your journey.")
+                        print(store_item_purchased, storelist[3], money_left, money, money_left_to_spend)
                         store_item_counter += 1 #----This adds 1 to the shop selection variable so when the loop tries to run again, it will stop----
                         time.sleep(2)
                 else:
-                    print("\nReturning to the shop selection.")
-            else: #----Runs when nothing else matches any statement specified with numbers in this case with character selection----
-                print("\nThe character specified doesn't exist.")
-    elif menu == "Enable Cheats":
+                    print(store_selection_return)
+                    time.sleep(2)
+            elif store_input == 99:
+                print("You are now leaving the store...")
+                time.sleep(2)
+                break
+            else: #----Runs when nothing else matches any statement specified with numbers in this case with the store----
+                print("\nThe item specified doesn't exist.")
+                time.sleep(2)
+    elif menu == 3: #----Cheats for giggles----
         print("\nHaha, there are no cheats!")
         time.sleep(2) #----Pauses the program for a number of specified seconds before continuing to execute----
-    elif menu == "Exit": #----This stops the game from the menu----
-        print("\nThis game will now stop.")
+    elif menu == 4: #----Sends the player to our help page----
+        webbrowser.open_new_tab("https://trello.com/b/RFJlZLU6/evil-wild-eye-games-trello")
+        time.sleep(6)
+        webbrowser.open_new_tab("https://github.com/DamienM2004/Evil-Wild-Eye-Games")
+    elif menu == 5: #----This stops the game from the menu----
+        print("\nStopping game...")
+        time.sleep(0.5)
+        print("Game has stopped.")
         break
     else:
-        print("\nI couldn't reconize your input. Try Again!") #----This will run when the inputted string does not match any of the following statements above.----
+        print(unreconized_statement) #----This will run when the inputted string does not match any of the following statements above.----
         time.sleep(2) #----Pauses the program for a number of specified seconds before continuing to execute----
