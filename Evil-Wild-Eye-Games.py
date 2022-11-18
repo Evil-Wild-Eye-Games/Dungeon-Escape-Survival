@@ -5,26 +5,29 @@ import time, random, webbrowser
 groupname = "\nEvil Wild Eye Games\n"
 money = random.randint (400,9999) #----The player will recive a random amunt of gold that is specified in the range. The gold will be used to buy various items in the game to help the player along their adventures.
 storelist = ["Item 1", "Item 2", "Item 3", "Item 4"] #----This will contain items that our player will purchase to help them on their journey. Items in this list are placeholders for now.----
-characterlist = ["Character 1", "Character 2", "Character 3", "Character 4"] #----This will contain the playable characters in the game. This listing will be a placeholder for now.----
 player_inventory = ["Item Slot 1", "Item Slot 2", "Item Slot 3", "Item Slot 4"] #----This will contain the player inventory, this will be later developed----
 player_objectives = ["Objective 1", "Objective 2", "Objective 3", "Objective 4"] #----This will contain player objectives / quests, this will be later developed----
-characterselection = False #True #----This is set to True until a character is selected by the player----
-direction_n_count = 0
-direction_s_count = 0
-direction_e_count = 0
-direction_w_count = 0
+direction_n_count = 0 #----Counts how many times you go North----
+direction_s_count = 0 #----Counts how many times you go South----
+direction_e_count = 0 #----Counts how many times you go East----
+direction_w_count = 0 #----Counts how many times you go West----
 travel = True #----When set to True the player can move around the world that they can't even see----
 travel_history = [] #----Stores the players travel history----
 store = True #----When set to True the player can access the store----
-store_item_counter = 0 #----This value is set to 0 until items are purchased from the shop by the player----
+store_total_items_counter = 0 #----This value is set to 0 until items are purchased from the shop by the player----
+store_purchase_history = [] #----Stores the players purchase history in the game----
+slot_0 = 0 #----Set to 0 until this item is bought----
+slot_1 = 0 #----Set to 0 until this item is bought----
+slot_2 = 0 #----Set to 0 until this item is bought----
+slot_3 = 0 #----Set to 0 until this item is bought----
 unreconized_statement = "\nI couldn't reconize your input. Try Again!"
 broke_message = "\nYour too broke for this!"
 store_chosen_item = "\nYou chose: "
 store_confimination_item_purchase_question = "Are you sure that you want to buy this item?"
 store_confirm_item_selection = "\nPlease press 0 to confirm your selection or press any other number to select a different item: "
 store_item_purchased = "\nYou have confimed the purchase of"
-money_left = "You have"
-money_left_to_spend = "Dollars left to spend. If you need more, continue on your journey."
+money_left_1 = "You have"
+money_left_2 = "Dollars left to spend. If you need more, continue on your journey."
 store_selection_return = "\nReturning to the store selection."
 direction_going = "\nYour going"
 x = 0 #----East and West coordinates----
@@ -93,51 +96,17 @@ time.sleep(2) #----Pauses the program for a number of specified seconds before c
 while True: #----This while loop will keep the game alive & run until is told to stop. Also below this line there is a menu system & character selection system----
     menu = int(input("\nWelcome to our game!\n\nType in 1 to start the game.\nType in 2 to use the store.\nType in 3 to use cheats while playing the game.\nType in 4 for help.\nType in 5 to stop the game.\n\nYour choice goes here: "))
     if menu == 1: #----Game Start----
-        print("\nThe game is now starting!\n")
-        time.sleep(2) #----Pauses the program for a number of specified seconds before continuing to execute----
+        print("\nLoading...\n")
+        time.sleep(1) #----Pauses the program for a number of specified seconds before continuing to execute----
         #----Dale start the story from this line----
         time.sleep(0) #----Pauses the program for a number of specified seconds before continuing to execute----
-        while characterselection == True: #----This while loop contains the character selection system----
-            print(characterlist)
-            characterselect = int(input("\nEnter a number from 0 - 3 to play as a character of your choice.\nEnter number 99 to view the character list if needed.\nGive me a number: ")) #----This is where you will select your characters.----
-            if characterselect == 0:
-                print("\nYou chose: ", characterlist[0], "Are you sure that you want to play as this character?")
-                characterselect_confirm = int(input("\nPlease press 0 to confirm your selection or press any other number to select a different character: "))
-                if characterselect_confirm == 0:
-                    print("\nYou have confimed ", characterlist[0], "as your character. ", "You have ", money, "Dollars to start out with, you can earn more along your journey.")
-                    characterselection = False #----This set the value to False to the character selection variable so when the loop tries to run again, it will stop----
-                else:
-                    print("\nReturning to the character selection.")
-            elif characterselect == 1:
-                print("\nYou chose: ", characterlist[1], "Are you sure that you want to play as this character?")
-                characterselect_confirm = int(input("\nPlease press 0 to confirm your selection or press any other number to select a different character: "))
-                if characterselect_confirm == 0:
-                    print("\nYou have confimed ", characterlist[1], "as your character. ", "You have ", money, "Dollars to start out with, you can earn more along your journey.")
-                    characterselection = False #----This set the value to False to the character selection variable so when the loop tries to run again, it will stop----
-                else:
-                    print("\nReturning to the character selection.")
-            elif characterselect == 2:
-                print("\nYou chose: ", characterlist[2], "Are you sure that you want to play as this character?")
-                characterselect_confirm = int(input("\nPlease press 0 to confirm your selection or press any other number to select a different character: "))
-                if characterselect_confirm == 0:
-                    print("\nYou have confimed ", characterlist[2], "as your character. ", "You have ", money, "Dollars to start out with, you can earn more along your journey.")
-                    characterselection = False #----This set the value to False to the character selection variable so when the loop tries to run again, it will stop----
-                else:
-                    print("\nReturning to the character selection.")
-            elif characterselect == 3:
-                print("\nYou chose: ", characterlist[3], "Are you sure that you want to play as this character?")
-                characterselect_confirm = int(input("\nPlease press 0 to confirm your selection or press any other number to select a different character: "))
-                if characterselect_confirm == 0:
-                    print("\nYou have confimed ", characterlist[3], "as your character. ", "You have ", money, "Dollars to start out with, you can earn more along your journey.")
-                    characterselection = False #----This set the value to False to the character selection variable so when the loop tries to run again, it will stop----
-                else:
-                    print("\nReturning to the character selection.")
-            else: #----Runs when nothing else matches any statement specified with numbers in this case with character selection----
-                print("\nThe character specified doesn't exist.")
+        if travel == False:
+            print("\nYou can't travel right now!\n")
+            time.sleep(2)
         while travel == True: #----This will run after the player has selected a character----
             travel_direction_count = [direction_n_count, "North", direction_s_count, "South", direction_e_count, "East", direction_w_count, "West"] #----Stores the players current travel session----
             print("\nYou are at coordinates", (x, y))
-            direction_input = str(input("\nDo you want to move North, South, East, or West?\nTo move North press W\nTo move South press S\nTo move East press D\nTo move West press A\nType in Travel History to view your travel history.\nType in your choice here: "))
+            direction_input = str(input("\nDo you want to move North, South, East, or West?\nTo move North press W\nTo move South press S\nTo move East press D\nTo move West press A\nType in TH to view your travel history.\nType in TDC to view the direction count.\nType in your choice here: "))
             if direction_input == "W":
                 print(direction_going, "North")
                 y += 1
@@ -162,86 +131,103 @@ while True: #----This while loop will keep the game alive & run until is told to
                 travel_history.append("West")
                 direction_w_count += 1
                 time.sleep(1.5)
-            elif direction_input == "Travel History":
+            elif direction_input == "TH":
                 print(travel_history)
                 time.sleep(5)
-            elif direction_input == "Travel Direction Count":
+            elif direction_input == "TDC":
                 print(travel_direction_count)
                 time.sleep(5)
             else:
                 print(unreconized_statement, "\nDid you capitalize the letter?")
                 time.sleep(2)
     elif menu == 2: #----This may move somewhere else in the game structure at some point, this may also be accessible as a Main Menu command----
-        while store == True:
-            print(storelist)
-            store_input = int(input("\nEnter a number from 0 - 3 to buy items from the store.\nEnter number 99 to leave the store.\nGive me a number: "))
-            if store_input == 0:
-                print(store_chosen_item, storelist[0], store_confimination_item_purchase_question)
-                storeselect_confirm = int(input(store_confirm_item_selection))
-                if storeselect_confirm == 0:
-                    if money < 10:
-                       print(broke_message) 
-                       time.sleep(2)
-                    elif money >= 10:
-                        money -= 10
-                        print(store_item_purchased, storelist[0], money_left, money, money_left_to_spend)
-                        store_item_counter += 1 #----This adds 1 to the shop selection variable so when the loop tries to run again, it will stop----
+            while store == True:
+                print(storelist)
+                store_item_purchased_count = [slot_0, storelist[0], slot_1, storelist[1], slot_2, storelist[2], slot_3, storelist[3]]
+                print(store_item_purchased_count)
+                store_input = int(input("\nEnter a number from 0 - 3 to buy items from the store.\nEnter number 98 to view your in game purchase history.\nEnter number 99 to leave the store.\nGive me a number: "))
+                if store_input == 0:
+                    print(store_chosen_item, storelist[0], store_confimination_item_purchase_question)
+                    storeselect_confirm = int(input(store_confirm_item_selection))
+                    if storeselect_confirm == 0:
+                        if money < 10:
+                            print(broke_message) 
+                            time.sleep(2)
+                        elif money >= 10:
+                            money -= 10
+                            print(store_item_purchased, storelist[0], money_left_1, money, money_left_2)
+                            store_total_items_counter += 1 #----This adds 1 to the shop selection variable so when the loop tries to run again, it will stop----
+                            slot_0 += 1
+                            store_purchase_history.append(storelist[0])
+                            time.sleep(2)
+                    else:
+                        print(store_selection_return)
                         time.sleep(2)
-                else:
-                    print(store_selection_return)
-                    time.sleep(2)
-            elif store_input == 1:
-                print(store_chosen_item, storelist[1], store_confimination_item_purchase_question)
-                shopselect_confirm = int(input(store_confirm_item_selection))
-                if shopselect_confirm == 0:
-                    if money < 20:
-                       print(broke_message) 
-                       time.sleep(2)
-                    elif money >= 20:
-                        money -= 20
-                        print(store_item_purchased, storelist[1], money_left, money, money_left_to_spend)
-                        store_item_counter += 1 #----This adds 1 to the shop selection variable so when the loop tries to run again, it will stop----
+                elif store_input == 1:
+                    print(store_chosen_item, storelist[1], store_confimination_item_purchase_question)
+                    shopselect_confirm = int(input(store_confirm_item_selection))
+                    if shopselect_confirm == 0:
+                        if money < 20:
+                            print(broke_message) 
+                            time.sleep(2)
+                        elif money >= 20:
+                            money -= 20
+                            print(store_item_purchased, storelist[1], money_left_1, money, money_left_2)
+                            store_total_items_counter += 1 #----This adds 1 to the shop selection variable so when the loop tries to run again, it will stop----
+                            slot_1 += 1
+                            store_purchase_history.append(storelist[1])
+                            time.sleep(2)
+                    else:
+                        print(store_selection_return)
                         time.sleep(2)
-                else:
-                    print(store_selection_return)
-                    time.sleep(2)
-            elif store_input == 2:
-                print(store_chosen_item, storelist[2], store_confimination_item_purchase_question)
-                shopselect_confirm = int(input(store_confirm_item_selection))
-                if shopselect_confirm == 0:
-                    if money < 30:
-                       print(broke_message) 
-                       time.sleep(2)
-                    elif money >= 30:
-                        money -= 30
-                        print(store_item_purchased, storelist[2], money_left, money, money_left_to_spend)
-                        store_item_counter += 1 #----This adds 1 to the shop selection variable so when the loop tries to run again, it will stop----
+                elif store_input == 2:
+                    print(store_chosen_item, storelist[2], store_confimination_item_purchase_question)
+                    shopselect_confirm = int(input(store_confirm_item_selection))
+                    if shopselect_confirm == 0:
+                        if money < 30:
+                            print(broke_message) 
+                            time.sleep(2)
+                        elif money >= 30:
+                            money -= 30
+                            print(store_item_purchased, storelist[2], money_left_1, money, money_left_2)
+                            store_total_items_counter += 1 #----This adds 1 to the shop selection variable so when the loop tries to run again, it will stop----
+                            slot_2 += 1
+                            store_purchase_history.append(storelist[2])
+                            time.sleep(2)
+                    else:
+                        print(store_selection_return)
                         time.sleep(2)
-                else:
-                    print(store_selection_return)
-                    time.sleep(2)
-            elif store_input == 3:
-                print(store_chosen_item, storelist[3], store_confimination_item_purchase_question)
-                shopselect_confirm = int(input(store_confirm_item_selection))
-                if shopselect_confirm == 0:
-                    if money < 40:
-                       print(broke_message) 
-                       time.sleep(2)
-                    elif money >= 40:
-                        money -= 40
-                        print(store_item_purchased, storelist[3], money_left, money, money_left_to_spend)
-                        store_item_counter += 1 #----This adds 1 to the shop selection variable so when the loop tries to run again, it will stop----
+                elif store_input == 3:
+                    print(store_chosen_item, storelist[3], store_confimination_item_purchase_question)
+                    shopselect_confirm = int(input(store_confirm_item_selection))
+                    if shopselect_confirm == 0:
+                        if money < 40:
+                            print(broke_message) 
+                            time.sleep(2)
+                        elif money >= 40:
+                            money -= 40
+                            print(store_item_purchased, storelist[3], money_left_1, money, money_left_2)
+                            store_total_items_counter += 1 #----This adds 1 to the shop selection variable so when the loop tries to run again, it will stop----
+                            slot_3 += 1
+                            store_purchase_history.append(storelist[3])
+                            time.sleep(2)
+                    else:
+                        print(store_selection_return)
                         time.sleep(2)
-                else:
-                    print(store_selection_return)
+                elif store_input == 98:
+                    print(store_purchase_history)
+                    time.sleep(4)
+                elif store_input == 99:
+                    print("\nYou are now leaving the store...")
                     time.sleep(2)
-            elif store_input == 99:
-                print("You are now leaving the store...")
-                time.sleep(2)
-                break
-            else: #----Runs when nothing else matches any statement specified with numbers in this case with the store----
-                print("\nThe item specified doesn't exist.")
-                time.sleep(2)
+                    break
+                elif store_input == 100:
+                    travel = False
+                    print("\nTraveling has been disabled.\n")
+                    time.sleep(1)
+                else: #----Runs when nothing else matches any statement specified with numbers in this case with the store----
+                    print("\nThe item specified doesn't exist.")
+                    time.sleep(2)
     elif menu == 3: #----Cheats for giggles----
         print("\nHaha, there are no cheats!")
         time.sleep(2) #----Pauses the program for a number of specified seconds before continuing to execute----
