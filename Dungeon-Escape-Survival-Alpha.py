@@ -234,10 +234,6 @@ while True: #----This while loop will keep the game alive & run until is told to
                 print("\nYou are now leaving the store...")
                 time.sleep(2)
                 break
-            elif store_input == 100:
-                travel = False
-                print("\nTraveling has been disabled.\n")
-                time.sleep(1)
             else: #----Runs when nothing else matches any statement specified with numbers in this case with the store----
                 print("\nThe item specified doesn't exist.")
                 time.sleep(2)
