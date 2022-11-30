@@ -1,7 +1,7 @@
 import time, random, webbrowser
 #----Above this line is our imports.----
 groupname = "\nEvil Wild Eye Games\n"
-gamebuild = "Current Build: A-0.0.82"
+gamebuild = "\nCurrent Build: A-0.0.88"
 money = random.randint (400,9999) #----The player will recive a random amunt of gold that is specified in the range. The gold will be used to buy various items in the game to help the player along their adventures.
 storelist = ["Item 1", "Item 2", "Item 3", "Item 4"] #----This will contain items that our player will purchase to help them on their journey. Items in this list are placeholders for now.----
 player_inventory = [] #----This will contain the player inventory, items will be added or removed throughout the game----
@@ -34,7 +34,8 @@ y = 0 #----North and South coordinates----
 store_location_x = 4
 store_location_y = 2
 store_location = (store_location_x, store_location_y)
-store_found_message = "You have found the store!"
+store_found_message = "\nYou have found the store!\n"
+enter_key_message = "\nPress Enter to continue."
 #----Main Variables are above this line.----
 print("""????????????????????????????????????????????????????????????????????????????????????????????????????
 ????????????????????????????????????????????????????????????????????????????????????????????????????
@@ -98,7 +99,7 @@ time.sleep(2) #----Pauses the program for a number of specified seconds before c
 while True: #----This while loop will keep the game alive & run until is told to stop. Also below this line there is a menu system & character selection system----
     menu = int(input("\nWelcome to Dungeon Escape Survival Alpha!\n\nType in 1 to start the game.\nType in 2 to use cheats.\nType in 3 for help.\nType in 4 to view the game build information.\nType in 5 to stop the game.\n\nYour choice goes here: "))
     if menu == 1: #----Game Start----
-        print("\nLoading...\n")
+        print("\nLoading...")
         time.sleep(1) #----Pauses the program for a number of specified seconds before continuing to execute----
         #----Dale start the story from this line----
         time.sleep(0) #----Pauses the program for a number of specified seconds before continuing to execute----
@@ -108,14 +109,25 @@ while True: #----This while loop will keep the game alive & run until is told to
         while travel == True: #----This will run after the player has selected a character----
             travel_direction_count = [direction_n_count, "North", direction_s_count, "South", direction_e_count, "East", direction_w_count, "West"] #----Stores the players current travel session----
             player_location = (x, y)
-            print("\nYou are at coordinates", (x, y))
-            print("Location of player: ", player_location)
+            print("\nYou are at coordinates", player_location)
             print("Location of store: ", store_location)
             if player_location == store_location:
-                print(store_found_message)
-                time.sleep(1)
-                break
-            direction_input = str(input("\nDo you want to move North, South, East, or West?\nTo move North press W\nTo move South press S\nTo move East press D\nTo move West press A\nType in TH to view your travel history.\nType in TDC to view the direction count.\nType in your choice here: "))
+                if store == True:
+                    print(store_found_message)
+                    time.sleep(1)
+                    break
+                elif store == False:
+                    print("\nThe store is closed.")
+                    player_input = int(input("\nThe store is disabled! Do you want to enable the store angain? Press 1 to use the store or 2 to keep the store disabled: "))
+                    if player_input == 1:
+                        print("\nOpening the store...")
+                        store = True
+                        break
+                    elif player_input == 2:
+                        print("\nYou have decided not to shop.")
+                    else:
+                        print(unreconized_statement)
+            direction_input = str(input("\nDo you want to move North, South, East, or West?\nTo move North press W\nTo move South press S\nTo move East press D\nTo move West press A\nType in TH to view your travel history.\nType in TDC to view the direction count.\nYou can also look at your inventory by typing in PIN\nType in your choice here: "))
             if direction_input == "W":
                 print(direction_going, "North")
                 y += 1
@@ -141,11 +153,14 @@ while True: #----This while loop will keep the game alive & run until is told to
                 direction_w_count += 1
                 time.sleep(1.5)
             elif direction_input == "TH":
-                print(travel_history)
-                time.sleep(5)
+                print("Travel History: ", travel_history)
+                enter_input = str(input(enter_key_message))
             elif direction_input == "TDC":
-                print(travel_direction_count)
-                time.sleep(5)
+                print("Travel Direction Count: ", travel_direction_count)
+                enter_input = str(input(enter_key_message))
+            elif direction_input == "PIN":
+                print("Your inventory: ", player_inventory)
+                enter_input = str(input(enter_key_message))
             else:
                 print(unreconized_statement, "\nDid you capitalize the letter?")
                 time.sleep(2)
@@ -153,7 +168,7 @@ while True: #----This while loop will keep the game alive & run until is told to
             print("Items in your inventory: ", player_inventory)
             print("Items in the store: ", storelist)
             store_item_purchased_count = [slot_0, storelist[0], slot_1, storelist[1], slot_2, storelist[2], slot_3, storelist[3]]
-            print(store_item_purchased_count)
+            print("Number of each item purchased: ", store_item_purchased_count)
             store_input = int(input("\nEnter a number from 0 - 3 to buy items from the store.\nEnter number 98 to view your in game purchase history.\nEnter number 99 to leave the store.\nGive me a number: "))
             if store_input == 0:
                 print(store_chosen_item, storelist[0], store_confimination_item_purchase_question)
@@ -228,10 +243,11 @@ while True: #----This while loop will keep the game alive & run until is told to
                     print(store_selection_return)
                     time.sleep(2)
             elif store_input == 98:
-                print(store_purchase_history)
-                time.sleep(4)
+                print("Purchase History: ", store_purchase_history)
+                enter_input = str(input(enter_key_message))
             elif store_input == 99:
                 print("\nYou are now leaving the store...")
+                store = False
                 time.sleep(2)
                 break
             else: #----Runs when nothing else matches any statement specified with numbers in this case with the store----
@@ -246,7 +262,7 @@ while True: #----This while loop will keep the game alive & run until is told to
         webbrowser.open_new_tab("https://github.com/DamienM2004/Evil-Wild-Eye-Games")
     elif menu == 4:
         print(gamebuild)
-        time.sleep(4)
+        enter_input = str(input(enter_key_message))
     elif menu == 5: #----This stops the game from the menu----
         print("\nStopping game...")
         time.sleep(0.5)
