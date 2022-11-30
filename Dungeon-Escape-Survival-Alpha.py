@@ -1,7 +1,7 @@
 import time, random, webbrowser
 #----Above this line is our imports.----
 groupname = "\nEvil Wild Eye Games\n"
-gamebuild = "Current Build: A-0.0.81"
+gamebuild = "Current Build: A-0.0.82"
 money = random.randint (400,9999) #----The player will recive a random amunt of gold that is specified in the range. The gold will be used to buy various items in the game to help the player along their adventures.
 storelist = ["Item 1", "Item 2", "Item 3", "Item 4"] #----This will contain items that our player will purchase to help them on their journey. Items in this list are placeholders for now.----
 player_inventory = [] #----This will contain the player inventory, items will be added or removed throughout the game----
@@ -241,7 +241,7 @@ while True: #----This while loop will keep the game alive & run until is told to
         print("\nHaha, there are no cheats!")
         time.sleep(2) #----Pauses the program for a number of specified seconds before continuing to execute----
     elif menu == 3: #----Sends the player to our help page----
-        webbrowser.open_new_tab("https://trello.com/b/RFJlZLU6/evil-wild-eye-games-trello")
+        webbrowser.open_new_tab("https://trello.com/b/RFJlZLU6/dungeon-escape-survival-trello")
         time.sleep(6)
         webbrowser.open_new_tab("https://github.com/DamienM2004/Evil-Wild-Eye-Games")
     elif menu == 4:
