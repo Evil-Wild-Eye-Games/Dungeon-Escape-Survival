@@ -1,11 +1,13 @@
 import time, random, webbrowser
 #----Above this line is our imports.----
 groupname = "\nEvil Wild Eye Games\n"
-gamebuild = "\nCurrent Build: A-0.0.98"
+gamebuild = "\nCurrent Build: A-0.0.106"
+debug = True
+debug_disabled_msg = "\nDebugging Tools are disabled."
 money = random.randint (400,9999) #----The player will recive a random amunt of gold that is specified in the range. The gold will be used to buy various items in the game to help the player along their adventures.
 storelist = ["Sword", "Healing Potion", "Speed Potion", "Damage Potion"] #----This will contain items that our player will purchase to help them on their journey. Items in this list are placeholders for now.----
 player_inventory = [] #----This will contain the player inventory, items will be added or removed throughout the game----
-player_objectives = ["Find the store", "Purchase a weapon from the store", "Purchase a potion from the store"] #----This will contain player objectives / quests, this will be later developed----
+player_objectives = ["Find the store", "Purchase a weapon from the store", "Purchase a potion from the store"] #----Contains Objectives for the player to complete----
 player_completed_objectives = []
 player_completed_objective_statement = "has been completed!"
 direction_n_count = 0 #----Counts how many times you go North----
@@ -14,7 +16,7 @@ direction_e_count = 0 #----Counts how many times you go East----
 direction_w_count = 0 #----Counts how many times you go West----
 travel = True #----When set to True the player can move around the world that they can't even see----
 travel_history = [] #----Stores the players travel history----
-store = True #----When set to True the player can access the store----
+store = False #----When set to True the player can access the store----
 store_total_items_counter = 0 #----This value is set to 0 until items are purchased from the shop by the player----
 store_purchase_history = [] #----Stores the players purchase history in the game----
 slot_0 = 0 #----Set to 0 until this item is bought----
@@ -42,11 +44,17 @@ store_selection_return = "\nReturning to the store selection."
 direction_going = "\nYour going"
 x = 0 #----East and West coordinates----
 y = 0 #----North and South coordinates----
-store_location_x = 4
-store_location_y = 2
+store_location_x = random.randint (-5, 5)
+store_location_y = random.randint (-5, 5)
 store_location = (store_location_x, store_location_y)
 store_found_message = "\nYou have found the store!\n"
 enter_key_message = "\nPress Enter to continue."
+monster_location_x_1 = random.randint (6, 10)
+monster_location_y_1 = random.randint (6, 10)
+monster_location_1 = (monster_location_x_1, monster_location_y_1)
+monster_location_x_2 = random.randint (8, 14)
+monster_location_y_2 = random.randint (8, 14)
+monster_location_2 = (monster_location_x_2, monster_location_y_2)
 #----Main Variables are above this line.----
 print("""????????????????????????????????????????????????????????????????????????????????????????????????????
 ????????????????????????????????????????????????????????????????????????????????????????????????????
@@ -118,24 +126,25 @@ while True: #----This while loop will keep the game alive & run until is told to
             print("\nYou can't travel right now!\n")
             time.sleep(2)
         while travel == True: #----This will run after the player has selected a character----
+            if debug == True: #----This will be deleted later and will be used for debugging----
+                print("Location of store: ", store_location)
+                print("Monster 1:", monster_location_1, "Monster 2:", monster_location_2)
+                time.sleep(1.5)
+            else:
+                print(debug_disabled_msg)
+                time.sleep(1)
             travel_direction_count = [direction_n_count, "North", direction_s_count, "South", direction_e_count, "East", direction_w_count, "West"] #----Stores the players current travel session----
             player_location = (x, y)
             print("\nYou are at coordinates", player_location)
-            print("Location of store: ", store_location)
             if player_location == store_location:
-                if store == True:
-                    print(store_found_message)
-                    time.sleep(1)
-                    if player_objectives[0] == "Find the store":
-                        del player_objectives[0]
-                        player_completed_objectives.append("Find the store")
-                        print(player_completed_objectives[0], player_completed_objective_statement)
-                        break
-                    else:
-                        print("I'm not sure what happened here.")
-                    break
-                elif store == False:
-                    print("\nThe store is closed.")
+                print(store_found_message)
+                time.sleep(1)
+                if player_objectives[0] == "Find the store":
+                    del player_objectives[0]
+                    player_completed_objectives.append("Find the store")
+                    print(player_completed_objectives[0], player_completed_objective_statement)
+                if store == False:
+                    print("The store is closed.")
                     player_input = int(input("\nThe store is disabled! Do you want to enable the store angain? Press 1 to use the store or 2 to keep the store disabled: "))
                     if player_input == 1:
                         print("\nOpening the store...")
@@ -145,7 +154,11 @@ while True: #----This while loop will keep the game alive & run until is told to
                         print("\nYou have decided not to shop.")
                     else:
                         print(unreconized_statement)
-            direction_input = str(input("\nDo you want to move North, South, East, or West?\nTo move North press W\nTo move South press S\nTo move East press D\nTo move West press A\nType in TH to view your travel history.\nType in TDC to view the direction count.\nYou can also look at your inventory by typing in PIN\nTo stop traveling type in Stop.\nType in your choice here: "))
+            if player_location == monster_location_1: #----Runs when the player is on the coordinates of the monster----
+                print("\nYou have encountered monster 1")
+            elif player_location == monster_location_2:
+                print("\nYou have encountered monster 2")
+            direction_input = str(input("\nDo you want to move North, South, East, or West?\nTo move North press W\nTo move South press S\nTo move East press D\nTo move West press A\nTo visit the player menu where you can see your Travel History, Player Inventory and etc type in PM.\nTo stop traveling type in Stop.\nType in your choice here: "))
             if direction_input == "W":
                 print(direction_going, "North")
                 y += 1
@@ -170,15 +183,17 @@ while True: #----This while loop will keep the game alive & run until is told to
                 travel_history.append("West")
                 direction_w_count += 1
                 time.sleep(1.5)
-            elif direction_input == "TH":
-                print("Travel History: ", travel_history)
-                enter_input = str(input(enter_key_message))
-            elif direction_input == "TDC":
-                print("Travel Direction Count: ", travel_direction_count)
-                enter_input = str(input(enter_key_message))
-            elif direction_input == "PIN":
-                print("Your inventory: ", player_inventory)
-                enter_input = str(input(enter_key_message))
+            elif direction_input == "PM":
+                player_menu = str(input("\nType in TH to view your travel history.\nType in TDC to view the direction count.\nYou can also look at your inventory by typing in PIN.\nType in your choice here: "))
+                if player_menu == "TH":
+                    print("Travel History: ", travel_history)
+                    enter_input = str(input(enter_key_message))
+                elif player_menu == "TDC":
+                    print("Travel Direction Count: ", travel_direction_count)
+                    enter_input = str(input(enter_key_message))
+                elif player_menu == "PIN":
+                    print("Your inventory: ", player_inventory)
+                    enter_input = str(input(enter_key_message))
             elif direction_input == "Stop":
                 print("\nYou have decided to stop traveling...")
                 time.sleep(0.5)
