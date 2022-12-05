@@ -1,7 +1,7 @@
 import time, random, webbrowser
 #----Above this line is our imports.----
 groupname = "\nEvil Wild Eye Games\n"
-gamebuild = "\nCurrent Build: A-0.0.106"
+gamebuild = "\nCurrent Build: A-0.0.107"
 debug = True
 debug_disabled_msg = "\nDebugging Tools are disabled."
 money = random.randint (400,9999) #----The player will recive a random amunt of gold that is specified in the range. The gold will be used to buy various items in the game to help the player along their adventures.
@@ -291,6 +291,9 @@ while True: #----This while loop will keep the game alive & run until is told to
             else: #----Runs when nothing else matches any statement specified with numbers in this case with the store----
                 print("\nThe item specified doesn't exist.")
                 time.sleep(2)
+        #----AMR prgram Weapon Stats here----
+        #----AMR prgram Player HP here----
+        #----AMR program Winning & Dying here----
     elif menu == 2: #----Cheats for giggles----
         print("\nHaha, there are no cheats!")
         time.sleep(2) #----Pauses the program for a number of specified seconds before continuing to execute----
