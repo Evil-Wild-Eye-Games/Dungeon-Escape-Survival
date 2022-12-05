@@ -1,7 +1,7 @@
 import time, random, webbrowser
 #----Above this line is our imports.----
 groupname = "\nEvil Wild Eye Games\n"
-gamebuild = "\nCurrent Build: A-0.0.107"
+gamebuild = "\nCurrent Build: A-0.0.106"
 debug = True
 debug_disabled_msg = "\nDebugging Tools are disabled."
 money = random.randint (400,9999) #----The player will recive a random amunt of gold that is specified in the range. The gold will be used to buy various items in the game to help the player along their adventures.
