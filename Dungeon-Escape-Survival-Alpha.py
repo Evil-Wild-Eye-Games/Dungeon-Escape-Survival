@@ -291,8 +291,8 @@ while True: #----This while loop will keep the game alive & run until is told to
             else: #----Runs when nothing else matches any statement specified with numbers in this case with the store----
                 print("\nThe item specified doesn't exist.")
                 time.sleep(2)
-        #----AMR prgram Weapon Stats here----
-        #----AMR prgram Player HP here----
+        #----AMR program Weapon Stats here----
+        #----AMR program Player HP here----
         #----AMR program Winning & Dying here----
     elif menu == 2: #----Cheats for giggles----
         print("\nHaha, there are no cheats!")
