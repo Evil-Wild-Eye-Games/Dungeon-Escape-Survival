@@ -1,11 +1,14 @@
 import time, random, webbrowser
 #----Above this line is our imports.----
 groupname = "\nEvil Wild Eye Games\n"
-gamebuild = "\nCurrent Build: A-0.0.108"
+gamebuild = "\nCurrent Build: A-0.0.110"
 debug = True
 debug_disabled_msg = "\nDebugging Tools are disabled."
 money = random.randint (400,9999) #----The player will recive a random amunt of gold that is specified in the range. The gold will be used to buy various items in the game to help the player along their adventures.
+win = False
+die = False
 storelist = ["Sword", "Healing Potion", "Speed Potion", "Damage Potion"] #----This will contain items that our player will purchase to help them on their journey. Items in this list are placeholders for now.----
+player_HP = 100 #----The players starting HP and this value will fluxuate during gameplay----
 player_inventory = [] #----This will contain the player inventory, items will be added or removed throughout the game----
 player_objectives = ["Find the store", "Purchase a weapon from the store", "Purchase a potion from the store"] #----Contains Objectives for the player to complete----
 player_completed_objectives = []
@@ -116,13 +119,19 @@ print("""  ____                                       _____                     
 #----Game name goes above this line inside of the print command.----
 time.sleep(2) #----Pauses the program for a number of specified seconds before continuing to execute----
 while True: #----This while loop will keep the game alive & run until is told to stop. Also below this line there is a menu system & character selection system----
-    menu = int(input("\nWelcome to Dungeon Escape Survival Alpha!\n\nType in 1 to start the game.\nType in 2 to use cheats.\nType in 3 for help.\nType in 4 to view the game build information.\nType in 5 to stop the game.\n\nYour choice goes here: "))
+    menu = int(input("\nWelcome to Dungeon Escape Survival Alpha!\n\nType in 1 to start the game.\nType in 2 to view your inventory.\nType in 3 for help.\nType in 4 to view the game build information.\nType in 5 to stop the game.\n\nYour choice goes here: "))
     if menu == 1: #----Game Start----
         print("\nLoading...")
         time.sleep(1) #----Pauses the program for a number of specified seconds before continuing to execute----
         #----Dale start the story from this line----
         time.sleep(0) #----Pauses the program for a number of specified seconds before continuing to execute----
-        if travel == False:
+        if win == True:
+            print("Remove this placeholder when your code is written AMR. Look at the notes below this line.")
+            #----AMR program the player Winning here----
+        if die == True:
+            print("Remove this placeholder when your code is written AMR. Look at the notes below this line.")
+            #----AMR program a dying statement when die equals Truefor when the player dies----
+        if travel == False:   
             print("\nYou can't travel right now!\n")
             time.sleep(2)
         while travel == True: #----This will run after the player has selected a character----
@@ -158,7 +167,7 @@ while True: #----This while loop will keep the game alive & run until is told to
                 print("\nYou have encountered monster 1")
             elif player_location == monster_location_2:
                 print("\nYou have encountered monster 2")
-            direction_input = str(input("\nDo you want to move North, South, East, or West?\nTo move North press W\nTo move South press S\nTo move East press D\nTo move West press A\nTo visit the player menu where you can see your Travel History, Player Inventory and etc type in PM.\nTo stop traveling type in Stop.\nType in your choice here: "))
+            direction_input = str(input("\nDo you want to move North, South, East, or West?\nTo move North press W\nTo move South press S\nTo move East press D\nTo move West press A\nTo visit the player menu where you can see your Travel History, and etc type in PM.\nTo stop traveling type in Stop.\nType in your choice here: "))
             if direction_input == "W":
                 print(direction_going, "North")
                 y += 1
@@ -184,15 +193,12 @@ while True: #----This while loop will keep the game alive & run until is told to
                 direction_w_count += 1
                 time.sleep(1.5)
             elif direction_input == "PM":
-                player_menu = str(input("\nType in TH to view your travel history.\nType in TDC to view the direction count.\nYou can also look at your inventory by typing in PIN.\nType in your choice here: "))
+                player_menu = str(input("\nType in TH to view your travel history.\nType in TDC to view the direction count.\nType in your choice here: "))
                 if player_menu == "TH":
                     print("Travel History: ", travel_history)
                     enter_input = str(input(enter_key_message))
                 elif player_menu == "TDC":
                     print("Travel Direction Count: ", travel_direction_count)
-                    enter_input = str(input(enter_key_message))
-                elif player_menu == "PIN":
-                    print("Your inventory: ", player_inventory)
                     enter_input = str(input(enter_key_message))
             elif direction_input == "Stop":
                 print("\nYou have decided to stop traveling...")
@@ -292,15 +298,13 @@ while True: #----This while loop will keep the game alive & run until is told to
                 print("\nThe item specified doesn't exist.")
                 time.sleep(2)
         #----AMR program Weapon Stats here----
-        #----AMR program Player HP here----
-        #----AMR program Winning & Dying here----
-    elif menu == 2: #----Cheats for giggles----
-        print("\nHaha, there are no cheats!")
-        time.sleep(2) #----Pauses the program for a number of specified seconds before continuing to execute----
+    elif menu == 2: #----Player Inventory----
+        print("Your inventory:", player_inventory)
+        enter_input = str(input(enter_key_message))
     elif menu == 3: #----Sends the player to our help page----
         webbrowser.open_new_tab("https://trello.com/b/RFJlZLU6/dungeon-escape-survival-trello")
         time.sleep(6)
-        webbrowser.open_new_tab("https://github.com/DamienM2004/Evil-Wild-Eye-Games")
+        webbrowser.open_new_tab("https://github.com/Evil-Wild-Eye-Games")
     elif menu == 4:
         print(gamebuild)
         enter_input = str(input(enter_key_message))
