@@ -5,7 +5,7 @@ gamebuild = "\nCurrent Build: A-0.0.108"
 debug = True
 debug_disabled_msg = "\nDebugging Tools are disabled."
 money = random.randint (400,9999) #----The player will recive a random amunt of gold that is specified in the range. The gold will be used to buy various items in the game to help the player along their adventures.
-#storelist = ["Sword", "Healing Potion", "Speed Potion", "Damage Potion"] #----This will contain items that our player will purchase to help them on their journey. Items in this list are placeholders for now.----
+storelist = ["Sword", "Healing Potion", "Speed Potion", "Damage Potion"] #----This will contain items that our player will purchase to help them on their journey. Items in this list are placeholders for now.----
 player_inventory = [] #----This will contain the player inventory, items will be added or removed throughout the game----
 player_objectives = ["Find the store", "Purchase a weapon from the store", "Purchase a potion from the store"] #----Contains Objectives for the player to complete----
 player_completed_objectives = []
@@ -115,7 +115,7 @@ print("""  ____                                       _____                     
                     |___/                                       |_|                                                            |_|                """)
 #----Game name goes above this line inside of the print command.----
 time.sleep(2) #----Pauses the program for a number of specified seconds before continuing to execute----
-while True: #----This while loop will keep the game alive & run until is told to stop. Also below this line there is a menu system & character selection system----
+#while True: #----This while loop will keep the game alive & run until is told to stop. Also below this line there is a menu system & character selection system----
     menu = int(input("\nWelcome to Dungeon Escape Survival Alpha!\n\nType in 1 to start the game.\nType in 2 to use cheats.\nType in 3 for help.\nType in 4 to view the game build information.\nType in 5 to stop the game.\n\nYour choice goes here: "))
     if menu == 1: #----Game Start----
         print("\nLoading...")
@@ -159,7 +159,7 @@ while True: #----This while loop will keep the game alive & run until is told to
             elif player_location == monster_location_2:
                 print("\nYou have encountered monster 2")
             direction_input = str(input("\nDo you want to move North, South, East, or West?\nTo move North press W\nTo move South press S\nTo move East press D\nTo move West press A\nTo visit the player menu where you can see your Travel History, Player Inventory and etc type in PM.\nTo stop traveling type in Stop.\nType in your choice here: "))
-            if direction_input == "W"
+            if direction_input == "W":
                 print(direction_going, "North")
                 y += 1
                 travel_history.append("North")
