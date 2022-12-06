@@ -115,7 +115,7 @@ print("""  ____                                       _____                     
                     |___/                                       |_|                                                            |_|                """)
 #----Game name goes above this line inside of the print command.----
 time.sleep(2) #----Pauses the program for a number of specified seconds before continuing to execute----
-    while True: #----This while loop will keep the game alive & run until is told to stop. Also below this line there is a menu system & character selection system----
+while True: #----This while loop will keep the game alive & run until is told to stop. Also below this line there is a menu system & character selection system----
     menu = int(input("\nWelcome to Dungeon Escape Survival Alpha!\n\nType in 1 to start the game.\nType in 2 to use cheats.\nType in 3 for help.\nType in 4 to view the game build information.\nType in 5 to stop the game.\n\nYour choice goes here: "))
     if menu == 1: #----Game Start----
         print("\nLoading...")
