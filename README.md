@@ -2,6 +2,10 @@ Official Repository of Evil Wild Eye Games
 
 Dungeon Escape Survival is an upcoming text based horror adventure game by Evil Wild Eye Games. 
 
+Developers:
+
+Do not run the Evil Wild Eye Games launcher to use this file during the development process.
+
 Requirements: 
 
 Python installed on the machine running this Python file. If you don't have Python, you can download it here from: https://www.python.org/
