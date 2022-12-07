@@ -2,7 +2,7 @@ import time, random, webbrowser
 #----Above this line is our imports.----
 
 groupname = "\nEvil Wild Eye Games\n"
-gamebuild = "\nCurrent Build: A-0.0.134"
+gamebuild = "\nCurrent Build: A-0.0.135"
 debug = True
 debug_disabled_msg = "\nDebugging Tools are disabled."
 enter_key_message = "\nPress Enter to continue."
@@ -188,7 +188,7 @@ while True: #----This while loop will keep the game alive & run until is told to
                 print(debug_disabled_msg)
                 time.sleep(1)
             travel_direction_count = [direction_n_count, "North", direction_s_count, "South", direction_e_count, "East", direction_w_count, "West"] #----Stores the players current travel session----
-            player_location = monster_location_1 #(x, y)
+            player_location = (x, y)
             print("\nYou are at coordinates", player_location)
             if player_location == store_location:
                 print(store_found_message)
