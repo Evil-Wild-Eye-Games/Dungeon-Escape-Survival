@@ -2,18 +2,19 @@ import time, random, webbrowser
 #----Above this line is our imports.----
 
 groupname = "\nEvil Wild Eye Games\n"
-gamebuild = "\nCurrent Build: A-0.0.114"
+gamebuild = "\nCurrent Build: A-0.0.132"
 debug = True
 debug_disabled_msg = "\nDebugging Tools are disabled."
 enter_key_message = "\nPress Enter to continue."
 unreconized_statement = "\nI couldn't reconize your input. Try Again!"
 win = False
 die = False
+game_items_roster = ["Sword", "Healing Potion", "Speed Potion", "Damage Potion"]
 #----Info Variables----
 
 player_HP = 100 #----The players starting HP and this value will fluxuate during gameplay----
 money = random.randint (400,9999) #----The player will recive a random amunt of gold that is specified in the range. The gold will be used to buy various items in the game to help the player along their adventures.
-player_inventory = [] #----This will contain the player inventory, items will be added or removed throughout the game----
+player_inventory = ["Sword", "Healing Potion", "Speed Potion", "Damage Potion"] #----This will contain the player inventory, items will be added or removed throughout the game----
 player_objectives = ["Find the store", "Purchase a weapon from the store", "Purchase a potion from the store"] #----Contains Objectives for the player to complete----
 player_completed_objectives = []
 player_completed_objective_statement = "has been completed!"
@@ -64,7 +65,9 @@ y = 0 #----North and South coordinates----
 weapon_selection_defult_statement = "You have selected a"
 weapon_selection_defult_statement_2 = "to use during this battle!"
 weapon_selection_error_statement = "You don't have a"
-weapon_selection_error_statement_2 = "in your inventory!"
+weapon_selection_error_statement_2 = "in your inventory or you chose the wrong slot!"
+weapon_slot_1 = "\nChose the slot where your "
+weapon_slot_2 = " exists: "
 #----Weapon Related Variables----
 
 monster_location_x_1 = random.randint (6, 10)
@@ -74,19 +77,31 @@ monster_location_x_2 = random.randint (8, 14)
 monster_location_y_2 = random.randint (8, 14)
 monster_location_2 = (monster_location_x_2, monster_location_y_2)
 #----Monster Location related Variables----
-#----End of Required Variables----
+#----End of Beginning Variables----
 
 def monster_battle():
+    global game_items_roster, player_inventory, weapon_slot
     while True:
         user_weapon_select = int(input("Which weapon do you want to use for battle?\n\n1: Sword\n\nChoose your weapon: "))
+        print("Your inventory:", player_inventory)
         if user_weapon_select == 1:
-            if player_inventory == storelist[0]:
-                print(weapon_selection_defult_statement, storelist[0], weapon_selection_defult_statement_2)
-                time.sleep(4)
-            elif player_inventory != storelist[0]:
-                print(weapon_selection_error_statement, storelist[0], weapon_selection_error_statement_2)
+            weapon_slot = int(input(weapon_slot_1 + game_items_roster[0] + weapon_slot_2))
+            if player_inventory[weapon_slot] == "Sword":
+                print("\nItem was found!")
                 time.sleep(2)
-                break
+            else:
+                print("\nSomething went wrong.")
+                if player_inventory == "Sword":
+                    print(weapon_selection_defult_statement, game_items_roster[0], weapon_selection_defult_statement_2)
+                    time.sleep(4)
+                elif player_inventory != "Sword":
+                    print(weapon_selection_error_statement, game_items_roster[0], weapon_selection_error_statement_2)
+                    time.sleep(2)
+                else:
+                    print("\nThat option doesn't exist yet!")
+                    time.sleep(2)
+        else:
+            print(unreconized_statement)
 #----End of Functions----
 
 print("""????????????????????????????????????????????????????????????????????????????????????????????????????
