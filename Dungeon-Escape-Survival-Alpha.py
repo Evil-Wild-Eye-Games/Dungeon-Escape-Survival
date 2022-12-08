@@ -2,7 +2,7 @@ import time, random, webbrowser
 #----Above this line is our imports.----
 
 groupname = "\nEvil Wild Eye Games\n"
-gamebuild = "\nCurrent Build: A-0.0.135"
+gamebuild = "\nCurrent Build: A-0.0.137"
 debug = True
 debug_disabled_msg = "\nDebugging Tools are disabled."
 enter_key_message = "\nPress Enter to continue."
@@ -109,6 +109,52 @@ def die():
         print("the player want to continue")
     elif user_c_input == "no":
         print("the player don't want to continue")
+def travel():
+    global x ,y , direction_n_count, direction_s_count, direction_e_count, direction_w_count, enter_input
+    while True:
+        travel_direction_count = [direction_n_count, "North", direction_s_count, "South", direction_e_count, "East", direction_w_count, "West"] #----Stores the players current travel session----
+        player_location = (x, y)
+        print("\nYou are at coordinates", player_location)
+        direction_input = str(input("\nDo you want to move North, South, East, or West?\nTo move North press W\nTo move South press S\nTo move East press D\nTo move West press A\nTo visit the player menu where you can see your Travel History, and etc type in PM.\nTo stop traveling type in Stop.\nType in your choice here: "))
+        if direction_input == "W":
+            print(direction_going, "North")
+            y += 1
+            travel_history.append("North")
+            direction_n_count += 1
+            time.sleep(1.5)
+        elif direction_input == "S":
+            print(direction_going, "South")
+            y -= 1
+            travel_history.append("South")
+            direction_s_count += 1
+            time.sleep(1.5)
+        elif direction_input == "D":
+            print(direction_going, "East")
+            x += 1
+            travel_history.append("East")
+            direction_e_count += 1
+            time.sleep(1.5)
+        elif direction_input == "A":
+            print(direction_going, "West")
+            x -= 1
+            travel_history.append("West")
+            direction_w_count += 1
+            time.sleep(1.5)
+        elif direction_input == "PM":
+            player_menu = str(input("\nType in TH to view your travel history.\nType in TDC to view the direction count.\nType in your choice here: "))
+            if player_menu == "TH":
+                print("Travel History: ", travel_history)
+                enter_input = str(input(enter_key_message))
+            elif player_menu == "TDC":
+                print("Travel Direction Count: ", travel_direction_count)
+                enter_input = str(input(enter_key_message))
+        elif direction_input == "Stop":
+            print("\nYou have decided to stop traveling...")
+            time.sleep(0.5)
+            break
+        else:
+            print(unreconized_statement, "\nDid you capitalize the letter or make a typo?")
+            time.sleep(2)
 #----End Functions----
 print("""????????????????????????????????????????????????????????????????????????????????????????????????????
 ????????????????????????????????????????????????????????????????????????????????????????????????????
@@ -359,6 +405,8 @@ while True: #----This while loop will keep the game alive & run until is told to
         time.sleep(0.5)
         print("Game has stopped.")
         break
+    elif menu == 6:
+        travel()
     else:
         print(unreconized_statement) #----This will run when the inputted string does not match any of the following statements above.----
         time.sleep(2) #----Pauses the program for a number of specified seconds before continuing to execute----
