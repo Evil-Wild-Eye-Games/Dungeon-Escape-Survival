@@ -2,7 +2,7 @@ import time, random, webbrowser
 #----Above this line is our imports.----
 
 groupname = "\nEvil Wild Eye Games\n"
-gamebuild = "\nCurrent Build: A-0.0.140"
+gamebuild = "\nCurrent Build: A-0.0.145"
 debug = False
 debug_enabled_msg = "\nDebugging Tools are Enabled."
 debug_disabled_msg = "\nDebugging Tools are Disabled."
@@ -119,28 +119,24 @@ def travel():
         direction_input = str(input("\nDo you want to move North, South, East, or West?\nTo move North press W\nTo move South press S\nTo move East press D\nTo move West press A\nTo visit the player menu where you can see your Travel History, and etc type in PM.\nTo stop traveling type in Stop.\nType in your choice here: "))
         if direction_input == "W":
             print(direction_going, "North")
-            y += 1
             travel_history.append("North")
-            direction_n_count += 1
             time.sleep(1.5)
+            return 0
         elif direction_input == "S":
             print(direction_going, "South")
-            y -= 1
             travel_history.append("South")
-            direction_s_count += 1
             time.sleep(1.5)
+            return 1
         elif direction_input == "D":
             print(direction_going, "East")
-            x += 1
             travel_history.append("East")
-            direction_e_count += 1
             time.sleep(1.5)
+            return 2
         elif direction_input == "A":
             print(direction_going, "West")
-            x -= 1
             travel_history.append("West")
-            direction_w_count += 1
             time.sleep(1.5)
+            return 3
         elif direction_input == "Stop":
             print("\nYou have decided to stop traveling...")
             time.sleep(0.5)
@@ -309,8 +305,26 @@ while True: #----This while loop will keep the game alive & run until is told to
         time.sleep(1) #----Pauses the program for a number of specified seconds before continuing to execute----
         
         #----Dale start the story from this line----
-        
-        time.sleep(0) #----Pauses the program for a number of specified seconds before continuing to execute----
+        travel()
+        while True:
+            travel_result = travel()
+            if travel_result == 0:
+                print("North is confirmed!")
+                time.sleep(2)
+            
+            elif travel_result == 1:
+                print("South is confirmed!")
+                time.sleep(2)
+            elif travel_result == 2:
+                print("East is confirmed!")
+                time.sleep(2)
+            elif travel_result == 3:
+                print("West is confirmed!")
+                time.sleep(2)
+            else:
+                print("This is stupid but, the code didn't work?")
+                time.sleep(2)
+
     elif menu == 2: #----Player Inventory----
         print("Your inventory:", player_inventory)
         enter_input = str(input(enter_key_message))
