@@ -2,7 +2,7 @@ import time, random, webbrowser
 #----Above this line is our imports.----
 
 groupname = "\nEvil Wild Eye Games\n"
-gamebuild = "\nCurrent Build: A-0.0.163"
+gamebuild = "\nCurrent Build: A-0.0.164"
 debug = False
 debug_enabled_msg = "\nDebugging Tools are Enabled."
 debug_disabled_msg = "\nDebugging Tools are Disabled."
@@ -281,11 +281,9 @@ if debug == True:
 while True: #----This while loop will keep the game alive & run until is told to stop. Also below this line there is a menu system & character selection system----
     menu = int(input("\nWelcome to Dungeon Escape Survival Alpha!\n\nType in 1 to start the game.\nType in 2 to view your inventory.\nType in 3 for help.\nType in 4 to view the game build information.\nType in 5 to stop the game.\n\nYour choice goes here: "))
     if menu == 1: #----Game Start----
-        print("\nLoading...")
-        time.sleep(1) #----Pauses the program for a number of specified seconds before continuing to execute----
-        
-        #----Dale the player is locked in a cell within the dungeon----
-        
+        print("\nLoading...\n\nYou are trapped in a Dungeon, you must find your way out of here. But be careful, this place is not safe! Goodluck player.")
+        time.sleep(6) #----Pauses the program for a number of specified seconds before continuing to execute----
+
         while True:
             travel_result = travel() #----This will run the function and take returns if there are any----
             if travel_result == "North":
