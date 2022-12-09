@@ -2,7 +2,7 @@ import time, random, webbrowser
 #----Above this line is our imports.----
 
 groupname = "\nEvil Wild Eye Games\n"
-gamebuild = "\nCurrent Build: A-0.0.164"
+gamebuild = "\nCurrent Build: A-0.0.165"
 debug = False
 debug_enabled_msg = "\nDebugging Tools are Enabled."
 debug_disabled_msg = "\nDebugging Tools are Disabled."
@@ -287,19 +287,19 @@ while True: #----This while loop will keep the game alive & run until is told to
         while True:
             travel_result = travel() #----This will run the function and take returns if there are any----
             if travel_result == "North":
-                print("\nNorth is confirmed!")
+                print("\nNorth is confirmed!") #----Delete this later----
                 time.sleep(2)
             elif travel_result == "South":
-                print("\nSouth is confirmed!")
+                print("\nSouth is confirmed!") #----Delete this later----
                 time.sleep(2)
             elif travel_result == "East":
-                print("\nEast is confirmed!")
+                print("\nEast is confirmed!") #----Delete this later----
                 time.sleep(2)
             elif travel_result == "West":
-                print("\nWest is confirmed!")
+                print("\nWest is confirmed!") #----Delete this later----
                 time.sleep(2)
             elif travel_result == "Main Menu":
-                print("\nReturn to Main Menu is confirmed!")
+                print("\nReturn to Main Menu is confirmed!") #----Delete this later----
                 time.sleep(2)
                 break
             else:
