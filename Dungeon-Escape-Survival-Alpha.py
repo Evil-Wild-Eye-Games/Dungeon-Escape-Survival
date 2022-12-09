@@ -2,7 +2,7 @@ import time, random, webbrowser
 #----Above this line is our imports.----
 
 groupname = "\nEvil Wild Eye Games\n"
-gamebuild = "\nCurrent Build: A-0.0.145"
+gamebuild = "\nCurrent Build: A-0.0.163"
 debug = False
 debug_enabled_msg = "\nDebugging Tools are Enabled."
 debug_disabled_msg = "\nDebugging Tools are Disabled."
@@ -11,7 +11,6 @@ unreconized_statement = "\nI couldn't reconize your input. Try Again!"
 game_items_roster = ["Sword", "Healing Potion", "Speed Potion", "Damage Potion"]
 #----Info Variables----
 
-player_HP = 100 #----The players starting HP and this value will fluxuate during gameplay----
 money = random.randint (400,9999) #----The player will recive a random amunt of gold that is specified in the range. The gold will be used to buy various items in the game to help the player along their adventures.
 player_inventory = [] #----This will contain the player inventory, items will be added or removed throughout the game----
 player_objectives = ["Find the store", "Purchase a weapon from the store", "Purchase a potion from the store"] #----Contains Objectives for the player to complete----
@@ -20,7 +19,6 @@ player_completed_objective_statement = "has been completed!"
 #----Player related variables----
 
 storelist = ["Sword", "Healing Potion", "Speed Potion", "Damage Potion"] #----This will contain items that our player will purchase to help them on their journey. Items in this list are placeholders for now.----
-#store = False #----When set to True the player can access the store----
 store_total_items_counter = 0 #----This value is set to 0 until items are purchased from the shop by the player----
 store_purchase_history = [] #----Stores the players purchase history in the game----
 slot_0 = 0 #----Set to 0 until this item is bought----
@@ -45,20 +43,14 @@ money_left_1 = "You have"
 money_left_2 = "Dollars left to spend. If you need more, continue on your journey."
 store_selection_return = "\nReturning to the store selection."
 store_found_message = "\nYou have found the store!\n"
-store_location_x = random.randint (-5, 5)
-store_location_y = random.randint (-5, 5)
-store_location = (store_location_x, store_location_y)
 #----Store related variables----
 
 direction_n_count = 0 #----Counts how many times you go North----
 direction_s_count = 0 #----Counts how many times you go South----
 direction_e_count = 0 #----Counts how many times you go East----
 direction_w_count = 0 #----Counts how many times you go West----
-#travel = True #----When set to True the player can move around the world that they can't even see----
 travel_history = [] #----Stores the players travel history----
 direction_going = "\nYour going"
-x = 0 #----East and West coordinates----
-y = 0 #----North and South coordinates----
 #----Travel Related Variables----
 
 weapon_selection_defult_statement = "You have selected a"
@@ -69,16 +61,9 @@ weapon_slot_1 = "\nChose the slot where your "
 weapon_slot_2 = " exists: "
 #----Weapon Related Variables----
 
-monster_location_x_1 = random.randint (6, 10)
-monster_location_y_1 = random.randint (6, 10)
-monster_location_1 = (monster_location_x_1, monster_location_y_1)
-monster_location_x_2 = random.randint (8, 14)
-monster_location_y_2 = random.randint (8, 14)
-monster_location_2 = (monster_location_x_2, monster_location_y_2)
-#----Monster Location related Variables----
 #----End of Beginning Variables----
 
-def monster_battle():
+def monster_battle(): #----Planned to be redone----
     global game_items_roster, player_inventory, weapon_slot
     while True:
         user_weapon_select = int(input("Which weapon do you want to use for battle?\n\n1: Sword\n\nChoose your weapon: "))
@@ -111,39 +96,35 @@ def die():
     elif user_c_input == "no":
         print("the player don't want to continue")
 def travel():
-    global x ,y , direction_n_count, direction_s_count, direction_e_count, direction_w_count, enter_input
-    while True:
-        #travel_direction_count = [direction_n_count, "North", direction_s_count, "South", direction_e_count, "East", direction_w_count, "West"] #----Stores the players current travel session----
-        #player_location = (x, y)
-        #print("\nYou are at coordinates", player_location)
-        direction_input = str(input("\nDo you want to move North, South, East, or West?\nTo move North press W\nTo move South press S\nTo move East press D\nTo move West press A\nTo visit the player menu where you can see your Travel History, and etc type in PM.\nTo stop traveling type in Stop.\nType in your choice here: "))
-        if direction_input == "W":
-            print(direction_going, "North")
-            travel_history.append("North")
-            time.sleep(1.5)
-            return 0
-        elif direction_input == "S":
-            print(direction_going, "South")
-            travel_history.append("South")
-            time.sleep(1.5)
-            return 1
-        elif direction_input == "D":
-            print(direction_going, "East")
-            travel_history.append("East")
-            time.sleep(1.5)
-            return 2
-        elif direction_input == "A":
-            print(direction_going, "West")
-            travel_history.append("West")
-            time.sleep(1.5)
-            return 3
-        elif direction_input == "Stop":
-            print("\nYou have decided to stop traveling...")
-            time.sleep(0.5)
-            break
-        else:
-            print(unreconized_statement, "\nDid you capitalize the letter or make a typo?")
-            time.sleep(2)
+    global direction_n_count, direction_s_count, direction_e_count, direction_w_count, enter_input
+    direction_input = str(input("\nDo you want to move North, South, East, or West?\n\nTo move North press W\nTo move South press S\nTo move East press D\nTo move West press A\nType in Stop to return the the menu.\n\nType in your choice here: "))
+    if direction_input == "W" or direction_input == "w":
+        print(direction_going, "North")
+        travel_history.append("North")
+        time.sleep(1.5)
+        return "North"
+    elif direction_input == "S" or direction_input == "s":
+        print(direction_going, "South")
+        travel_history.append("South")
+        time.sleep(1.5)
+        return "South"
+    elif direction_input == "D" or direction_input == "d":
+        print(direction_going, "East")
+        travel_history.append("East")
+        time.sleep(1.5)
+        return "East"
+    elif direction_input == "A" or direction_input == "a":
+        print(direction_going, "West")
+        travel_history.append("West")
+        time.sleep(1.5)
+        return "West"
+    elif direction_input == "Stop":
+        print("\nReturning to the Main Menu...")
+        time.sleep(1.5)
+        return "Main Menu"
+    else:
+        print(unreconized_statement, "\nDid you capitalize the letter or make a typo?")
+        time.sleep(2)
 def store():
     global money, slot_0, slot_1, slot_2, slot_3, store_total_items_counter, enter_input
     while True:
@@ -296,7 +277,6 @@ time.sleep(2) #----Pauses the program for a number of specified seconds before c
 if debug == True:
     print(debug_enabled_msg)
     time.sleep(2)
-    store() 
     #----Code that needs to be debugged can be put into here----
 while True: #----This while loop will keep the game alive & run until is told to stop. Also below this line there is a menu system & character selection system----
     menu = int(input("\nWelcome to Dungeon Escape Survival Alpha!\n\nType in 1 to start the game.\nType in 2 to view your inventory.\nType in 3 for help.\nType in 4 to view the game build information.\nType in 5 to stop the game.\n\nYour choice goes here: "))
@@ -304,27 +284,29 @@ while True: #----This while loop will keep the game alive & run until is told to
         print("\nLoading...")
         time.sleep(1) #----Pauses the program for a number of specified seconds before continuing to execute----
         
-        #----Dale start the story from this line----
-        travel()
+        #----Dale the player is locked in a cell within the dungeon----
+        
         while True:
-            travel_result = travel()
-            if travel_result == 0:
-                print("North is confirmed!")
+            travel_result = travel() #----This will run the function and take returns if there are any----
+            if travel_result == "North":
+                print("\nNorth is confirmed!")
                 time.sleep(2)
-            
-            elif travel_result == 1:
-                print("South is confirmed!")
+            elif travel_result == "South":
+                print("\nSouth is confirmed!")
                 time.sleep(2)
-            elif travel_result == 2:
-                print("East is confirmed!")
+            elif travel_result == "East":
+                print("\nEast is confirmed!")
                 time.sleep(2)
-            elif travel_result == 3:
-                print("West is confirmed!")
+            elif travel_result == "West":
+                print("\nWest is confirmed!")
                 time.sleep(2)
+            elif travel_result == "Main Menu":
+                print("\nReturn to Main Menu is confirmed!")
+                time.sleep(2)
+                break
             else:
-                print("This is stupid but, the code didn't work?")
+                print("\nThis is stupid but, the code didn't work?")
                 time.sleep(2)
-
     elif menu == 2: #----Player Inventory----
         print("Your inventory:", player_inventory)
         enter_input = str(input(enter_key_message))
