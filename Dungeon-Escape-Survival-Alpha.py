@@ -2,13 +2,18 @@ import time, random, webbrowser
 #----Above this line is our imports.----
 
 groupname = "\nEvil Wild Eye Games\n"
-gamebuild = "\nCurrent Build: A-0.0.165"
+gamebuild = "\nCurrent Build: A-0.0.197"
 debug = False
 debug_enabled_msg = "\nDebugging Tools are Enabled."
 debug_disabled_msg = "\nDebugging Tools are Disabled."
 enter_key_message = "\nPress Enter to continue."
 unreconized_statement = "\nI couldn't reconize your input. Try Again!"
-game_items_roster = ["Sword", "Healing Potion", "Speed Potion", "Damage Potion"]
+stupid_error_msg = "\nThis is stupid but, the code didn't work?"
+game_items_roster = ["Sword", "Healing Potion", "Speed Potion", "Damage Potion", "Stick"]
+pile_msg_1 = "\nYou got a "
+pile_msg_2 = " from the pile!"
+cell = False
+continue_key = 0
 #----Info Variables----
 
 money = random.randint (400,9999) #----The player will recive a random amunt of gold that is specified in the range. The gold will be used to buy various items in the game to help the player along their adventures.
@@ -51,6 +56,10 @@ direction_e_count = 0 #----Counts how many times you go East----
 direction_w_count = 0 #----Counts how many times you go West----
 travel_history = [] #----Stores the players travel history----
 direction_going = "\nYour going"
+hallway_number = 0
+hallway_msg_1 = "\nYou are now going to go through the "
+hallway_msg_2 = " hallway. You can't turn back as the hallway doors have closed upon enterence."
+curent_hallway = [] #----Holds the curent hallway name----
 #----Travel Related Variables----
 
 weapon_selection_defult_statement = "You have selected a"
@@ -90,11 +99,15 @@ def win():
     print("\nCongratulations you win!")
 def die():
     print("\nOh no you died! ):")
-    user_c_input = str(input("\n"))
-    if user_c_input == "yes":
-        print("the player want to continue")
-    elif user_c_input == "no":
-        print("the player don't want to continue")
+    user_c_input = str(input("\nDo you want to continue?\n"))
+    if user_c_input == "Yes" or user_c_input == "yes" or user_c_input == "Y" or user_c_input == "y":
+        print("\nYou have decided to brush yourself off and try again.")
+        time.sleep(2)
+        return "Continue"
+    elif user_c_input == "No" or user_c_input == "no" or user_c_input == "N" or user_c_input == "n":
+        print("\nYou have decided to give up on yourself.")
+        time.sleep(2)
+        return "End Game"
 def travel():
     global direction_n_count, direction_s_count, direction_e_count, direction_w_count, enter_input
     direction_input = str(input("\nDo you want to move North, South, East, or West?\n\nTo move North press W\nTo move South press S\nTo move East press D\nTo move West press A\nType in Stop to return the the menu.\n\nType in your choice here: "))
@@ -216,6 +229,55 @@ def store():
         else: #----Runs when nothing else matches any statement specified with numbers in this case with the store----
             print("\nThe item specified doesn't exist.")
             time.sleep(2)
+def loot_pile():
+    rand_item = random.randint(1,23)
+    while True:
+        if rand_item == 0:
+            print("\nHaha! You get nothing!")
+            time.sleep(4)
+            break
+        elif rand_item >= 1 and rand_item <= 6:
+            player_inventory.append(game_items_roster[4])
+            print(pile_msg_1 + game_items_roster[4] + pile_msg_2)
+            time.sleep(4)
+            break
+        elif rand_item >= 7 and rand_item <= 10:
+            player_inventory.append(game_items_roster[1])
+            print(pile_msg_1 + game_items_roster[1] + pile_msg_2)
+            time.sleep(4)
+            break
+        elif rand_item >= 11 and rand_item <= 15:
+            player_inventory.append(game_items_roster[2])
+            print(pile_msg_1 + game_items_roster[2] + pile_msg_2)
+            time.sleep(4)
+            break
+        elif rand_item >= 16 and rand_item <= 21:
+            player_inventory.append(game_items_roster[3])
+            print(pile_msg_1 + game_items_roster[3] + pile_msg_2)
+            time.sleep(4)
+            break
+        elif rand_item >= 22 and rand_item <= 23:
+            player_inventory.append(game_items_roster[0])
+            print(pile_msg_1 + game_items_roster[0] + pile_msg_2)
+            time.sleep(4)
+            break
+        else:
+            print(stupid_error_msg)
+            time.sleep(2)
+def someone_is_coming_for_you():
+    while True:
+        user_dec = int(input("\nYou hear footsteps from down the hall. What will you do?\n\n1: Get out of sight\n2: Stay in sight\n\nYour action: "))
+        if user_dec == 1:
+            print("\nYou have managed to get out of sight.")
+            time.sleep(3)
+            return "Safe"
+        elif user_dec == 2:
+            print("\nYou were spotted and sent back to your cell....")
+            time.sleep(3)
+            return "Cell"
+        else:
+            print(unreconized_statement)
+            time.sleep(2)
 #----End Functions----
 print("""????????????????????????????????????????????????????????????????????????????????????????????????????
 ????????????????????????????????????????????????????????????????????????????????????????????????????
@@ -285,25 +347,126 @@ while True: #----This while loop will keep the game alive & run until is told to
         time.sleep(6) #----Pauses the program for a number of specified seconds before continuing to execute----
 
         while True:
-            travel_result = travel() #----This will run the function and take returns if there are any----
-            if travel_result == "North":
-                print("\nNorth is confirmed!") #----Delete this later----
+            user_dec = int(input("\nYour in a locked cell in this dungeon with a guard standing next to your cell with a ring of keys, including one to your cell. What are you going to do?\n\n1: Start mocking the guard\n2: Make an attempt to get the keys off of the guard\n3: Do nothing\n\nSo, what will your choice be: "))
+            cell = False
+            if user_dec == 1:
+                print("\nYou have started to mock the guard but, that didn't help you at all since you've angered them.")
+                time.sleep(4)
+            elif user_dec == 2:
+                print("\nYou'll try to take the keys from the guard.")
                 time.sleep(2)
-            elif travel_result == "South":
-                print("\nSouth is confirmed!") #----Delete this later----
-                time.sleep(2)
-            elif travel_result == "East":
-                print("\nEast is confirmed!") #----Delete this later----
-                time.sleep(2)
-            elif travel_result == "West":
-                print("\nWest is confirmed!") #----Delete this later----
-                time.sleep(2)
-            elif travel_result == "Main Menu":
-                print("\nReturn to Main Menu is confirmed!") #----Delete this later----
-                time.sleep(2)
-                break
+                chance = random.randint(0, 1)
+                if chance == 0:
+                    print("\nNice one! The guard is now unconscious and your able to get out of your cell.")
+                    time.sleep(2)
+                    print("\nAfter finding stairs and reaching the top of them, you find yourself seeing 4 different hallways but, which one will you take?")
+                    time.sleep(4)
+                    while True:
+                        travel_result = travel() #----This will run the function and take returns if there are any----
+                        if travel_result == "North":
+                            print("\nNorth is confirmed!") #----Delete this later----
+                            hallway_number = 1
+                            time.sleep(2)
+                            break
+                        elif travel_result == "South":
+                            print("\nSouth is confirmed!") #----Delete this later----
+                            hallway_number = 2
+                            time.sleep(2)
+                            break
+                        elif travel_result == "East":
+                            print("\nEast is confirmed!") #----Delete this later----
+                            hallway_number = 3
+                            time.sleep(2)
+                            break
+                        elif travel_result == "West":
+                            print("\nWest is confirmed!") #----Delete this later----
+                            hallway_number = 4
+                            time.sleep(2)
+                            break
+                        elif travel_result == "Main Menu":
+                            print("\nReturn to Main Menu is confirmed!") #----Delete this later----
+                            time.sleep(2)
+                            break
+                        else:
+                            print(stupid_error_msg)
+                            time.sleep(2)
+                    while True:
+                        if cell == True:
+                            break
+                        if hallway_number == 1:
+                            curent_hallway.append("North")
+                            print(hallway_msg_1 + curent_hallway[0] + hallway_msg_2)
+                            print("Hallway North Area") #----Delete later----
+                            time.sleep(6)
+                            while True:
+                                user_dec = str(input("\nYou stumble apon a pile of items.\n\nWould you like to look through the pile? "))
+                                if user_dec == "Yes" or user_dec == "yes" or user_dec == "Y" or user_dec == "y":
+                                    print("\nYou have decided to look through the pile of mysterious things...")
+                                    result_loot_pile = loot_pile()
+                                    print("Pile Area") #----Delete later----
+                                    continue_key = 1
+                                elif user_dec == "No" or user_dec == "no" or user_dec == "N" or user_dec == "n":
+                                    print("\nYou have decided not to look through the mysterious things.")
+                                    print("Pile Area") #----Delete later----
+                                    continue_key = 1
+                                else:
+                                    print(unreconized_statement)
+                                    time.sleep(2)
+                                if continue_key == 1:
+                                    resultchase = someone_is_coming_for_you()
+                                    continue_key = 0
+                                    if resultchase == "Safe":
+                                        print("\nYour safe!")
+                                        time.sleep(2)
+                                    elif resultchase == "Cell":
+                                        cell = True
+                                        time.sleep(2)
+                                        print("Hide Pile Area") #----Delete later----
+                                        break
+                        elif hallway_number == 2:
+                            curent_hallway.append("South")
+                            print(hallway_msg_1 + curent_hallway[0] + hallway_msg_2)
+                            time.sleep(6)
+                            #----AMR or Dale, please work on the second outcome of the adventure from this statement and must be its own code and not a copy of previous code.----
+                            #----However I will allow an exception, You can look at hallway number 1's statement and get an idea on how you will need to structure the other hallways.----
+                            #----This doesn't mean copy and pasting line for line, the code must be unique and differentiate from what aleardy exists so the player can experience different outcomes of the adventure.---
+                        elif hallway_number == 3:
+                            curent_hallway.append("East")
+                            print(hallway_msg_1 + curent_hallway[0] + hallway_msg_2)
+                            time.sleep(6)
+                            #----AMR or Dale, please work on the third outcome of the adventure from this statement and must be its own code and not a copy of previous code.----
+                            #----However I will allow an exception, You can look at hallway number 1's statement and get an idea on how you will need to structure the other hallways.----
+                            #----This doesn't mean copy and pasting line for line, the code must be unique and differentiate from what aleardy exists so the player can experience different outcomes of the adventure.---
+                        elif hallway_number == 4:
+                            curent_hallway.append("West")
+                            print(hallway_msg_1 + curent_hallway[0] + hallway_msg_2)
+                            time.sleep(6)
+                            #----AMR or Dale, please work on the fourth outcome of the adventure from this statement and must be its own code and not a copy of previous code.----
+                            #----However I will allow an exception, You can look at hallway number 1's statement and get an idea on how you will need to structure the other hallways.----
+                            #----This doesn't mean copy and pasting line for line, the code must be unique and differentiate from what aleardy exists so the player can experience different outcomes of the adventure.---
+                        else:
+                            print(stupid_error_msg)
+                            time.sleep(2)
+
+                elif chance == 1:
+                    print("\nYou aren't lucky enough.\nThis situation is about to be rougher now.")
+                    die_result = die()
+                    if die_result == "Continue":
+                        print("This should allow the player to continue.") #----Delete this later----
+                    elif die_result == "End Game":
+                        print("This should end the game.") #----Delete this later----
+                        break
+            elif user_dec == 3:
+                print("You did nothing and you eventually died.")
+                time.sleep(4)
+                die_result = die()
+                if die_result == "Continue":
+                    print("This should allow the player to continue.") #----Delete this later----
+                elif die_result == "End Game":
+                    print("This should end the game.") #----Delete this later----
+                    break
             else:
-                print("\nThis is stupid but, the code didn't work?")
+                print(stupid_error_msg)
                 time.sleep(2)
     elif menu == 2: #----Player Inventory----
         print("Your inventory:", player_inventory)
