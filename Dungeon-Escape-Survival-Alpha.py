@@ -2,7 +2,7 @@ import time, random, webbrowser
 #----Above this line is our imports.----
 
 groupname = "\nEvil Wild Eye Games\n"
-gamebuild = "\nCurrent Build: A-0.0.197"
+gamebuild = "\nCurrent Build: A-0.0.202"
 debug = False
 debug_enabled_msg = "\nDebugging Tools are Enabled."
 debug_disabled_msg = "\nDebugging Tools are Disabled."
@@ -72,29 +72,79 @@ weapon_slot_2 = " exists: "
 
 #----End of Beginning Variables----
 
-def monster_battle(): #----Planned to be redone----
+def monster_battle(): #----Being worked on----
     global game_items_roster, player_inventory, weapon_slot
     while True:
-        user_weapon_select = int(input("Which weapon do you want to use for battle?\n\n1: Sword\n\nChoose your weapon: "))
+        user_weapon_select = int(input("Which weapon do you want to use for battle?\n\n1: Sword\n2: Healing Potion\n3: Speed Potion\n4: Damage Potion\n5: Stick\n\nChoose your weapon: "))
         print("Your inventory:", player_inventory)
         if user_weapon_select == 1:
             weapon_slot = int(input(weapon_slot_1 + game_items_roster[0] + weapon_slot_2))
-            if player_inventory[weapon_slot] == "Sword":
+            if player_inventory[weapon_slot] == game_items_roster[0]:
                 print("\nItem was found!")
                 time.sleep(2)
+                print(weapon_selection_defult_statement, game_items_roster[0], weapon_selection_defult_statement_2)
+                time.sleep(4)
+            elif player_inventory[weapon_slot] != game_items_roster[0]:
+                print(weapon_selection_error_statement, game_items_roster[0], weapon_selection_error_statement_2)
+                time.sleep(2)
             else:
-                print("\nSomething went wrong.")
-                if player_inventory == "Sword":
-                    print(weapon_selection_defult_statement, game_items_roster[0], weapon_selection_defult_statement_2)
-                    time.sleep(4)
-                elif player_inventory != "Sword":
-                    print(weapon_selection_error_statement, game_items_roster[0], weapon_selection_error_statement_2)
-                    time.sleep(2)
-                else:
-                    print("\nThat option doesn't exist yet!")
-                    time.sleep(2)
+                print("\nSomething went wrong. Or that option doesn't exist yet!")
+                time.sleep(2)
+        elif user_weapon_select == 2:
+            weapon_slot = int(input(weapon_slot_1 + game_items_roster[1] + weapon_slot_2))
+            if player_inventory[weapon_slot] == game_items_roster[1]:
+                print("\nItem was found!")
+                time.sleep(2)
+                print(weapon_selection_defult_statement, game_items_roster[1], weapon_selection_defult_statement_2)
+                time.sleep(4)
+            elif player_inventory[weapon_slot] != game_items_roster[1]:
+                print(weapon_selection_error_statement, game_items_roster[1], weapon_selection_error_statement_2)
+                time.sleep(2)
+            else:
+                print("\nSomething went wrong. Or that option doesn't exist yet!")
+                time.sleep(2)
+        elif user_weapon_select == 3:
+            weapon_slot = int(input(weapon_slot_1 + game_items_roster[2] + weapon_slot_2))
+            if player_inventory[weapon_slot] == game_items_roster[2]:
+                print("\nItem was found!")
+                time.sleep(2)
+                print(weapon_selection_defult_statement, game_items_roster[2], weapon_selection_defult_statement_2)
+                time.sleep(4)
+            elif player_inventory[weapon_slot] != game_items_roster[2]:
+                print(weapon_selection_error_statement, game_items_roster[2], weapon_selection_error_statement_2)
+                time.sleep(2)
+            else:
+                print("\nSomething went wrong. Or that option doesn't exist yet!")
+                time.sleep(2)
+        elif user_weapon_select == 4:
+            weapon_slot = int(input(weapon_slot_1 + game_items_roster[3] + weapon_slot_2))
+            if player_inventory[weapon_slot] == game_items_roster[3]:
+                print("\nItem was found!")
+                time.sleep(2)
+                print(weapon_selection_defult_statement, game_items_roster[3], weapon_selection_defult_statement_2)
+                time.sleep(4)
+            elif player_inventory[weapon_slot] != game_items_roster[3]:
+                print(weapon_selection_error_statement, game_items_roster[3], weapon_selection_error_statement_2)
+                time.sleep(2)
+            else:
+                print("\nSomething went wrong. Or that option doesn't exist yet!")
+                time.sleep(2)
+        elif user_weapon_select == 5:
+            weapon_slot = int(input(weapon_slot_1 + game_items_roster[4] + weapon_slot_2))
+            if player_inventory[weapon_slot] == game_items_roster[4]:
+                print("\nItem was found!")
+                time.sleep(2)
+                print(weapon_selection_defult_statement, game_items_roster[4], weapon_selection_defult_statement_2)
+                time.sleep(4)
+            elif player_inventory[weapon_slot] != game_items_roster[4]:
+                print(weapon_selection_error_statement, game_items_roster[4], weapon_selection_error_statement_2)
+                time.sleep(2)
+            else:
+                print("\nSomething went wrong. Or that option doesn't exist yet!")
+                time.sleep(2)
         else:
             print(unreconized_statement)
+            time.sleep(2) 
 def win():
     print("\nCongratulations you win!")
 def die():
