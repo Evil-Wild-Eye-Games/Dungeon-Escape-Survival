@@ -2,14 +2,14 @@ import time, random, webbrowser
 #----Above this line is our imports.----
 
 groupname = "\nEvil Wild Eye Games\n"
-gamebuild = "\nCurrent Build: A-0.0.202"
-debug = False
+gamebuild = "\nCurrent Build: A-0.0.212"
+debug = True
 debug_enabled_msg = "\nDebugging Tools are Enabled."
 debug_disabled_msg = "\nDebugging Tools are Disabled."
 enter_key_message = "\nPress Enter to continue."
 unreconized_statement = "\nI couldn't reconize your input. Try Again!"
 stupid_error_msg = "\nThis is stupid but, the code didn't work?"
-game_items_roster = ["Sword", "Healing Potion", "Speed Potion", "Damage Potion", "Stick"]
+game_items_roster = ["Healing Potion", "Speed Potion", "Damage Potion", "Stick"]
 pile_msg_1 = "\nYou got a "
 pile_msg_2 = " from the pile!"
 cell = False
@@ -17,13 +17,13 @@ continue_key = 0
 #----Info Variables----
 
 money = random.randint (400,9999) #----The player will recive a random amunt of gold that is specified in the range. The gold will be used to buy various items in the game to help the player along their adventures.
-player_inventory = [] #----This will contain the player inventory, items will be added or removed throughout the game----
-player_objectives = ["Find the store", "Purchase a weapon from the store", "Purchase a potion from the store"] #----Contains Objectives for the player to complete----
+player_inventory = ["Healing Potion", "Speed Potion", "Damage Potion", "Stick"] #----This will contain the player inventory, items will be added or removed throughout the game----
+player_objectives = ["Find the store", "Purchase a potion from the store"] #----Contains Objectives for the player to complete----
 player_completed_objectives = []
 player_completed_objective_statement = "has been completed!"
 #----Player related variables----
 
-storelist = ["Sword", "Healing Potion", "Speed Potion", "Damage Potion"] #----This will contain items that our player will purchase to help them on their journey. Items in this list are placeholders for now.----
+storelist = ["Healing Potion", "Speed Potion", "Damage Potion"] #----This will contain items that our player will purchase to help them on their journey. Items in this list are placeholders for now.----
 store_total_items_counter = 0 #----This value is set to 0 until items are purchased from the shop by the player----
 store_purchase_history = [] #----Stores the players purchase history in the game----
 slot_0 = 0 #----Set to 0 until this item is bought----
@@ -50,10 +50,6 @@ store_selection_return = "\nReturning to the store selection."
 store_found_message = "\nYou have found the store!\n"
 #----Store related variables----
 
-direction_n_count = 0 #----Counts how many times you go North----
-direction_s_count = 0 #----Counts how many times you go South----
-direction_e_count = 0 #----Counts how many times you go East----
-direction_w_count = 0 #----Counts how many times you go West----
 travel_history = [] #----Stores the players travel history----
 direction_going = "\nYour going"
 hallway_number = 0
@@ -62,82 +58,69 @@ hallway_msg_2 = " hallway. You can't turn back as the hallway doors have closed 
 curent_hallway = [] #----Holds the curent hallway name----
 #----Travel Related Variables----
 
-weapon_selection_defult_statement = "You have selected a"
-weapon_selection_defult_statement_2 = "to use during this battle!"
-weapon_selection_error_statement = "You don't have a"
-weapon_selection_error_statement_2 = "in your inventory or you chose the wrong slot!"
-weapon_slot_1 = "\nChose the slot where your "
-weapon_slot_2 = " exists: "
-#----Weapon Related Variables----
+item_selection_defult_statement = "\nYou have selected a"
+item_selection_defult_statement_2 = "to use!"
+item_selection_error_statement = "\nYou don't have a"
+item_selection_error_statement_2 = "in your inventory or you chose the wrong slot!"
+item_slot_1_msg = "\nChose the slot where your "
+item_slot_2_msg = " exists: "
+#----Item Related Variables----
 
 #----End of Beginning Variables----
 
-def monster_battle(): #----Being worked on----
-    global game_items_roster, player_inventory, weapon_slot
+def item_selector(): #----Being worked on----
+    global game_items_roster, player_inventory
     while True:
-        user_weapon_select = int(input("Which weapon do you want to use for battle?\n\n1: Sword\n2: Healing Potion\n3: Speed Potion\n4: Damage Potion\n5: Stick\n\nChoose your weapon: "))
+        user_item_select = int(input("\nWhich item do you want to use?\n\n1: " + game_items_roster[0] + "\n2: " + game_items_roster[1] + "\n3: " + game_items_roster[2] + "\n4: " + game_items_roster[3] + "\n\nChoose your item: "))
         print("Your inventory:", player_inventory)
-        if user_weapon_select == 1:
-            weapon_slot = int(input(weapon_slot_1 + game_items_roster[0] + weapon_slot_2))
-            if player_inventory[weapon_slot] == game_items_roster[0]:
+        if user_item_select == 1:
+            item_slot = int(input(item_slot_1_msg + game_items_roster[0] + item_slot_2_msg))
+            if player_inventory[item_slot] == game_items_roster[0]:
                 print("\nItem was found!")
                 time.sleep(2)
-                print(weapon_selection_defult_statement, game_items_roster[0], weapon_selection_defult_statement_2)
+                print(item_selection_defult_statement, game_items_roster[0], item_selection_defult_statement_2)
                 time.sleep(4)
-            elif player_inventory[weapon_slot] != game_items_roster[0]:
-                print(weapon_selection_error_statement, game_items_roster[0], weapon_selection_error_statement_2)
+            elif player_inventory[item_slot] != game_items_roster[0]:
+                print(item_selection_error_statement, game_items_roster[0], item_selection_error_statement_2)
                 time.sleep(2)
             else:
                 print("\nSomething went wrong. Or that option doesn't exist yet!")
                 time.sleep(2)
-        elif user_weapon_select == 2:
-            weapon_slot = int(input(weapon_slot_1 + game_items_roster[1] + weapon_slot_2))
-            if player_inventory[weapon_slot] == game_items_roster[1]:
+        elif user_item_select == 2:
+            item_slot = int(input(item_slot_1_msg + game_items_roster[1] + item_slot_2_msg))
+            if player_inventory[item_slot] == game_items_roster[1]:
                 print("\nItem was found!")
                 time.sleep(2)
-                print(weapon_selection_defult_statement, game_items_roster[1], weapon_selection_defult_statement_2)
+                print(item_selection_defult_statement, game_items_roster[1], item_selection_defult_statement_2)
                 time.sleep(4)
-            elif player_inventory[weapon_slot] != game_items_roster[1]:
-                print(weapon_selection_error_statement, game_items_roster[1], weapon_selection_error_statement_2)
+            elif player_inventory[item_slot] != game_items_roster[1]:
+                print(item_selection_error_statement, game_items_roster[1], item_selection_error_statement_2)
                 time.sleep(2)
             else:
                 print("\nSomething went wrong. Or that option doesn't exist yet!")
                 time.sleep(2)
-        elif user_weapon_select == 3:
-            weapon_slot = int(input(weapon_slot_1 + game_items_roster[2] + weapon_slot_2))
-            if player_inventory[weapon_slot] == game_items_roster[2]:
+        elif user_item_select == 3:
+            item_slot = int(input(item_slot_1_msg + game_items_roster[2] + item_slot_2_msg))
+            if player_inventory[item_slot] == game_items_roster[2]:
                 print("\nItem was found!")
                 time.sleep(2)
-                print(weapon_selection_defult_statement, game_items_roster[2], weapon_selection_defult_statement_2)
+                print(item_selection_defult_statement, game_items_roster[2], item_selection_defult_statement_2)
                 time.sleep(4)
-            elif player_inventory[weapon_slot] != game_items_roster[2]:
-                print(weapon_selection_error_statement, game_items_roster[2], weapon_selection_error_statement_2)
+            elif player_inventory[item_slot] != game_items_roster[2]:
+                print(item_selection_error_statement, game_items_roster[2], item_selection_error_statement_2)
                 time.sleep(2)
             else:
                 print("\nSomething went wrong. Or that option doesn't exist yet!")
                 time.sleep(2)
-        elif user_weapon_select == 4:
-            weapon_slot = int(input(weapon_slot_1 + game_items_roster[3] + weapon_slot_2))
-            if player_inventory[weapon_slot] == game_items_roster[3]:
+        elif user_item_select == 4:
+            item_slot = int(input(item_slot_1_msg + game_items_roster[3] + item_slot_2_msg))
+            if player_inventory[item_slot] == game_items_roster[3]:
                 print("\nItem was found!")
                 time.sleep(2)
-                print(weapon_selection_defult_statement, game_items_roster[3], weapon_selection_defult_statement_2)
+                print(item_selection_defult_statement, game_items_roster[3], item_selection_defult_statement_2)
                 time.sleep(4)
-            elif player_inventory[weapon_slot] != game_items_roster[3]:
-                print(weapon_selection_error_statement, game_items_roster[3], weapon_selection_error_statement_2)
-                time.sleep(2)
-            else:
-                print("\nSomething went wrong. Or that option doesn't exist yet!")
-                time.sleep(2)
-        elif user_weapon_select == 5:
-            weapon_slot = int(input(weapon_slot_1 + game_items_roster[4] + weapon_slot_2))
-            if player_inventory[weapon_slot] == game_items_roster[4]:
-                print("\nItem was found!")
-                time.sleep(2)
-                print(weapon_selection_defult_statement, game_items_roster[4], weapon_selection_defult_statement_2)
-                time.sleep(4)
-            elif player_inventory[weapon_slot] != game_items_roster[4]:
-                print(weapon_selection_error_statement, game_items_roster[4], weapon_selection_error_statement_2)
+            elif player_inventory[item_slot] != game_items_roster[3]:
+                print(item_selection_error_statement, game_items_roster[3], item_selection_error_statement_2)
                 time.sleep(2)
             else:
                 print("\nSomething went wrong. Or that option doesn't exist yet!")
@@ -159,7 +142,7 @@ def die():
         time.sleep(2)
         return "End Game"
 def travel():
-    global direction_n_count, direction_s_count, direction_e_count, direction_w_count, enter_input
+    global enter_input
     direction_input = str(input("\nDo you want to move North, South, East, or West?\n\nTo move North press W\nTo move South press S\nTo move East press D\nTo move West press A\nType in Stop to return the the menu.\n\nType in your choice here: "))
     if direction_input == "W" or direction_input == "w":
         print(direction_going, "North")
@@ -389,6 +372,7 @@ time.sleep(2) #----Pauses the program for a number of specified seconds before c
 if debug == True:
     print(debug_enabled_msg)
     time.sleep(2)
+    item_selector()
     #----Code that needs to be debugged can be put into here----
 while True: #----This while loop will keep the game alive & run until is told to stop. Also below this line there is a menu system & character selection system----
     menu = int(input("\nWelcome to Dungeon Escape Survival Alpha!\n\nType in 1 to start the game.\nType in 2 to view your inventory.\nType in 3 for help.\nType in 4 to view the game build information.\nType in 5 to stop the game.\n\nYour choice goes here: "))
