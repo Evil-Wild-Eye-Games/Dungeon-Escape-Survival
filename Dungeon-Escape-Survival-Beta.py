@@ -2,7 +2,7 @@ import time, random, webbrowser
 #----Above this line is our imports.----
 
 groupname = "\nEvil Wild Eye Games\n"
-gamebuild = "\nCurrent Build: B-0.1.1\n\nBuild Date: 12/12/2022"
+gamebuild = "\nCurrent Build: B-0.1.4\n\nBuild Date: 12/13/2022"
 debug = False
 debug_enabled_msg = "\nDebugging Tools are Enabled."
 debug_disabled_msg = "\nDebugging Tools are Disabled."
@@ -15,6 +15,7 @@ pile_msg_2 = " from the pile!"
 cell = False
 pile = 1
 win_counter = 0
+perm_die_counter = 0
 continue_key = 0
 #----Info Variables----
 
@@ -81,6 +82,7 @@ def item_selector():
                 time.sleep(2)
                 print(item_selection_defult_statement, game_items_roster[0], item_selection_defult_statement_2)
                 time.sleep(4)
+                del player_inventory[item_slot]
                 return game_items_roster[0]
             elif player_inventory[item_slot] != game_items_roster[0]:
                 print(item_selection_error_statement, game_items_roster[0], item_selection_error_statement_2)
@@ -322,6 +324,10 @@ while True: #----This while loop will keep the game alive & run until is told to
         print("\nThanks for playing Dungeon Escape Survival!")
         time.sleep(2)
         break
+    if perm_die_counter == 1:
+        print("\nBetter luck this time!")
+        time.sleep(2)
+        break
     menu = int(input("\nWelcome to Dungeon Escape Survival Beta!\n\nType in 1 to start the game.\nType in 2 to view your inventory.\nType in 3 for help.\nType in 4 to view the game build information.\nType in 5 to stop the game.\n\nYour choice goes here: "))
     if menu == 1: #----Game Start----
         print("\nLoading...")
@@ -331,6 +337,8 @@ while True: #----This while loop will keep the game alive & run until is told to
         while True:
             if win_counter == 1:
                 print("\nThanks for QA Testing our game!") #----Will be changed / removed after Beta Quality Assurence Testing----
+                break
+            if perm_die_counter == 1:
                 break
             user_dec = int(input("\nYour in a locked cell in this dungeon with a guard standing next to your cell with a ring of keys, including one to your cell. What are you going to do?\n\n1: Start mocking the guard\n2: Make an attempt to get the keys off of the guard\n3: Do nothing\n\nSo, what will your choice be: "))
             cell = False
@@ -366,6 +374,8 @@ while True: #----This while loop will keep the game alive & run until is told to
                     while True:
                         if win_counter == 1:
                             break
+                        if perm_die_counter == 1:
+                            break
                         if cell == True:
                             break
                         if hallway_number == 1:
@@ -374,6 +384,8 @@ while True: #----This while loop will keep the game alive & run until is told to
                             time.sleep(6)
                             while True:
                                 if win_counter == 1:
+                                    break
+                                if perm_die_counter == 1:
                                     break
                                 if pile == 1:
                                     user_dec = str(input("\nYou stumble apon a pile of items.\n\nWould you like to look through the pile? "))
@@ -416,6 +428,13 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                 elif rng_trap == 1:
                                                     print(trap_wasted_msg)
                                                     time.sleep(6)
+                                                    item_result = item_selector()
+                                                    if item_result == game_items_roster[0]:
+                                                        print("\nYou have used a ", game_items_roster[0], " to heal yourself!")
+                                                    else:
+                                                        print("Wrong item was selected!\n\nYou have died as a result, you have no chance to try again.")
+                                                        perm_die_counter = 1
+                                                        break
                                             elif travel_result == "South":
                                                 print(wall_walk_msg)
                                                 time.sleep(6)
@@ -456,7 +475,6 @@ while True: #----This while loop will keep the game alive & run until is told to
                         else:
                             print(stupid_error_msg)
                             time.sleep(2)
-
                 elif chance == 1:
                     print("\nYou aren't lucky enough.\nThis situation is about to be rougher now.")
                     die_result = die()
@@ -491,7 +509,6 @@ while True: #----This while loop will keep the game alive & run until is told to
         time.sleep(0.5)
         print("Game has stopped.")
         break
-        #----Code that needs to be debugged can be put into here----
     else:
         print(unreconized_statement) #----This will run when the inputted string does not match any of the following statements above.----
         time.sleep(2) #----Pauses the program for a number of specified seconds before continuing to execute----
