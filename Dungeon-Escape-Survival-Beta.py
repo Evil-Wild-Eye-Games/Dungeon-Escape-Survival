@@ -2,7 +2,7 @@ import time, random, webbrowser
 #----Above this line is our imports.----
 
 groupname = "\nEvil Wild Eye Games\n"
-gamebuild = "\nCurrent Build: B-0.1.10\n\nBuild Date: 12/14/2022"
+gamebuild = "\nCurrent Build: B-0.1.22\n\nBuild Date: 12/14/2022"
 debug = False
 debug_enabled_msg = "\nDebugging Tools are Enabled."
 debug_disabled_msg = "\nDebugging Tools are Disabled."
@@ -12,7 +12,7 @@ stupid_error_msg = "\nThis is stupid but, the code didn't work?"
 game_items_roster = ["Healing Potion", "Speed Potion", "Stick"]
 pile_msg_1 = "\nYou got a "
 pile_msg_2 = " from the pile!"
-cell = False
+cell = 0
 pile = 1
 win_counter = 0
 perm_die_counter = 0
@@ -51,8 +51,8 @@ travel_history = [] #----Stores the players travel history----
 direction_going = "\nYour going"
 hallway_number = 0
 hallway_msg_1 = "\nYou are now going to go through the "
-hallway_msg_2 = " hallway. You can't turn back as the hallway doors have closed upon enterence."
-wall_walk_msg = "Dude, you know you can't walk into walls! Your not a ghost like casper so I'm not sure why you did that. Try again! And please don't walk into the wall again. I don't want you to get hurt."
+hallway_msg_2 = " hallway. You can't turn back as the hallway doors have closed upon entrance."
+wall_walk_msg = "Dude, you know you can't walk into walls! You're not a ghost like casper so I'm not sure why you did that. Try again! And please don't walk into the wall again. I don't want you to get hurt."
 trap_passed_msg = "\nYou have survived the trap!"
 trap_wasted_msg = "\nWasted! You have been hit by the trap!"
 #----Travel Related Variables----
@@ -68,7 +68,7 @@ item_slot_2_msg = " exists: "
 #----End of Beginning Variables----
 
 def credits():
-    print("\nCredits are coming soon! But thanks to you our game will be better on release due to your feedback!")
+    print("\nCredits are coming soon! But thanks to you our game will be better on release due to you're feedback!")
 def item_selector():
     global game_items_roster, player_inventory
     while True:
@@ -124,8 +124,9 @@ def win():
     print("\nCongratulations you win!")
     return "Menu"
 def die():
+    global perm_die_counter
     print("\nOh no you died! ):")
-    user_c_input = str(input("\nDo you want to continue?\n"))
+    user_c_input = str(input("\nDo you want to continue?\n\nEnter: Yes, yes, Y, y or No, no, N, n: "))
     if user_c_input == "Yes" or user_c_input == "yes" or user_c_input == "Y" or user_c_input == "y":
         print("\nYou have decided to brush yourself off and try again.")
         time.sleep(2)
@@ -133,6 +134,7 @@ def die():
     elif user_c_input == "No" or user_c_input == "no" or user_c_input == "N" or user_c_input == "n":
         print("\nYou have decided to give up on yourself.")
         time.sleep(2)
+        perm_die_counter = 1
         return "End Game"
 def travel():
     global enter_input
@@ -164,10 +166,11 @@ def store():
     global money, slot_0, slot_1, store_total_items_counter, enter_input
     while True:
         print("Money you currently have: ", money)
-        print("Items in your inventory: ", player_inventory)
-        print("Items in the store: ", storelist)
+        time.sleep(2)
+        print("\nItems in your inventory: ", player_inventory)
+        print("\nItems in the store: ", storelist)
         store_item_purchased_count = [slot_0, storelist[0], slot_1, storelist[1]]
-        print("Number of each item purchased: ", store_item_purchased_count)
+        print("\nNumber of each item purchased: ", store_item_purchased_count)
         store_input = int(input("\nEnter a number from 0 - 1 to buy items from the store.\nEnter number 98 to view your in game purchase history.\nEnter number 99 to leave the store.\nGive me a number: "))
         if store_input == 0:
             print(store_chosen_item, storelist[0], store_confimination_item_purchase_question, item_cost_statement, slot_0_cost, slot_0_info)
@@ -216,7 +219,7 @@ def store():
             print("\nThe item specified doesn't exist.")
             time.sleep(2)
 def loot_pile():
-    rand_item = random.randint(1,15)
+    rand_item = random.randint(0,15)
     while True:
         if rand_item == 0:
             print("\nHaha! You get nothing!")
@@ -245,11 +248,11 @@ def someone_is_coming_for_you():
         user_dec = int(input("\nYou hear footsteps from down the hall. What will you do?\n\n1: Get out of sight\n2: Stay in sight\n\nYour action: "))
         if user_dec == 1:
             print("\nYou have managed to get out of sight.")
-            time.sleep(3)
+            time.sleep(2)
             return "Safe"
         elif user_dec == 2:
-            print("\nYou were spotted and sent back to your cell....")
-            time.sleep(3)
+            print("\nYou were spotted and sent back to you're cell....")
+            time.sleep(2)
             return "Cell"
         else:
             print(unreconized_statement)
@@ -320,36 +323,37 @@ if debug == True:
     #----Code that needs to be debugged can be put into here----
 while True: #----This while loop will keep the game alive & run until is told to stop. Also below this line there is a menu system & character selection system----
     if win_counter == 1:
+        credits()
+        time.sleep(6)
         print("\nThanks for playing Dungeon Escape Survival!")
         time.sleep(2)
         break
     if perm_die_counter == 1:
-        print("\nBetter luck this time!")
-        time.sleep(2)
+        print("\nBetter luck next time!")
+        time.sleep(1)
         break
     menu = int(input("\nWelcome to Dungeon Escape Survival Beta!\n\nType in 1 to start the game.\nType in 2 to view your inventory.\nType in 3 for help.\nType in 4 to view the game build information.\nType in 5 to stop the game.\n\nYour choice goes here: "))
     if menu == 1: #----Game Start----
         print("\nLoading...")
         time.sleep(1.2)
-        print("\nYou are trapped in a Dungeon, you must find your way out of here. But be careful, this place is not safe! Goodluck player.")
+        print("\nYou are trapped in a Dungeon, you must find you're way out of here. But be careful, this place is not safe! Goodluck player.")
         time.sleep(6) #----Pauses the program for a number of specified seconds before continuing to execute----
         while True:
             if win_counter == 1:
-                print("\nThanks for QA Testing our game!") #----Will be changed / removed after Beta Quality Assurence Testing----
                 break
             if perm_die_counter == 1:
                 break
-            user_dec = int(input("\nYour in a locked cell in this dungeon with a guard standing next to your cell with a ring of keys, including one to your cell. What are you going to do?\n\n1: Start mocking the guard\n2: Make an attempt to get the keys off of the guard\n3: Do nothing\n\nSo, what will your choice be: "))
-            cell = False
+            cell = 0
+            user_dec = int(input("\nYou're in a locked cell in this dungeon with a guard standing next to you're cell with a ring of keys, including one to you're cell. What are you going to do?\n\n1: Start mocking the guard\n2: Make an attempt to get the keys off of the guard\n3: Do nothing\n\nSo, what will your choice be: "))
             if user_dec == 1:
                 print("\nYou have started to mock the guard but, that didn't help you at all since you've angered them.")
-                time.sleep(4)
+                time.sleep(2.6)
             elif user_dec == 2:
                 print("\nYou'll try to take the keys from the guard.")
                 time.sleep(2)
-                chance = random.randint(0, 1)
-                if chance == 0:
-                    print("\nNice one! The guard is now unconscious and your able to get out of your cell.")
+                chance = random.randint(1, 5)
+                if chance > 0 and chance <= 3:
+                    print("\nNice one! The guard is now unconscious and your able to get out of you're cell.")
                     time.sleep(2)
                     print("\nAfter finding stairs and reaching the top of them, you find yourself seeing 4 different hallways but, which one will you take?")
                     time.sleep(4)
@@ -375,7 +379,7 @@ while True: #----This while loop will keep the game alive & run until is told to
                             break
                         if perm_die_counter == 1:
                             break
-                        if cell == True:
+                        if cell == 1:
                             break
                         if hallway_number == 1:
                             print(hallway_msg_1 + "North" + hallway_msg_2)
@@ -386,25 +390,27 @@ while True: #----This while loop will keep the game alive & run until is told to
                                 if perm_die_counter == 1:
                                     break
                                 if pile == 1:
-                                    user_dec = str(input("\nYou stumble apon a pile of items.\n\nWould you like to look through the pile? "))
+                                    user_dec = str(input("\nYou stumble apon a pile of items.\n\nWould you like to look through the pile?\n\nEnter: Yes, yes, Y, y, or No, no, N, n: "))
                                     if user_dec == "Yes" or user_dec == "yes" or user_dec == "Y" or user_dec == "y":
+                                        time.sleep(4)
                                         print("\nYou have decided to look through the pile of mysterious things...")
                                         result_loot_pile = loot_pile()
                                         continue_key = 1
                                         pile = 0
                                     elif user_dec == "No" or user_dec == "no" or user_dec == "N" or user_dec == "n":
+                                        time.sleep(4)
                                         print("\nYou have decided not to look through the mysterious things.")
                                         continue_key = 1
                                         pile = 0
                                     else:
                                         print(unreconized_statement)
                                         time.sleep(2)
-                                if continue_key == 1:
+                                else:
                                     time.sleep(2)
                                     resultchase = someone_is_coming_for_you()
                                     continue_key = 0
                                     if resultchase == "Safe":
-                                        print("\nYour safe!")
+                                        print("\nYou're safe!")
                                         time.sleep(2)
                                         print("\nYou start to see a light to a way out. So you continue forwards...\nYou have found a store!\n\n")
                                         time.sleep(6)
@@ -415,20 +421,21 @@ while True: #----This while loop will keep the game alive & run until is told to
                                         while True:
                                             travel_result = travel() #----This will run the function and take returns if there are any----
                                             if travel_result == "North":
-                                                rng_trap = random.randint(0,1)
-                                                if rng_trap == 0:
+                                                rng_trap = random.randint(1,4)
+                                                if rng_trap > 0 and rng_trap <= 3:
                                                     print(trap_passed_msg)
                                                     time.sleep(3)
                                                     win_result = win()
                                                     win_counter = 1
                                                     if win_result == "Menu":
                                                         break
-                                                elif rng_trap == 1:
+                                                elif rng_trap == 4:
                                                     print(trap_wasted_msg)
-                                                    time.sleep(6)
+                                                    time.sleep(5)
                                                     item_result = item_selector()
                                                     if item_result == game_items_roster[0]:
                                                         print("\nYou have used a ", game_items_roster[0], " to heal yourself!")
+                                                        time.sleep(2)
                                                     else:
                                                         print("Wrong item was selected!\n\nYou have died as a result, you have no chance to try again.")
                                                         perm_die_counter = 1
@@ -446,24 +453,69 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                 print(stupid_error_msg)
                                                 time.sleep(2)
                                     elif resultchase == "Cell":
-                                        cell = True
+                                        cell = 1
+                                        time.sleep(2)
+                                        break
+                                if continue_key == 1:
+                                    time.sleep(2)
+                                    resultchase = someone_is_coming_for_you()
+                                    continue_key = 0
+                                    if resultchase == "Safe":
+                                        print("\nYou're safe!")
+                                        time.sleep(2)
+                                        print("\nYou start to see a light to a way out. So you continue forwards...\nYou have found a store!\n\n")
+                                        time.sleep(6)
+                                        store()
+                                        time.sleep(1.2)
+                                        print("\nSo you continue after leaving the store with you items, now the only thing left is to get past these traps...\nThere is no going around these traps since its not an option.")
+                                        time.sleep(7)
+                                        while True:
+                                            travel_result = travel() #----This will run the function and take returns if there are any----
+                                            if travel_result == "North":
+                                                rng_trap = random.randint(1,4)
+                                                if rng_trap > 0 and rng_trap <= 3:
+                                                    print(trap_passed_msg)
+                                                    time.sleep(3)
+                                                    win_result = win()
+                                                    win_counter = 1
+                                                    if win_result == "Menu":
+                                                        break
+                                                elif rng_trap == 4:
+                                                    print(trap_wasted_msg)
+                                                    time.sleep(5)
+                                                    item_result = item_selector()
+                                                    if item_result == game_items_roster[0]:
+                                                        print("\nYou have used a ", game_items_roster[0], " to heal yourself!")
+                                                        time.sleep(2)
+                                                    else:
+                                                        print("Wrong item was selected!\n\nYou have died as a result, you have no chance to try again.")
+                                                        perm_die_counter = 1
+                                                        break
+                                            elif travel_result == "South":
+                                                print(wall_walk_msg)
+                                                time.sleep(10)
+                                            elif travel_result == "East":
+                                                print(wall_walk_msg)
+                                                time.sleep(10)
+                                            elif travel_result == "West":
+                                                print(wall_walk_msg)
+                                                time.sleep(10)
+                                            else:
+                                                print(stupid_error_msg)
+                                                time.sleep(2)
+                                    elif resultchase == "Cell":
+                                        cell = 1
                                         time.sleep(2)
                                         break
                         elif hallway_number == 2:
                             print(hallway_msg_1 + "South" + hallway_msg_2)
                             time.sleep(6)
-                            print("\nLooks like this hallway is still under construction! Sorry about the inconvenience this may have caused!")
-                            time.sleep(4)
-                            break
                             #----AMR or Dale, please work on the second outcome of the adventure from this statement and must be its own code and not a copy of previous code.----
                             #----However I will allow an exception, You can look at hallway number 1's statement and get an idea on how you will need to structure the other hallways.----
                             #----This doesn't mean copy and pasting line for line, the code must be unique and differentiate from what aleardy exists so the player can experience different outcomes of the adventure.---
                         elif hallway_number == 3:
                             print(hallway_msg_1 + "East" + hallway_msg_2)
                             time.sleep(6)
-                            print("\nLooks like this hallway is still under construction! Sorry about the inconvenience this may have caused!") #----Delete this after QA Testing is complete----
-                            time.sleep(4) #----Delete this after QA Testing is complete----
-                            break #----Delete this after QA Testing is complete----
                             #----Dale is working on this----
                             #----Dale please work on the third outcome of the adventure from this statement and must be its own code and not a copy of previous code.----
                             #----However I will allow an exception, You can look at hallway number 1's statement and get an idea on how you will need to structure the other hallways.----
@@ -471,16 +523,13 @@ while True: #----This while loop will keep the game alive & run until is told to
                         elif hallway_number == 4:
                             print(hallway_msg_1 + "West" + hallway_msg_2)
                             time.sleep(6)
-                            print("\nLooks like this hallway is still under construction! Sorry about the inconvenience this may have caused!")
-                            time.sleep(4)
-                            break
                             #----AMR or Dale, please work on the fourth outcome of the adventure from this statement and must be its own code and not a copy of previous code.----
                             #----However I will allow an exception, You can look at hallway number 1's statement and get an idea on how you will need to structure the other hallways.----
                             #----This doesn't mean copy and pasting line for line, the code must be unique and differentiate from what aleardy exists so the player can experience different outcomes of the adventure.---
                         else:
                             print(stupid_error_msg)
                             time.sleep(2)
-                elif chance == 1:
+                elif chance > 3 and chance <= 5:
                     print("\nYou aren't lucky enough.\nThis situation is about to be rougher now.")
                     die_result = die()
                     if die_result == "Continue":
@@ -492,7 +541,7 @@ while True: #----This while loop will keep the game alive & run until is told to
                 time.sleep(4)
                 die_result = die()
                 if die_result == "Continue":
-                    print("")
+                    continue
                 elif die_result == "End Game":
                     break
             else:
@@ -502,8 +551,9 @@ while True: #----This while loop will keep the game alive & run until is told to
         print("Your inventory:", player_inventory)
         enter_input = str(input(enter_key_message))
     elif menu == 3: #----Sends the player to our help page----
-        print("Theres nothing to see here!")
-        time.sleep(2)
+        webbrowser.open_new_tab("https://trello.com/b/RFJlZLU6/dungeon-escape-survival-trello")
+        time.sleep(6)
+        webbrowser.open_new_tab("https://github.com/Evil-Wild-Eye-Games")
     elif menu == 4:
         print(gamebuild)
         enter_input = str(input(enter_key_message))
