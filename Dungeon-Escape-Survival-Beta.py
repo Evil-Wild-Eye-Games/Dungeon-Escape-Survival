@@ -2,7 +2,7 @@ import time, random, webbrowser
 #----Above this line is our imports.----
 
 groupname = "\nEvil Wild Eye Games\n"
-gamebuild = "\nCurrent Build: B-0.1.4\n\nBuild Date: 12/13/2022"
+gamebuild = "\nCurrent Build: B-0.1.10\n\nBuild Date: 12/14/2022"
 debug = False
 debug_enabled_msg = "\nDebugging Tools are Enabled."
 debug_disabled_msg = "\nDebugging Tools are Disabled."
@@ -30,10 +30,10 @@ storelist = ["Healing Potion", "Speed Potion"] #----This will contain items that
 store_total_items_counter = 0 #----This value is set to 0 until items are purchased from the shop by the player----
 store_purchase_history = [] #----Stores the players purchase history in the game----
 slot_0 = 0 #----Set to 0 until this item is bought----
-slot_0_cost = 200
+slot_0_cost = 400
 slot_0_info = "\n\nThis item can be used to heal your health."
 slot_1 = 0 #----Set to 0 until this item is bought----
-slot_1_cost = 150
+slot_1_cost = 600
 slot_1_info = "\n\nThis item gives you a speed boost for a short amount of time."
 item_cost_statement = "This item costs: "
 broke_message = "\nYour too broke for this!"
@@ -52,7 +52,6 @@ direction_going = "\nYour going"
 hallway_number = 0
 hallway_msg_1 = "\nYou are now going to go through the "
 hallway_msg_2 = " hallway. You can't turn back as the hallway doors have closed upon enterence."
-curent_hallway = [] #----Holds the curent hallway name----
 wall_walk_msg = "Dude, you know you can't walk into walls! Your not a ghost like casper so I'm not sure why you did that. Try again! And please don't walk into the wall again. I don't want you to get hurt."
 trap_passed_msg = "\nYou have survived the trap!"
 trap_wasted_msg = "\nWasted! You have been hit by the trap!"
@@ -379,8 +378,7 @@ while True: #----This while loop will keep the game alive & run until is told to
                         if cell == True:
                             break
                         if hallway_number == 1:
-                            curent_hallway.append("North")
-                            print(hallway_msg_1 + curent_hallway[0] + hallway_msg_2)
+                            print(hallway_msg_1 + "North" + hallway_msg_2)
                             time.sleep(6)
                             while True:
                                 if win_counter == 1:
@@ -437,13 +435,13 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                         break
                                             elif travel_result == "South":
                                                 print(wall_walk_msg)
-                                                time.sleep(6)
+                                                time.sleep(10)
                                             elif travel_result == "East":
                                                 print(wall_walk_msg)
-                                                time.sleep(6)
+                                                time.sleep(10)
                                             elif travel_result == "West":
                                                 print(wall_walk_msg)
-                                                time.sleep(6)
+                                                time.sleep(10)
                                             else:
                                                 print(stupid_error_msg)
                                                 time.sleep(2)
@@ -452,23 +450,30 @@ while True: #----This while loop will keep the game alive & run until is told to
                                         time.sleep(2)
                                         break
                         elif hallway_number == 2:
-                            curent_hallway.append("South")
-                            print(hallway_msg_1 + curent_hallway[0] + hallway_msg_2)
+                            print(hallway_msg_1 + "South" + hallway_msg_2)
                             time.sleep(6)
+                            print("\nLooks like this hallway is still under construction! Sorry about the inconvenience this may have caused!")
+                            time.sleep(4)
+                            break
                             #----AMR or Dale, please work on the second outcome of the adventure from this statement and must be its own code and not a copy of previous code.----
                             #----However I will allow an exception, You can look at hallway number 1's statement and get an idea on how you will need to structure the other hallways.----
                             #----This doesn't mean copy and pasting line for line, the code must be unique and differentiate from what aleardy exists so the player can experience different outcomes of the adventure.---
                         elif hallway_number == 3:
-                            curent_hallway.append("East")
-                            print(hallway_msg_1 + curent_hallway[0] + hallway_msg_2)
+                            print(hallway_msg_1 + "East" + hallway_msg_2)
                             time.sleep(6)
-                            #----AMR or Dale, please work on the third outcome of the adventure from this statement and must be its own code and not a copy of previous code.----
+                            print("\nLooks like this hallway is still under construction! Sorry about the inconvenience this may have caused!") #----Delete this after QA Testing is complete----
+                            time.sleep(4) #----Delete this after QA Testing is complete----
+                            break #----Delete this after QA Testing is complete----
+                            #----Dale is working on this----
+                            #----Dale please work on the third outcome of the adventure from this statement and must be its own code and not a copy of previous code.----
                             #----However I will allow an exception, You can look at hallway number 1's statement and get an idea on how you will need to structure the other hallways.----
                             #----This doesn't mean copy and pasting line for line, the code must be unique and differentiate from what aleardy exists so the player can experience different outcomes of the adventure.---
                         elif hallway_number == 4:
-                            curent_hallway.append("West")
-                            print(hallway_msg_1 + curent_hallway[0] + hallway_msg_2)
+                            print(hallway_msg_1 + "West" + hallway_msg_2)
                             time.sleep(6)
+                            print("\nLooks like this hallway is still under construction! Sorry about the inconvenience this may have caused!")
+                            time.sleep(4)
+                            break
                             #----AMR or Dale, please work on the fourth outcome of the adventure from this statement and must be its own code and not a copy of previous code.----
                             #----However I will allow an exception, You can look at hallway number 1's statement and get an idea on how you will need to structure the other hallways.----
                             #----This doesn't mean copy and pasting line for line, the code must be unique and differentiate from what aleardy exists so the player can experience different outcomes of the adventure.---
@@ -479,9 +484,8 @@ while True: #----This while loop will keep the game alive & run until is told to
                     print("\nYou aren't lucky enough.\nThis situation is about to be rougher now.")
                     die_result = die()
                     if die_result == "Continue":
-                        print("This should allow the player to continue.") #----Delete this later----
+                        print("")
                     elif die_result == "End Game":
-                        print("This should end the game.") #----Delete this later----
                         break
             elif user_dec == 3:
                 print("You did nothing and you eventually died.")
@@ -498,9 +502,8 @@ while True: #----This while loop will keep the game alive & run until is told to
         print("Your inventory:", player_inventory)
         enter_input = str(input(enter_key_message))
     elif menu == 3: #----Sends the player to our help page----
-        webbrowser.open_new_tab("https://trello.com/b/RFJlZLU6/dungeon-escape-survival-trello")
-        time.sleep(6)
-        webbrowser.open_new_tab("https://github.com/Evil-Wild-Eye-Games")
+        print("Theres nothing to see here!")
+        time.sleep(2)
     elif menu == 4:
         print(gamebuild)
         enter_input = str(input(enter_key_message))
