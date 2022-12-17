@@ -2,7 +2,7 @@ import time, random, webbrowser
 #----Above this line is our imports.----
 
 groupname = "\nEvil Wild Eye Games\n"
-gamebuild = "\nCurrent Build: B-0.1.26\n\nBuild Date: 12/15/2022"
+gamebuild = "\nCurrent Build: B-0.1.27\n\nBuild Date: 12/16/2022"
 debug = False
 debug_enabled_msg = "\nDebugging Tools are Enabled."
 debug_disabled_msg = "\nDebugging Tools are Disabled."
@@ -17,6 +17,7 @@ pile = 1
 win_counter = 0
 perm_die_counter = 0
 continue_key = 0
+hallway_lock = False
 #----Info Variables----
 
 money = random.randint (400,9999) #----The player will recive a random amunt of gold that is specified in the range. The gold will be used to buy various items in the game to help the player along their adventures.
@@ -360,17 +361,29 @@ while True: #----This while loop will keep the game alive & run until is told to
                     while True:
                         travel_result = travel() #----This will run the function and take returns if there are any----
                         if travel_result == "North":
-                            hallway_number = 1
-                            break
+                            if hallway_lock == False:
+                                hallway_number = 1
+                                break
+                            else:
+                                break
                         elif travel_result == "South":
-                            hallway_number = 2
-                            break
+                            if hallway_lock == False:
+                                hallway_number = 2
+                                break
+                            else:
+                                break
                         elif travel_result == "East":
-                            hallway_number = 3
-                            break
+                            if hallway_lock == False:
+                                hallway_number = 3
+                                break
+                            else:
+                                break
                         elif travel_result == "West":
-                            hallway_number = 4
-                            break
+                            if hallway_lock == False:
+                                hallway_number = 4
+                                break
+                            else:
+                                break
                         else:
                             print(stupid_error_msg)
                             time.sleep(2)
@@ -420,7 +433,7 @@ while True: #----This while loop will keep the game alive & run until is told to
                                         time.sleep(7)
                                         while True:
                                             travel_result = travel() #----This will run the function and take returns if there are any----
-                                            if travel_result == "North":
+                                            if travel_result == "North": #----Main North-----
                                                 rng_trap = random.randint(1,4)
                                                 if rng_trap > 0 and rng_trap <= 3:
                                                     print(trap_passed_msg)
@@ -438,6 +451,122 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                         if rng_trap > 0 and rng_trap <= 3:
                                                             print(trap_passed_msg)
                                                             time.sleep(3)
+                                                            rng_trap = random.randint(1,4)
+                                                            if rng_trap > 0 and rng_trap <= 3:
+                                                                print(trap_passed_msg)
+                                                                time.sleep(3)
+                                                                travel_result = travel()
+                                                                if travel_result == "North":
+                                                                    time.sleep(1)
+                                                                    money_grant = random.randint(2,8)
+                                                                    print("\nYou found" + money_grant + "dollars on the ground!")
+                                                                    money += money_grant
+                                                                    time.sleep(2)
+                                                                    print("\nMoney you currently have: ", money)
+                                                                    time.sleep(2)
+                                                                    rng_trap = random.randint(1,4)
+                                                                    if rng_trap > 0 and rng_trap <= 3:
+                                                                        print(trap_passed_msg)
+                                                                        time.sleep(3)
+                                                                        win_result = win()
+                                                                        win_counter = 1
+                                                                        if win_result == "Menu":
+                                                                            break
+                                                                    elif rng_trap == 4:
+                                                                        print(trap_wasted_msg)
+                                                                        time.sleep(5)
+                                                                        item_result = item_selector()
+                                                                        if item_result == game_items_roster[0]:
+                                                                            print("\nYou have used a ", game_items_roster[0], " to heal yourself!")
+                                                                            time.sleep(2)
+                                                                        else:
+                                                                            print("Wrong item was selected!\n\nYou have died as a result, you have no chance to try again.")
+                                                                            perm_die_counter = 1
+                                                                            break
+                                                                elif travel_result == "South":
+                                                                    time.sleep(1)
+                                                                    money_grant = random.randint(6,24)
+                                                                    print("\nYou found" + money_grant + "dollars on the ground!")
+                                                                    money += money_grant
+                                                                    time.sleep(2)
+                                                                    print("\nMoney you currently have: ", money)
+                                                                    time.sleep(2)
+                                                                    rng_trap = random.randint(1,4)
+                                                                    if rng_trap > 0 and rng_trap <= 3:
+                                                                        print(trap_passed_msg)
+                                                                        time.sleep(3)
+                                                                    elif rng_trap == 4:
+                                                                        print(trap_wasted_msg)
+                                                                        time.sleep(5)
+                                                                        item_result = item_selector()
+                                                                        if item_result == game_items_roster[0]:
+                                                                            print("\nYou have used a ", game_items_roster[0], " to heal yourself!")
+                                                                            time.sleep(2)
+                                                                        else:
+                                                                            print("Wrong item was selected!\n\nYou have died as a result, you have no chance to try again.")
+                                                                            perm_die_counter = 1
+                                                                            break
+                                                                elif travel_result == "East":
+                                                                    time.sleep(1)
+                                                                    money_grant = random.randint(5,21)
+                                                                    print("\nYou found" + money_grant + "dollars on the ground!")
+                                                                    money += money_grant
+                                                                    time.sleep(2)
+                                                                    print("\nMoney you currently have: ", money)
+                                                                    time.sleep(2)
+                                                                    rng_trap = random.randint(1,4)
+                                                                    if rng_trap > 0 and rng_trap <= 3:
+                                                                        print(trap_passed_msg)
+                                                                        time.sleep(3)
+                                                                    elif rng_trap == 4:
+                                                                        print(trap_wasted_msg)
+                                                                        time.sleep(5)
+                                                                        item_result = item_selector()
+                                                                        if item_result == game_items_roster[0]:
+                                                                            print("\nYou have used a ", game_items_roster[0], " to heal yourself!")
+                                                                            time.sleep(2)
+                                                                        else:
+                                                                            print("Wrong item was selected!\n\nYou have died as a result, you have no chance to try again.")
+                                                                            perm_die_counter = 1
+                                                                            break
+                                                                elif travel_result == "West":
+                                                                    time.sleep(1)
+                                                                    money_grant = random.randint(7,13)
+                                                                    print("\nYou found" + money_grant + "dollars on the ground!")
+                                                                    money += money_grant
+                                                                    time.sleep(2)
+                                                                    print("\nMoney you currently have: ", money)
+                                                                    time.sleep(2)
+                                                                    rng_trap = random.randint(1,4)
+                                                                    if rng_trap > 0 and rng_trap <= 3:
+                                                                        print(trap_passed_msg)
+                                                                        time.sleep(3)
+                                                                        win_result = win()
+                                                                        win_counter = 1
+                                                                        if win_result == "Menu":
+                                                                            break
+                                                                    elif rng_trap == 4:
+                                                                        print(trap_wasted_msg)
+                                                                        time.sleep(5)
+                                                                        item_result = item_selector()
+                                                                        if item_result == game_items_roster[0]:
+                                                                            print("\nYou have used a ", game_items_roster[0], " to heal yourself!")
+                                                                            time.sleep(2)
+                                                                        else:
+                                                                            print("Wrong item was selected!\n\nYou have died as a result, you have no chance to try again.")
+                                                                            perm_die_counter = 1
+                                                                            break
+                                                            elif rng_trap == 4:
+                                                                print(trap_wasted_msg)
+                                                                time.sleep(5)
+                                                                item_result = item_selector()
+                                                                if item_result == game_items_roster[0]:
+                                                                    print("\nYou have used a ", game_items_roster[0], " to heal yourself!")
+                                                                    time.sleep(2)
+                                                                else:
+                                                                    print("Wrong item was selected!\n\nYou have died as a result, you have no chance to try again.")
+                                                                    perm_die_counter = 1
+                                                                    break
                                                         elif rng_trap == 4:
                                                             print(trap_wasted_msg)
                                                             time.sleep(5)
@@ -449,10 +578,387 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                                 print("Wrong item was selected!\n\nYou have died as a result, you have no chance to try again.")
                                                                 perm_die_counter = 1
                                                                 break
-                                                    #win_result = win()
-                                                    #win_counter = 1
-                                                    #if win_result == "Menu":
-                                                        #break
+                                                    elif travel_result == "South":
+                                                        time.sleep(1)
+                                                        money_grant = random.randint(6,24)
+                                                        print("\nYou found" + money_grant + "dollars on the ground!")
+                                                        money += money_grant
+                                                        time.sleep(2)
+                                                        print("\nMoney you currently have: ", money)
+                                                        time.sleep(2)
+                                                        rng_trap = random.randint(1,4)
+                                                        if rng_trap > 0 and rng_trap <= 3:
+                                                            print(trap_passed_msg)
+                                                            time.sleep(3)
+                                                            if travel_result == "North":
+                                                                    time.sleep(1)
+                                                                    money_grant = random.randint(2,8)
+                                                                    print("\nYou found" + money_grant + "dollars on the ground!")
+                                                                    money += money_grant
+                                                                    time.sleep(2)
+                                                                    print("\nMoney you currently have: ", money)
+                                                                    time.sleep(2)
+                                                                    rng_trap = random.randint(1,4)
+                                                                    if rng_trap > 0 and rng_trap <= 3:
+                                                                        print(trap_passed_msg)
+                                                                        time.sleep(3)
+                                                                        win_result = win()
+                                                                        win_counter = 1
+                                                                        if win_result == "Menu":
+                                                                            break
+                                                                    elif rng_trap == 4:
+                                                                        print(trap_wasted_msg)
+                                                                        time.sleep(5)
+                                                                        item_result = item_selector()
+                                                                        if item_result == game_items_roster[0]:
+                                                                            print("\nYou have used a ", game_items_roster[0], " to heal yourself!")
+                                                                            time.sleep(2)
+                                                                        else:
+                                                                            print("Wrong item was selected!\n\nYou have died as a result, you have no chance to try again.")
+                                                                            perm_die_counter = 1
+                                                                            break
+                                                            elif travel_result == "South":
+                                                                time.sleep(1)
+                                                                money_grant = random.randint(6,24)
+                                                                print("\nYou found" + money_grant + "dollars on the ground!")
+                                                                money += money_grant
+                                                                time.sleep(2)
+                                                                print("\nMoney you currently have: ", money)
+                                                                time.sleep(2)
+                                                                rng_trap = random.randint(1,4)
+                                                                if rng_trap > 0 and rng_trap <= 3:
+                                                                    print(trap_passed_msg)
+                                                                    time.sleep(3)
+                                                                elif rng_trap == 4:
+                                                                    print(trap_wasted_msg)
+                                                                    time.sleep(5)
+                                                                    item_result = item_selector()
+                                                                    if item_result == game_items_roster[0]:
+                                                                        print("\nYou have used a ", game_items_roster[0], " to heal yourself!")
+                                                                        time.sleep(2)
+                                                                    else:
+                                                                        print("Wrong item was selected!\n\nYou have died as a result, you have no chance to try again.")
+                                                                        perm_die_counter = 1
+                                                                        break
+                                                                elif travel_result == "East":
+                                                                    time.sleep(1)
+                                                                    money_grant = random.randint(5,21)
+                                                                    print("\nYou found" + money_grant + "dollars on the ground!")
+                                                                    money += money_grant
+                                                                    time.sleep(2)
+                                                                    print("\nMoney you currently have: ", money)
+                                                                    time.sleep(2)
+                                                                    rng_trap = random.randint(1,4)
+                                                                    if rng_trap > 0 and rng_trap <= 3:
+                                                                        print(trap_passed_msg)
+                                                                        time.sleep(3)
+                                                                        win_result = win()
+                                                                        win_counter = 1
+                                                                        if win_result == "Menu":
+                                                                            break
+                                                                    elif rng_trap == 4:
+                                                                        print(trap_wasted_msg)
+                                                                        time.sleep(5)
+                                                                        item_result = item_selector()
+                                                                        if item_result == game_items_roster[0]:
+                                                                            print("\nYou have used a ", game_items_roster[0], " to heal yourself!")
+                                                                            time.sleep(2)
+                                                                        else:
+                                                                            print("Wrong item was selected!\n\nYou have died as a result, you have no chance to try again.")
+                                                                            perm_die_counter = 1
+                                                                            break
+                                                                elif travel_result == "West":
+                                                                    time.sleep(1)
+                                                                    money_grant = random.randint(7,13)
+                                                                    print("\nYou found" + money_grant + "dollars on the ground!")
+                                                                    money += money_grant
+                                                                    time.sleep(2)
+                                                                    print("\nMoney you currently have: ", money)
+                                                                    time.sleep(2)
+                                                                    rng_trap = random.randint(1,4)
+                                                                    if rng_trap > 0 and rng_trap <= 3:
+                                                                        print(trap_passed_msg)
+                                                                        time.sleep(3)
+                                                                    elif rng_trap == 4:
+                                                                        print(trap_wasted_msg)
+                                                                        time.sleep(5)
+                                                                        item_result = item_selector()
+                                                                        if item_result == game_items_roster[0]:
+                                                                            print("\nYou have used a ", game_items_roster[0], " to heal yourself!")
+                                                                            time.sleep(2)
+                                                                        else:
+                                                                            print("Wrong item was selected!\n\nYou have died as a result, you have no chance to try again.")
+                                                                            perm_die_counter = 1
+                                                                            break
+                                                        elif rng_trap == 4:
+                                                            print(trap_wasted_msg)
+                                                            time.sleep(5)
+                                                            item_result = item_selector()
+                                                            if item_result == game_items_roster[0]:
+                                                                print("\nYou have used a ", game_items_roster[0], " to heal yourself!")
+                                                                time.sleep(2)
+                                                            else:
+                                                                print("Wrong item was selected!\n\nYou have died as a result, you have no chance to try again.")
+                                                                perm_die_counter = 1
+                                                                break
+                                                    elif travel_result == "East":
+                                                        time.sleep(1)
+                                                        money_grant = random.randint(5,21)
+                                                        print("\nYou found" + money_grant + "dollars on the ground!")
+                                                        money += money_grant
+                                                        time.sleep(2)
+                                                        print("\nMoney you currently have: ", money)
+                                                        time.sleep(2)
+                                                        rng_trap = random.randint(1,4)
+                                                        if rng_trap > 0 and rng_trap <= 3:
+                                                            print(trap_passed_msg)
+                                                            time.sleep(3)
+                                                            if travel_result == "North":
+                                                                    time.sleep(1)
+                                                                    money_grant = random.randint(2,8)
+                                                                    print("\nYou found" + money_grant + "dollars on the ground!")
+                                                                    money += money_grant
+                                                                    time.sleep(2)
+                                                                    print("\nMoney you currently have: ", money)
+                                                                    time.sleep(2)
+                                                                    rng_trap = random.randint(1,4)
+                                                                    if rng_trap > 0 and rng_trap <= 3:
+                                                                        print(trap_passed_msg)
+                                                                        time.sleep(3)
+                                                                        win_result = win()
+                                                                        win_counter = 1
+                                                                        if win_result == "Menu":
+                                                                            break
+                                                                    elif rng_trap == 4:
+                                                                        print(trap_wasted_msg)
+                                                                        time.sleep(5)
+                                                                        item_result = item_selector()
+                                                                        if item_result == game_items_roster[0]:
+                                                                            print("\nYou have used a ", game_items_roster[0], " to heal yourself!")
+                                                                            time.sleep(2)
+                                                                        else:
+                                                                            print("Wrong item was selected!\n\nYou have died as a result, you have no chance to try again.")
+                                                                            perm_die_counter = 1
+                                                                            break
+                                                            elif travel_result == "South":
+                                                                time.sleep(1)
+                                                                money_grant = random.randint(6,24)
+                                                                print("\nYou found" + money_grant + "dollars on the ground!")
+                                                                money += money_grant
+                                                                time.sleep(2)
+                                                                print("\nMoney you currently have: ", money)
+                                                                time.sleep(2)
+                                                                rng_trap = random.randint(1,4)
+                                                                if rng_trap > 0 and rng_trap <= 3:
+                                                                    print(trap_passed_msg)
+                                                                    time.sleep(3)
+                                                                elif rng_trap == 4:
+                                                                    print(trap_wasted_msg)
+                                                                    time.sleep(5)
+                                                                    item_result = item_selector()
+                                                                    if item_result == game_items_roster[0]:
+                                                                        print("\nYou have used a ", game_items_roster[0], " to heal yourself!")
+                                                                        time.sleep(2)
+                                                                    else:
+                                                                        print("Wrong item was selected!\n\nYou have died as a result, you have no chance to try again.")
+                                                                        perm_die_counter = 1
+                                                                        break
+                                                                elif travel_result == "East":
+                                                                    time.sleep(1)
+                                                                    money_grant = random.randint(5,21)
+                                                                    print("\nYou found" + money_grant + "dollars on the ground!")
+                                                                    money += money_grant
+                                                                    time.sleep(2)
+                                                                    print("\nMoney you currently have: ", money)
+                                                                    time.sleep(2)
+                                                                    rng_trap = random.randint(1,4)
+                                                                    if rng_trap > 0 and rng_trap <= 3:
+                                                                        print(trap_passed_msg)
+                                                                        time.sleep(3)
+                                                                        win_result = win()
+                                                                        win_counter = 1
+                                                                        if win_result == "Menu":
+                                                                            break
+                                                                    elif rng_trap == 4:
+                                                                        print(trap_wasted_msg)
+                                                                        time.sleep(5)
+                                                                        item_result = item_selector()
+                                                                        if item_result == game_items_roster[0]:
+                                                                            print("\nYou have used a ", game_items_roster[0], " to heal yourself!")
+                                                                            time.sleep(2)
+                                                                        else:
+                                                                            print("Wrong item was selected!\n\nYou have died as a result, you have no chance to try again.")
+                                                                            perm_die_counter = 1
+                                                                            break
+                                                                elif travel_result == "West":
+                                                                    time.sleep(1)
+                                                                    money_grant = random.randint(7,13)
+                                                                    print("\nYou found" + money_grant + "dollars on the ground!")
+                                                                    money += money_grant
+                                                                    time.sleep(2)
+                                                                    print("\nMoney you currently have: ", money)
+                                                                    time.sleep(2)
+                                                                    rng_trap = random.randint(1,4)
+                                                                    if rng_trap > 0 and rng_trap <= 3:
+                                                                        print(trap_passed_msg)
+                                                                        time.sleep(3)
+                                                                        win_result = win()
+                                                                        win_counter = 1
+                                                                        if win_result == "Menu":
+                                                                            break
+                                                                    elif rng_trap == 4:
+                                                                        print(trap_wasted_msg)
+                                                                        time.sleep(5)
+                                                                        item_result = item_selector()
+                                                                        if item_result == game_items_roster[0]:
+                                                                            print("\nYou have used a ", game_items_roster[0], " to heal yourself!")
+                                                                            time.sleep(2)
+                                                                        else:
+                                                                            print("Wrong item was selected!\n\nYou have died as a result, you have no chance to try again.")
+                                                                            perm_die_counter = 1
+                                                                            break
+                                                        elif rng_trap == 4:
+                                                            print(trap_wasted_msg)
+                                                            time.sleep(5)
+                                                            item_result = item_selector()
+                                                            if item_result == game_items_roster[0]:
+                                                                print("\nYou have used a ", game_items_roster[0], " to heal yourself!")
+                                                                time.sleep(2)
+                                                            else:
+                                                                print("Wrong item was selected!\n\nYou have died as a result, you have no chance to try again.")
+                                                                perm_die_counter = 1
+                                                                break
+                                                    elif travel_result == "West":
+                                                        time.sleep(1)
+                                                        money_grant = random.randint(7,13)
+                                                        print("\nYou found" + money_grant + "dollars on the ground!")
+                                                        money += money_grant
+                                                        time.sleep(2)
+                                                        print("\nMoney you currently have: ", money)
+                                                        time.sleep(2)
+                                                        rng_trap = random.randint(1,4)
+                                                        if rng_trap > 0 and rng_trap <= 3:
+                                                            print(trap_passed_msg)
+                                                            time.sleep(3)
+                                                            if travel_result == "North":
+                                                                    time.sleep(1)
+                                                                    money_grant = random.randint(2,8)
+                                                                    print("\nYou found" + money_grant + "dollars on the ground!")
+                                                                    money += money_grant
+                                                                    time.sleep(2)
+                                                                    print("\nMoney you currently have: ", money)
+                                                                    time.sleep(2)
+                                                                    rng_trap = random.randint(1,4)
+                                                                    if rng_trap > 0 and rng_trap <= 3:
+                                                                        print(trap_passed_msg)
+                                                                        time.sleep(3)
+                                                                        win_result = win()
+                                                                        win_counter = 1
+                                                                        if win_result == "Menu":
+                                                                            break
+                                                                    elif rng_trap == 4:
+                                                                        print(trap_wasted_msg)
+                                                                        time.sleep(5)
+                                                                        item_result = item_selector()
+                                                                        if item_result == game_items_roster[0]:
+                                                                            print("\nYou have used a ", game_items_roster[0], " to heal yourself!")
+                                                                            time.sleep(2)
+                                                                        else:
+                                                                            print("Wrong item was selected!\n\nYou have died as a result, you have no chance to try again.")
+                                                                            perm_die_counter = 1
+                                                                            break
+                                                            elif travel_result == "South":
+                                                                time.sleep(1)
+                                                                money_grant = random.randint(6,24)
+                                                                print("\nYou found" + money_grant + "dollars on the ground!")
+                                                                money += money_grant
+                                                                time.sleep(2)
+                                                                print("\nMoney you currently have: ", money)
+                                                                time.sleep(2)
+                                                                rng_trap = random.randint(1,4)
+                                                                if rng_trap > 0 and rng_trap <= 3:
+                                                                    print(trap_passed_msg)
+                                                                    time.sleep(3)
+                                                                    win_result = win()
+                                                                    win_counter = 1
+                                                                    if win_result == "Menu":
+                                                                        break
+                                                                elif rng_trap == 4:
+                                                                    print(trap_wasted_msg)
+                                                                    time.sleep(5)
+                                                                    item_result = item_selector()
+                                                                    if item_result == game_items_roster[0]:
+                                                                        print("\nYou have used a ", game_items_roster[0], " to heal yourself!")
+                                                                        time.sleep(2)
+                                                                    else:
+                                                                        print("Wrong item was selected!\n\nYou have died as a result, you have no chance to try again.")
+                                                                        perm_die_counter = 1
+                                                                        break
+                                                            elif travel_result == "East":
+                                                                time.sleep(1)
+                                                                money_grant = random.randint(5,21)
+                                                                print("\nYou found" + money_grant + "dollars on the ground!")
+                                                                money += money_grant
+                                                                time.sleep(2)
+                                                                print("\nMoney you currently have: ", money)
+                                                                time.sleep(2)
+                                                                rng_trap = random.randint(1,4)
+                                                                if rng_trap > 0 and rng_trap <= 3:
+                                                                    print(trap_passed_msg)
+                                                                    time.sleep(3)
+                                                                    win_result = win()
+                                                                    win_counter = 1
+                                                                    if win_result == "Menu":
+                                                                        break
+                                                                elif rng_trap == 4:
+                                                                    print(trap_wasted_msg)
+                                                                    time.sleep(5)
+                                                                    item_result = item_selector()
+                                                                    if item_result == game_items_roster[0]:
+                                                                        print("\nYou have used a ", game_items_roster[0], " to heal yourself!")
+                                                                        time.sleep(2)
+                                                                    else:
+                                                                        print("Wrong item was selected!\n\nYou have died as a result, you have no chance to try again.")
+                                                                        perm_die_counter = 1
+                                                                        break
+                                                            elif travel_result == "West":
+                                                                time.sleep(1)
+                                                                money_grant = random.randint(7,13)
+                                                                print("\nYou found" + money_grant + "dollars on the ground!")
+                                                                money += money_grant
+                                                                time.sleep(2)
+                                                                print("\nMoney you currently have: ", money)
+                                                                time.sleep(2)
+                                                                rng_trap = random.randint(1,4)
+                                                                if rng_trap > 0 and rng_trap <= 3:
+                                                                    print(trap_passed_msg)
+                                                                    time.sleep(3)
+                                                                    win_result = win()
+                                                                    win_counter = 1
+                                                                    if win_result == "Menu":
+                                                                        break
+                                                                elif rng_trap == 4:
+                                                                    print(trap_wasted_msg)
+                                                                    time.sleep(5)
+                                                                    item_result = item_selector()
+                                                                    if item_result == game_items_roster[0]:
+                                                                        print("\nYou have used a ", game_items_roster[0], " to heal yourself!")
+                                                                        time.sleep(2)
+                                                                    else:
+                                                                        print("Wrong item was selected!\n\nYou have died as a result, you have no chance to try again.")
+                                                                        perm_die_counter = 1
+                                                                        break
+                                                        elif rng_trap == 4:
+                                                            print(trap_wasted_msg)
+                                                            time.sleep(5)
+                                                            item_result = item_selector()
+                                                            if item_result == game_items_roster[0]:
+                                                                print("\nYou have used a ", game_items_roster[0], " to heal yourself!")
+                                                                time.sleep(2)
+                                                            else:
+                                                                print("Wrong item was selected!\n\nYou have died as a result, you have no chance to try again.")
+                                                                perm_die_counter = 1
+                                                                break
                                                 elif rng_trap == 4:
                                                     print(trap_wasted_msg)
                                                     time.sleep(5)
@@ -464,13 +970,13 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                         print("Wrong item was selected!\n\nYou have died as a result, you have no chance to try again.")
                                                         perm_die_counter = 1
                                                         break
-                                            elif travel_result == "South":
+                                            elif travel_result == "South": #----Main South----
                                                 print(wall_walk_msg)
                                                 time.sleep(10)
-                                            elif travel_result == "East":
+                                            elif travel_result == "East": #----Main East----
                                                 print(wall_walk_msg)
                                                 time.sleep(10)
-                                            elif travel_result == "West":
+                                            elif travel_result == "West": #----Main West----
                                                 print(wall_walk_msg)
                                                 time.sleep(10)
                                             else:
@@ -480,7 +986,7 @@ while True: #----This while loop will keep the game alive & run until is told to
                                         cell = 1
                                         time.sleep(2)
                                         break
-                                if continue_key == 1:
+                                if continue_key == 1: #----Don't pass----
                                     time.sleep(2)
                                     resultchase = someone_is_coming_for_you()
                                     continue_key = 0
@@ -495,7 +1001,7 @@ while True: #----This while loop will keep the game alive & run until is told to
                                         time.sleep(7)
                                         while True:
                                             travel_result = travel() #----This will run the function and take returns if there are any----
-                                            if travel_result == "North":
+                                            if travel_result == "North": #----Main North-----
                                                 rng_trap = random.randint(1,4)
                                                 if rng_trap > 0 and rng_trap <= 3:
                                                     print(trap_passed_msg)
@@ -513,6 +1019,122 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                         if rng_trap > 0 and rng_trap <= 3:
                                                             print(trap_passed_msg)
                                                             time.sleep(3)
+                                                            rng_trap = random.randint(1,4)
+                                                            if rng_trap > 0 and rng_trap <= 3:
+                                                                print(trap_passed_msg)
+                                                                time.sleep(3)
+                                                                travel_result = travel()
+                                                                if travel_result == "North":
+                                                                    time.sleep(1)
+                                                                    money_grant = random.randint(2,8)
+                                                                    print("\nYou found" + money_grant + "dollars on the ground!")
+                                                                    money += money_grant
+                                                                    time.sleep(2)
+                                                                    print("\nMoney you currently have: ", money)
+                                                                    time.sleep(2)
+                                                                    rng_trap = random.randint(1,4)
+                                                                    if rng_trap > 0 and rng_trap <= 3:
+                                                                        print(trap_passed_msg)
+                                                                        time.sleep(3)
+                                                                        win_result = win()
+                                                                        win_counter = 1
+                                                                        if win_result == "Menu":
+                                                                            break
+                                                                    elif rng_trap == 4:
+                                                                        print(trap_wasted_msg)
+                                                                        time.sleep(5)
+                                                                        item_result = item_selector()
+                                                                        if item_result == game_items_roster[0]:
+                                                                            print("\nYou have used a ", game_items_roster[0], " to heal yourself!")
+                                                                            time.sleep(2)
+                                                                        else:
+                                                                            print("Wrong item was selected!\n\nYou have died as a result, you have no chance to try again.")
+                                                                            perm_die_counter = 1
+                                                                            break
+                                                                elif travel_result == "South":
+                                                                    time.sleep(1)
+                                                                    money_grant = random.randint(6,24)
+                                                                    print("\nYou found" + money_grant + "dollars on the ground!")
+                                                                    money += money_grant
+                                                                    time.sleep(2)
+                                                                    print("\nMoney you currently have: ", money)
+                                                                    time.sleep(2)
+                                                                    rng_trap = random.randint(1,4)
+                                                                    if rng_trap > 0 and rng_trap <= 3:
+                                                                        print(trap_passed_msg)
+                                                                        time.sleep(3)
+                                                                    elif rng_trap == 4:
+                                                                        print(trap_wasted_msg)
+                                                                        time.sleep(5)
+                                                                        item_result = item_selector()
+                                                                        if item_result == game_items_roster[0]:
+                                                                            print("\nYou have used a ", game_items_roster[0], " to heal yourself!")
+                                                                            time.sleep(2)
+                                                                        else:
+                                                                            print("Wrong item was selected!\n\nYou have died as a result, you have no chance to try again.")
+                                                                            perm_die_counter = 1
+                                                                            break
+                                                                elif travel_result == "East":
+                                                                    time.sleep(1)
+                                                                    money_grant = random.randint(5,21)
+                                                                    print("\nYou found" + money_grant + "dollars on the ground!")
+                                                                    money += money_grant
+                                                                    time.sleep(2)
+                                                                    print("\nMoney you currently have: ", money)
+                                                                    time.sleep(2)
+                                                                    rng_trap = random.randint(1,4)
+                                                                    if rng_trap > 0 and rng_trap <= 3:
+                                                                        print(trap_passed_msg)
+                                                                        time.sleep(3)
+                                                                    elif rng_trap == 4:
+                                                                        print(trap_wasted_msg)
+                                                                        time.sleep(5)
+                                                                        item_result = item_selector()
+                                                                        if item_result == game_items_roster[0]:
+                                                                            print("\nYou have used a ", game_items_roster[0], " to heal yourself!")
+                                                                            time.sleep(2)
+                                                                        else:
+                                                                            print("Wrong item was selected!\n\nYou have died as a result, you have no chance to try again.")
+                                                                            perm_die_counter = 1
+                                                                            break
+                                                                elif travel_result == "West":
+                                                                    time.sleep(1)
+                                                                    money_grant = random.randint(7,13)
+                                                                    print("\nYou found" + money_grant + "dollars on the ground!")
+                                                                    money += money_grant
+                                                                    time.sleep(2)
+                                                                    print("\nMoney you currently have: ", money)
+                                                                    time.sleep(2)
+                                                                    rng_trap = random.randint(1,4)
+                                                                    if rng_trap > 0 and rng_trap <= 3:
+                                                                        print(trap_passed_msg)
+                                                                        time.sleep(3)
+                                                                        win_result = win()
+                                                                        win_counter = 1
+                                                                        if win_result == "Menu":
+                                                                            break
+                                                                    elif rng_trap == 4:
+                                                                        print(trap_wasted_msg)
+                                                                        time.sleep(5)
+                                                                        item_result = item_selector()
+                                                                        if item_result == game_items_roster[0]:
+                                                                            print("\nYou have used a ", game_items_roster[0], " to heal yourself!")
+                                                                            time.sleep(2)
+                                                                        else:
+                                                                            print("Wrong item was selected!\n\nYou have died as a result, you have no chance to try again.")
+                                                                            perm_die_counter = 1
+                                                                            break
+                                                            elif rng_trap == 4:
+                                                                print(trap_wasted_msg)
+                                                                time.sleep(5)
+                                                                item_result = item_selector()
+                                                                if item_result == game_items_roster[0]:
+                                                                    print("\nYou have used a ", game_items_roster[0], " to heal yourself!")
+                                                                    time.sleep(2)
+                                                                else:
+                                                                    print("Wrong item was selected!\n\nYou have died as a result, you have no chance to try again.")
+                                                                    perm_die_counter = 1
+                                                                    break
                                                         elif rng_trap == 4:
                                                             print(trap_wasted_msg)
                                                             time.sleep(5)
@@ -524,10 +1146,387 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                                 print("Wrong item was selected!\n\nYou have died as a result, you have no chance to try again.")
                                                                 perm_die_counter = 1
                                                                 break
-                                                    #win_result = win()
-                                                    #win_counter = 1
-                                                    #if win_result == "Menu":
-                                                        #break
+                                                    elif travel_result == "South":
+                                                        time.sleep(1)
+                                                        money_grant = random.randint(6,24)
+                                                        print("\nYou found" + money_grant + "dollars on the ground!")
+                                                        money += money_grant
+                                                        time.sleep(2)
+                                                        print("\nMoney you currently have: ", money)
+                                                        time.sleep(2)
+                                                        rng_trap = random.randint(1,4)
+                                                        if rng_trap > 0 and rng_trap <= 3:
+                                                            print(trap_passed_msg)
+                                                            time.sleep(3)
+                                                            if travel_result == "North":
+                                                                    time.sleep(1)
+                                                                    money_grant = random.randint(2,8)
+                                                                    print("\nYou found" + money_grant + "dollars on the ground!")
+                                                                    money += money_grant
+                                                                    time.sleep(2)
+                                                                    print("\nMoney you currently have: ", money)
+                                                                    time.sleep(2)
+                                                                    rng_trap = random.randint(1,4)
+                                                                    if rng_trap > 0 and rng_trap <= 3:
+                                                                        print(trap_passed_msg)
+                                                                        time.sleep(3)
+                                                                        win_result = win()
+                                                                        win_counter = 1
+                                                                        if win_result == "Menu":
+                                                                            break
+                                                                    elif rng_trap == 4:
+                                                                        print(trap_wasted_msg)
+                                                                        time.sleep(5)
+                                                                        item_result = item_selector()
+                                                                        if item_result == game_items_roster[0]:
+                                                                            print("\nYou have used a ", game_items_roster[0], " to heal yourself!")
+                                                                            time.sleep(2)
+                                                                        else:
+                                                                            print("Wrong item was selected!\n\nYou have died as a result, you have no chance to try again.")
+                                                                            perm_die_counter = 1
+                                                                            break
+                                                            elif travel_result == "South":
+                                                                time.sleep(1)
+                                                                money_grant = random.randint(6,24)
+                                                                print("\nYou found" + money_grant + "dollars on the ground!")
+                                                                money += money_grant
+                                                                time.sleep(2)
+                                                                print("\nMoney you currently have: ", money)
+                                                                time.sleep(2)
+                                                                rng_trap = random.randint(1,4)
+                                                                if rng_trap > 0 and rng_trap <= 3:
+                                                                    print(trap_passed_msg)
+                                                                    time.sleep(3)
+                                                                elif rng_trap == 4:
+                                                                    print(trap_wasted_msg)
+                                                                    time.sleep(5)
+                                                                    item_result = item_selector()
+                                                                    if item_result == game_items_roster[0]:
+                                                                        print("\nYou have used a ", game_items_roster[0], " to heal yourself!")
+                                                                        time.sleep(2)
+                                                                    else:
+                                                                        print("Wrong item was selected!\n\nYou have died as a result, you have no chance to try again.")
+                                                                        perm_die_counter = 1
+                                                                        break
+                                                                elif travel_result == "East":
+                                                                    time.sleep(1)
+                                                                    money_grant = random.randint(5,21)
+                                                                    print("\nYou found" + money_grant + "dollars on the ground!")
+                                                                    money += money_grant
+                                                                    time.sleep(2)
+                                                                    print("\nMoney you currently have: ", money)
+                                                                    time.sleep(2)
+                                                                    rng_trap = random.randint(1,4)
+                                                                    if rng_trap > 0 and rng_trap <= 3:
+                                                                        print(trap_passed_msg)
+                                                                        time.sleep(3)
+                                                                        win_result = win()
+                                                                        win_counter = 1
+                                                                        if win_result == "Menu":
+                                                                            break
+                                                                    elif rng_trap == 4:
+                                                                        print(trap_wasted_msg)
+                                                                        time.sleep(5)
+                                                                        item_result = item_selector()
+                                                                        if item_result == game_items_roster[0]:
+                                                                            print("\nYou have used a ", game_items_roster[0], " to heal yourself!")
+                                                                            time.sleep(2)
+                                                                        else:
+                                                                            print("Wrong item was selected!\n\nYou have died as a result, you have no chance to try again.")
+                                                                            perm_die_counter = 1
+                                                                            break
+                                                                elif travel_result == "West":
+                                                                    time.sleep(1)
+                                                                    money_grant = random.randint(7,13)
+                                                                    print("\nYou found" + money_grant + "dollars on the ground!")
+                                                                    money += money_grant
+                                                                    time.sleep(2)
+                                                                    print("\nMoney you currently have: ", money)
+                                                                    time.sleep(2)
+                                                                    rng_trap = random.randint(1,4)
+                                                                    if rng_trap > 0 and rng_trap <= 3:
+                                                                        print(trap_passed_msg)
+                                                                        time.sleep(3)
+                                                                    elif rng_trap == 4:
+                                                                        print(trap_wasted_msg)
+                                                                        time.sleep(5)
+                                                                        item_result = item_selector()
+                                                                        if item_result == game_items_roster[0]:
+                                                                            print("\nYou have used a ", game_items_roster[0], " to heal yourself!")
+                                                                            time.sleep(2)
+                                                                        else:
+                                                                            print("Wrong item was selected!\n\nYou have died as a result, you have no chance to try again.")
+                                                                            perm_die_counter = 1
+                                                                            break
+                                                        elif rng_trap == 4:
+                                                            print(trap_wasted_msg)
+                                                            time.sleep(5)
+                                                            item_result = item_selector()
+                                                            if item_result == game_items_roster[0]:
+                                                                print("\nYou have used a ", game_items_roster[0], " to heal yourself!")
+                                                                time.sleep(2)
+                                                            else:
+                                                                print("Wrong item was selected!\n\nYou have died as a result, you have no chance to try again.")
+                                                                perm_die_counter = 1
+                                                                break
+                                                    elif travel_result == "East":
+                                                        time.sleep(1)
+                                                        money_grant = random.randint(5,21)
+                                                        print("\nYou found" + money_grant + "dollars on the ground!")
+                                                        money += money_grant
+                                                        time.sleep(2)
+                                                        print("\nMoney you currently have: ", money)
+                                                        time.sleep(2)
+                                                        rng_trap = random.randint(1,4)
+                                                        if rng_trap > 0 and rng_trap <= 3:
+                                                            print(trap_passed_msg)
+                                                            time.sleep(3)
+                                                            if travel_result == "North":
+                                                                    time.sleep(1)
+                                                                    money_grant = random.randint(2,8)
+                                                                    print("\nYou found" + money_grant + "dollars on the ground!")
+                                                                    money += money_grant
+                                                                    time.sleep(2)
+                                                                    print("\nMoney you currently have: ", money)
+                                                                    time.sleep(2)
+                                                                    rng_trap = random.randint(1,4)
+                                                                    if rng_trap > 0 and rng_trap <= 3:
+                                                                        print(trap_passed_msg)
+                                                                        time.sleep(3)
+                                                                        win_result = win()
+                                                                        win_counter = 1
+                                                                        if win_result == "Menu":
+                                                                            break
+                                                                    elif rng_trap == 4:
+                                                                        print(trap_wasted_msg)
+                                                                        time.sleep(5)
+                                                                        item_result = item_selector()
+                                                                        if item_result == game_items_roster[0]:
+                                                                            print("\nYou have used a ", game_items_roster[0], " to heal yourself!")
+                                                                            time.sleep(2)
+                                                                        else:
+                                                                            print("Wrong item was selected!\n\nYou have died as a result, you have no chance to try again.")
+                                                                            perm_die_counter = 1
+                                                                            break
+                                                            elif travel_result == "South":
+                                                                time.sleep(1)
+                                                                money_grant = random.randint(6,24)
+                                                                print("\nYou found" + money_grant + "dollars on the ground!")
+                                                                money += money_grant
+                                                                time.sleep(2)
+                                                                print("\nMoney you currently have: ", money)
+                                                                time.sleep(2)
+                                                                rng_trap = random.randint(1,4)
+                                                                if rng_trap > 0 and rng_trap <= 3:
+                                                                    print(trap_passed_msg)
+                                                                    time.sleep(3)
+                                                                elif rng_trap == 4:
+                                                                    print(trap_wasted_msg)
+                                                                    time.sleep(5)
+                                                                    item_result = item_selector()
+                                                                    if item_result == game_items_roster[0]:
+                                                                        print("\nYou have used a ", game_items_roster[0], " to heal yourself!")
+                                                                        time.sleep(2)
+                                                                    else:
+                                                                        print("Wrong item was selected!\n\nYou have died as a result, you have no chance to try again.")
+                                                                        perm_die_counter = 1
+                                                                        break
+                                                                elif travel_result == "East":
+                                                                    time.sleep(1)
+                                                                    money_grant = random.randint(5,21)
+                                                                    print("\nYou found" + money_grant + "dollars on the ground!")
+                                                                    money += money_grant
+                                                                    time.sleep(2)
+                                                                    print("\nMoney you currently have: ", money)
+                                                                    time.sleep(2)
+                                                                    rng_trap = random.randint(1,4)
+                                                                    if rng_trap > 0 and rng_trap <= 3:
+                                                                        print(trap_passed_msg)
+                                                                        time.sleep(3)
+                                                                        win_result = win()
+                                                                        win_counter = 1
+                                                                        if win_result == "Menu":
+                                                                            break
+                                                                    elif rng_trap == 4:
+                                                                        print(trap_wasted_msg)
+                                                                        time.sleep(5)
+                                                                        item_result = item_selector()
+                                                                        if item_result == game_items_roster[0]:
+                                                                            print("\nYou have used a ", game_items_roster[0], " to heal yourself!")
+                                                                            time.sleep(2)
+                                                                        else:
+                                                                            print("Wrong item was selected!\n\nYou have died as a result, you have no chance to try again.")
+                                                                            perm_die_counter = 1
+                                                                            break
+                                                                elif travel_result == "West":
+                                                                    time.sleep(1)
+                                                                    money_grant = random.randint(7,13)
+                                                                    print("\nYou found" + money_grant + "dollars on the ground!")
+                                                                    money += money_grant
+                                                                    time.sleep(2)
+                                                                    print("\nMoney you currently have: ", money)
+                                                                    time.sleep(2)
+                                                                    rng_trap = random.randint(1,4)
+                                                                    if rng_trap > 0 and rng_trap <= 3:
+                                                                        print(trap_passed_msg)
+                                                                        time.sleep(3)
+                                                                        win_result = win()
+                                                                        win_counter = 1
+                                                                        if win_result == "Menu":
+                                                                            break
+                                                                    elif rng_trap == 4:
+                                                                        print(trap_wasted_msg)
+                                                                        time.sleep(5)
+                                                                        item_result = item_selector()
+                                                                        if item_result == game_items_roster[0]:
+                                                                            print("\nYou have used a ", game_items_roster[0], " to heal yourself!")
+                                                                            time.sleep(2)
+                                                                        else:
+                                                                            print("Wrong item was selected!\n\nYou have died as a result, you have no chance to try again.")
+                                                                            perm_die_counter = 1
+                                                                            break
+                                                        elif rng_trap == 4:
+                                                            print(trap_wasted_msg)
+                                                            time.sleep(5)
+                                                            item_result = item_selector()
+                                                            if item_result == game_items_roster[0]:
+                                                                print("\nYou have used a ", game_items_roster[0], " to heal yourself!")
+                                                                time.sleep(2)
+                                                            else:
+                                                                print("Wrong item was selected!\n\nYou have died as a result, you have no chance to try again.")
+                                                                perm_die_counter = 1
+                                                                break
+                                                    elif travel_result == "West":
+                                                        time.sleep(1)
+                                                        money_grant = random.randint(7,13)
+                                                        print("\nYou found" + money_grant + "dollars on the ground!")
+                                                        money += money_grant
+                                                        time.sleep(2)
+                                                        print("\nMoney you currently have: ", money)
+                                                        time.sleep(2)
+                                                        rng_trap = random.randint(1,4)
+                                                        if rng_trap > 0 and rng_trap <= 3:
+                                                            print(trap_passed_msg)
+                                                            time.sleep(3)
+                                                            if travel_result == "North":
+                                                                    time.sleep(1)
+                                                                    money_grant = random.randint(2,8)
+                                                                    print("\nYou found" + money_grant + "dollars on the ground!")
+                                                                    money += money_grant
+                                                                    time.sleep(2)
+                                                                    print("\nMoney you currently have: ", money)
+                                                                    time.sleep(2)
+                                                                    rng_trap = random.randint(1,4)
+                                                                    if rng_trap > 0 and rng_trap <= 3:
+                                                                        print(trap_passed_msg)
+                                                                        time.sleep(3)
+                                                                        win_result = win()
+                                                                        win_counter = 1
+                                                                        if win_result == "Menu":
+                                                                            break
+                                                                    elif rng_trap == 4:
+                                                                        print(trap_wasted_msg)
+                                                                        time.sleep(5)
+                                                                        item_result = item_selector()
+                                                                        if item_result == game_items_roster[0]:
+                                                                            print("\nYou have used a ", game_items_roster[0], " to heal yourself!")
+                                                                            time.sleep(2)
+                                                                        else:
+                                                                            print("Wrong item was selected!\n\nYou have died as a result, you have no chance to try again.")
+                                                                            perm_die_counter = 1
+                                                                            break
+                                                            elif travel_result == "South":
+                                                                time.sleep(1)
+                                                                money_grant = random.randint(6,24)
+                                                                print("\nYou found" + money_grant + "dollars on the ground!")
+                                                                money += money_grant
+                                                                time.sleep(2)
+                                                                print("\nMoney you currently have: ", money)
+                                                                time.sleep(2)
+                                                                rng_trap = random.randint(1,4)
+                                                                if rng_trap > 0 and rng_trap <= 3:
+                                                                    print(trap_passed_msg)
+                                                                    time.sleep(3)
+                                                                    win_result = win()
+                                                                    win_counter = 1
+                                                                    if win_result == "Menu":
+                                                                        break
+                                                                elif rng_trap == 4:
+                                                                    print(trap_wasted_msg)
+                                                                    time.sleep(5)
+                                                                    item_result = item_selector()
+                                                                    if item_result == game_items_roster[0]:
+                                                                        print("\nYou have used a ", game_items_roster[0], " to heal yourself!")
+                                                                        time.sleep(2)
+                                                                    else:
+                                                                        print("Wrong item was selected!\n\nYou have died as a result, you have no chance to try again.")
+                                                                        perm_die_counter = 1
+                                                                        break
+                                                            elif travel_result == "East":
+                                                                time.sleep(1)
+                                                                money_grant = random.randint(5,21)
+                                                                print("\nYou found" + money_grant + "dollars on the ground!")
+                                                                money += money_grant
+                                                                time.sleep(2)
+                                                                print("\nMoney you currently have: ", money)
+                                                                time.sleep(2)
+                                                                rng_trap = random.randint(1,4)
+                                                                if rng_trap > 0 and rng_trap <= 3:
+                                                                    print(trap_passed_msg)
+                                                                    time.sleep(3)
+                                                                    win_result = win()
+                                                                    win_counter = 1
+                                                                    if win_result == "Menu":
+                                                                        break
+                                                                elif rng_trap == 4:
+                                                                    print(trap_wasted_msg)
+                                                                    time.sleep(5)
+                                                                    item_result = item_selector()
+                                                                    if item_result == game_items_roster[0]:
+                                                                        print("\nYou have used a ", game_items_roster[0], " to heal yourself!")
+                                                                        time.sleep(2)
+                                                                    else:
+                                                                        print("Wrong item was selected!\n\nYou have died as a result, you have no chance to try again.")
+                                                                        perm_die_counter = 1
+                                                                        break
+                                                            elif travel_result == "West":
+                                                                time.sleep(1)
+                                                                money_grant = random.randint(7,13)
+                                                                print("\nYou found" + money_grant + "dollars on the ground!")
+                                                                money += money_grant
+                                                                time.sleep(2)
+                                                                print("\nMoney you currently have: ", money)
+                                                                time.sleep(2)
+                                                                rng_trap = random.randint(1,4)
+                                                                if rng_trap > 0 and rng_trap <= 3:
+                                                                    print(trap_passed_msg)
+                                                                    time.sleep(3)
+                                                                    win_result = win()
+                                                                    win_counter = 1
+                                                                    if win_result == "Menu":
+                                                                        break
+                                                                elif rng_trap == 4:
+                                                                    print(trap_wasted_msg)
+                                                                    time.sleep(5)
+                                                                    item_result = item_selector()
+                                                                    if item_result == game_items_roster[0]:
+                                                                        print("\nYou have used a ", game_items_roster[0], " to heal yourself!")
+                                                                        time.sleep(2)
+                                                                    else:
+                                                                        print("Wrong item was selected!\n\nYou have died as a result, you have no chance to try again.")
+                                                                        perm_die_counter = 1
+                                                                        break
+                                                        elif rng_trap == 4:
+                                                            print(trap_wasted_msg)
+                                                            time.sleep(5)
+                                                            item_result = item_selector()
+                                                            if item_result == game_items_roster[0]:
+                                                                print("\nYou have used a ", game_items_roster[0], " to heal yourself!")
+                                                                time.sleep(2)
+                                                            else:
+                                                                print("Wrong item was selected!\n\nYou have died as a result, you have no chance to try again.")
+                                                                perm_die_counter = 1
+                                                                break
                                                 elif rng_trap == 4:
                                                     print(trap_wasted_msg)
                                                     time.sleep(5)
@@ -539,13 +1538,13 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                         print("Wrong item was selected!\n\nYou have died as a result, you have no chance to try again.")
                                                         perm_die_counter = 1
                                                         break
-                                            elif travel_result == "South":
+                                            elif travel_result == "South": #----Main South----
                                                 print(wall_walk_msg)
                                                 time.sleep(10)
-                                            elif travel_result == "East":
+                                            elif travel_result == "East": #----Main East----
                                                 print(wall_walk_msg)
                                                 time.sleep(10)
-                                            elif travel_result == "West":
+                                            elif travel_result == "West": #----Main West----
                                                 print(wall_walk_msg)
                                                 time.sleep(10)
                                             else:
@@ -555,7 +1554,7 @@ while True: #----This while loop will keep the game alive & run until is told to
                                         cell = 1
                                         time.sleep(2)
                                         break
-                        elif hallway_number == 2:
+                        elif hallway_number == 2: #----Don't pass----
                             print(hallway_msg_1 + "South" + hallway_msg_2)
                             time.sleep(6)
                             #----AMR or Dale, please work on the second outcome of the adventure from this statement and must be its own code and not a copy of previous code.----
