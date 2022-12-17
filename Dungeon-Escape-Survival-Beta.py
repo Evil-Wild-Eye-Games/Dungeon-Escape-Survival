@@ -986,7 +986,7 @@ while True: #----This while loop will keep the game alive & run until is told to
                                         cell = 1
                                         time.sleep(2)
                                         break
-                                if continue_key == 1: #----Don't pass----
+                                if continue_key == 1: 
                                     time.sleep(2)
                                     resultchase = someone_is_coming_for_you()
                                     continue_key = 0
@@ -1554,7 +1554,7 @@ while True: #----This while loop will keep the game alive & run until is told to
                                         cell = 1
                                         time.sleep(2)
                                         break
-                        elif hallway_number == 2: #----Don't pass----
+                        elif hallway_number == 2:
                             print(hallway_msg_1 + "South" + hallway_msg_2)
                             time.sleep(6)
                             #----AMR or Dale, please work on the second outcome of the adventure from this statement and must be its own code and not a copy of previous code.----
