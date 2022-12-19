@@ -2,7 +2,7 @@ import time, random, webbrowser
 #----Above this line is our imports.----
 
 groupname = "\nEvil Wild Eye Games\n"
-gamebuild = "\nCurrent Build: B-0.1.27\n\nBuild Date: 12/16/2022"
+gamebuild = "\nCurrent Build: B-0.1.32\n\nBuild Date: 12/19/2022"
 debug = False
 debug_enabled_msg = "\nDebugging Tools are Enabled."
 debug_disabled_msg = "\nDebugging Tools are Disabled."
@@ -69,7 +69,34 @@ item_slot_2_msg = " exists: "
 #----End of Beginning Variables----
 
 def credits():
-    print("\nCredits are coming soon! But thanks to you our game will be better on release due to you're feedback!")
+    print("")
+    time.sleep(0.7)
+    print("----------------------------------------------------------------------")
+    time.sleep(0.7)
+    print("")
+    time.sleep(0.7)
+    print("                          Dungeon Escape Survival                     ")
+    time.sleep(0.7)
+    print("")
+    time.sleep(0.7)
+    print("                       Created By: Evil Wild Eye Games                ")
+    time.sleep(0.7)
+    print("")
+    time.sleep(0.7)
+    print("                   Project Lead & Lead Programmer: Damien             ")
+    time.sleep(0.7)
+    print("")
+    time.sleep(0.7)
+    print("                           Artist & Story: Dale                       ")
+    time.sleep(0.7)
+    print("")
+    time.sleep(0.7)
+    print("                            Programmer: Amr                           ")
+    time.sleep(0.7)
+    print("")
+    time.sleep(0.7)
+    print("----------------------------------------------------------------------")
+    time.sleep(0.7)
 def item_selector():
     global game_items_roster, player_inventory
     while True:
