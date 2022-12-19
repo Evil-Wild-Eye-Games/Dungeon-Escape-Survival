@@ -24,7 +24,7 @@ money = random.randint (400,9999) #----The player will recive a random amunt of 
 player_inventory = [] #----This will contain the player inventory, items will be added or removed throughout the game----
 #----Player related variables----
 
-storelist = ["Healing Potion", "Speed Potion"] #----This will contain items that our player will purchase to help them on their journey. Items in this list are placeholders for now.----
+storelist = ["Healing Potion", "Speed Potion"] #----This will contain items that our player will purchase to help them on their journey.----
 store_total_items_counter = 0 #----This value is set to 0 until items are purchased from the shop by the player----
 store_purchase_history = [] #----Stores the players purchase history in the game----
 slot_0 = 0 #----Set to 0 until this item is bought----
