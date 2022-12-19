@@ -2,7 +2,7 @@ import time, random, webbrowser
 #----Above this line is our imports.----
 
 groupname = "\nEvil Wild Eye Games\n"
-gamebuild = "\nCurrent Build: B-0.1.34\n\nBuild Date: 12/19/2022"
+gamebuild = "\nCurrent Build: B-0.1.35\n\nBuild Date: 12/19/2022"
 debug = False
 debug_enabled_msg = "\nDebugging Tools are Enabled."
 debug_disabled_msg = "\nDebugging Tools are Disabled."
@@ -22,9 +22,6 @@ hallway_lock = False
 
 money = random.randint (400,9999) #----The player will recive a random amunt of gold that is specified in the range. The gold will be used to buy various items in the game to help the player along their adventures.
 player_inventory = [] #----This will contain the player inventory, items will be added or removed throughout the game----
-player_objectives = ["Find the store", "Purchase a potion from the store"] #----Contains Objectives for the player to complete----
-player_completed_objectives = []
-player_completed_objective_statement = "has been completed!"
 #----Player related variables----
 
 storelist = ["Healing Potion", "Speed Potion"] #----This will contain items that our player will purchase to help them on their journey. Items in this list are placeholders for now.----
