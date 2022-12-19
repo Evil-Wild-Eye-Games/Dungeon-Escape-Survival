@@ -2,7 +2,7 @@ import time, random, webbrowser
 #----Above this line is our imports.----
 
 groupname = "\nEvil Wild Eye Games\n"
-gamebuild = "\nCurrent Build: B-0.1.32\n\nBuild Date: 12/19/2022"
+gamebuild = "\nCurrent Build: B-0.1.34\n\nBuild Date: 12/19/2022"
 debug = False
 debug_enabled_msg = "\nDebugging Tools are Enabled."
 debug_disabled_msg = "\nDebugging Tools are Disabled."
@@ -469,7 +469,7 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                     if travel_result == "North":
                                                         time.sleep(1)
                                                         money_grant = random.randint(2,8)
-                                                        print("\nYou found" + money_grant + "dollars on the ground!")
+                                                        print("\nYou found ", money_grant, " dollars on the ground!")
                                                         money += money_grant
                                                         time.sleep(2)
                                                         print("\nMoney you currently have: ", money)
@@ -486,7 +486,7 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                                 if travel_result == "North":
                                                                     time.sleep(1)
                                                                     money_grant = random.randint(2,8)
-                                                                    print("\nYou found" + money_grant + "dollars on the ground!")
+                                                                    print("\nYou found ", money_grant, " dollars on the ground!")
                                                                     money += money_grant
                                                                     time.sleep(2)
                                                                     print("\nMoney you currently have: ", money)
@@ -513,7 +513,7 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                                 elif travel_result == "South":
                                                                     time.sleep(1)
                                                                     money_grant = random.randint(6,24)
-                                                                    print("\nYou found" + money_grant + "dollars on the ground!")
+                                                                    print("\nYou found ", money_grant, " dollars on the ground!")
                                                                     money += money_grant
                                                                     time.sleep(2)
                                                                     print("\nMoney you currently have: ", money)
@@ -536,7 +536,7 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                                 elif travel_result == "East":
                                                                     time.sleep(1)
                                                                     money_grant = random.randint(5,21)
-                                                                    print("\nYou found" + money_grant + "dollars on the ground!")
+                                                                    print("\nYou found ", money_grant, " dollars on the ground!")
                                                                     money += money_grant
                                                                     time.sleep(2)
                                                                     print("\nMoney you currently have: ", money)
@@ -559,7 +559,7 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                                 elif travel_result == "West":
                                                                     time.sleep(1)
                                                                     money_grant = random.randint(7,13)
-                                                                    print("\nYou found" + money_grant + "dollars on the ground!")
+                                                                    print("\nYou found ", money_grant, " dollars on the ground!")
                                                                     money += money_grant
                                                                     time.sleep(2)
                                                                     print("\nMoney you currently have: ", money)
@@ -608,7 +608,7 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                     elif travel_result == "South":
                                                         time.sleep(1)
                                                         money_grant = random.randint(6,24)
-                                                        print("\nYou found" + money_grant + "dollars on the ground!")
+                                                        print("\nYou found ", money_grant, " dollars on the ground!")
                                                         money += money_grant
                                                         time.sleep(2)
                                                         print("\nMoney you currently have: ", money)
@@ -620,7 +620,7 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                             if travel_result == "North":
                                                                     time.sleep(1)
                                                                     money_grant = random.randint(2,8)
-                                                                    print("\nYou found" + money_grant + "dollars on the ground!")
+                                                                    print("\nYou found ", money_grant, " dollars on the ground!")
                                                                     money += money_grant
                                                                     time.sleep(2)
                                                                     print("\nMoney you currently have: ", money)
@@ -647,7 +647,7 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                             elif travel_result == "South":
                                                                 time.sleep(1)
                                                                 money_grant = random.randint(6,24)
-                                                                print("\nYou found" + money_grant + "dollars on the ground!")
+                                                                print("\nYou found ", money_grant, " dollars on the ground!")
                                                                 money += money_grant
                                                                 time.sleep(2)
                                                                 print("\nMoney you currently have: ", money)
@@ -670,7 +670,7 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                                 elif travel_result == "East":
                                                                     time.sleep(1)
                                                                     money_grant = random.randint(5,21)
-                                                                    print("\nYou found" + money_grant + "dollars on the ground!")
+                                                                    print("\nYou found ", money_grant, " dollars on the ground!")
                                                                     money += money_grant
                                                                     time.sleep(2)
                                                                     print("\nMoney you currently have: ", money)
@@ -697,7 +697,7 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                                 elif travel_result == "West":
                                                                     time.sleep(1)
                                                                     money_grant = random.randint(7,13)
-                                                                    print("\nYou found" + money_grant + "dollars on the ground!")
+                                                                    print("\nYou found ", money_grant, " dollars on the ground!")
                                                                     money += money_grant
                                                                     time.sleep(2)
                                                                     print("\nMoney you currently have: ", money)
@@ -731,7 +731,7 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                     elif travel_result == "East":
                                                         time.sleep(1)
                                                         money_grant = random.randint(5,21)
-                                                        print("\nYou found" + money_grant + "dollars on the ground!")
+                                                        print("\nYou found ", money_grant, " dollars on the ground!")
                                                         money += money_grant
                                                         time.sleep(2)
                                                         print("\nMoney you currently have: ", money)
@@ -743,7 +743,7 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                             if travel_result == "North":
                                                                     time.sleep(1)
                                                                     money_grant = random.randint(2,8)
-                                                                    print("\nYou found" + money_grant + "dollars on the ground!")
+                                                                    print("\nYou found ", money_grant, " dollars on the ground!")
                                                                     money += money_grant
                                                                     time.sleep(2)
                                                                     print("\nMoney you currently have: ", money)
@@ -770,7 +770,7 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                             elif travel_result == "South":
                                                                 time.sleep(1)
                                                                 money_grant = random.randint(6,24)
-                                                                print("\nYou found" + money_grant + "dollars on the ground!")
+                                                                print("\nYou found ", money_grant, " dollars on the ground!")
                                                                 money += money_grant
                                                                 time.sleep(2)
                                                                 print("\nMoney you currently have: ", money)
@@ -793,7 +793,7 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                                 elif travel_result == "East":
                                                                     time.sleep(1)
                                                                     money_grant = random.randint(5,21)
-                                                                    print("\nYou found" + money_grant + "dollars on the ground!")
+                                                                    print("\nYou found ", money_grant, " dollars on the ground!")
                                                                     money += money_grant
                                                                     time.sleep(2)
                                                                     print("\nMoney you currently have: ", money)
@@ -820,7 +820,7 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                                 elif travel_result == "West":
                                                                     time.sleep(1)
                                                                     money_grant = random.randint(7,13)
-                                                                    print("\nYou found" + money_grant + "dollars on the ground!")
+                                                                    print("\nYou found ", money_grant, " dollars on the ground!")
                                                                     money += money_grant
                                                                     time.sleep(2)
                                                                     print("\nMoney you currently have: ", money)
@@ -858,7 +858,7 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                     elif travel_result == "West":
                                                         time.sleep(1)
                                                         money_grant = random.randint(7,13)
-                                                        print("\nYou found" + money_grant + "dollars on the ground!")
+                                                        print("\nYou found ", money_grant, " dollars on the ground!")
                                                         money += money_grant
                                                         time.sleep(2)
                                                         print("\nMoney you currently have: ", money)
@@ -870,7 +870,7 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                             if travel_result == "North":
                                                                     time.sleep(1)
                                                                     money_grant = random.randint(2,8)
-                                                                    print("\nYou found" + money_grant + "dollars on the ground!")
+                                                                    print("\nYou found ", money_grant, " dollars on the ground!")
                                                                     money += money_grant
                                                                     time.sleep(2)
                                                                     print("\nMoney you currently have: ", money)
@@ -897,7 +897,7 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                             elif travel_result == "South":
                                                                 time.sleep(1)
                                                                 money_grant = random.randint(6,24)
-                                                                print("\nYou found" + money_grant + "dollars on the ground!")
+                                                                print("\nYou found ", money_grant, " dollars on the ground!")
                                                                 money += money_grant
                                                                 time.sleep(2)
                                                                 print("\nMoney you currently have: ", money)
@@ -924,7 +924,7 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                             elif travel_result == "East":
                                                                 time.sleep(1)
                                                                 money_grant = random.randint(5,21)
-                                                                print("\nYou found" + money_grant + "dollars on the ground!")
+                                                                print("\nYou found ", money_grant, " dollars on the ground!")
                                                                 money += money_grant
                                                                 time.sleep(2)
                                                                 print("\nMoney you currently have: ", money)
@@ -951,7 +951,7 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                             elif travel_result == "West":
                                                                 time.sleep(1)
                                                                 money_grant = random.randint(7,13)
-                                                                print("\nYou found" + money_grant + "dollars on the ground!")
+                                                                print("\nYou found ", money_grant, " dollars on the ground!")
                                                                 money += money_grant
                                                                 time.sleep(2)
                                                                 print("\nMoney you currently have: ", money)
@@ -1037,7 +1037,7 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                     if travel_result == "North":
                                                         time.sleep(1)
                                                         money_grant = random.randint(2,8)
-                                                        print("\nYou found" + money_grant + "dollars on the ground!")
+                                                        print("\nYou found ", money_grant, " dollars on the ground!")
                                                         money += money_grant
                                                         time.sleep(2)
                                                         print("\nMoney you currently have: ", money)
@@ -1054,7 +1054,7 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                                 if travel_result == "North":
                                                                     time.sleep(1)
                                                                     money_grant = random.randint(2,8)
-                                                                    print("\nYou found" + money_grant + "dollars on the ground!")
+                                                                    print("\nYou found ", money_grant, " dollars on the ground!")
                                                                     money += money_grant
                                                                     time.sleep(2)
                                                                     print("\nMoney you currently have: ", money)
@@ -1081,7 +1081,7 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                                 elif travel_result == "South":
                                                                     time.sleep(1)
                                                                     money_grant = random.randint(6,24)
-                                                                    print("\nYou found" + money_grant + "dollars on the ground!")
+                                                                    print("\nYou found ", money_grant, " dollars on the ground!")
                                                                     money += money_grant
                                                                     time.sleep(2)
                                                                     print("\nMoney you currently have: ", money)
@@ -1104,7 +1104,7 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                                 elif travel_result == "East":
                                                                     time.sleep(1)
                                                                     money_grant = random.randint(5,21)
-                                                                    print("\nYou found" + money_grant + "dollars on the ground!")
+                                                                    print("\nYou found ", money_grant, " dollars on the ground!")
                                                                     money += money_grant
                                                                     time.sleep(2)
                                                                     print("\nMoney you currently have: ", money)
@@ -1127,7 +1127,7 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                                 elif travel_result == "West":
                                                                     time.sleep(1)
                                                                     money_grant = random.randint(7,13)
-                                                                    print("\nYou found" + money_grant + "dollars on the ground!")
+                                                                    print("\nYou found ", money_grant, " dollars on the ground!")
                                                                     money += money_grant
                                                                     time.sleep(2)
                                                                     print("\nMoney you currently have: ", money)
@@ -1176,7 +1176,7 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                     elif travel_result == "South":
                                                         time.sleep(1)
                                                         money_grant = random.randint(6,24)
-                                                        print("\nYou found" + money_grant + "dollars on the ground!")
+                                                        print("\nYou found ", money_grant, " dollars on the ground!")
                                                         money += money_grant
                                                         time.sleep(2)
                                                         print("\nMoney you currently have: ", money)
@@ -1188,7 +1188,7 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                             if travel_result == "North":
                                                                     time.sleep(1)
                                                                     money_grant = random.randint(2,8)
-                                                                    print("\nYou found" + money_grant + "dollars on the ground!")
+                                                                    print("\nYou found ", money_grant, " dollars on the ground!")
                                                                     money += money_grant
                                                                     time.sleep(2)
                                                                     print("\nMoney you currently have: ", money)
@@ -1215,7 +1215,7 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                             elif travel_result == "South":
                                                                 time.sleep(1)
                                                                 money_grant = random.randint(6,24)
-                                                                print("\nYou found" + money_grant + "dollars on the ground!")
+                                                                print("\nYou found ", money_grant, " dollars on the ground!")
                                                                 money += money_grant
                                                                 time.sleep(2)
                                                                 print("\nMoney you currently have: ", money)
@@ -1238,7 +1238,7 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                                 elif travel_result == "East":
                                                                     time.sleep(1)
                                                                     money_grant = random.randint(5,21)
-                                                                    print("\nYou found" + money_grant + "dollars on the ground!")
+                                                                    print("\nYou found ", money_grant, " dollars on the ground!")
                                                                     money += money_grant
                                                                     time.sleep(2)
                                                                     print("\nMoney you currently have: ", money)
@@ -1265,7 +1265,7 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                                 elif travel_result == "West":
                                                                     time.sleep(1)
                                                                     money_grant = random.randint(7,13)
-                                                                    print("\nYou found" + money_grant + "dollars on the ground!")
+                                                                    print("\nYou found ", money_grant, " dollars on the ground!")
                                                                     money += money_grant
                                                                     time.sleep(2)
                                                                     print("\nMoney you currently have: ", money)
@@ -1299,7 +1299,7 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                     elif travel_result == "East":
                                                         time.sleep(1)
                                                         money_grant = random.randint(5,21)
-                                                        print("\nYou found" + money_grant + "dollars on the ground!")
+                                                        print("\nYou found ", money_grant, " dollars on the ground!")
                                                         money += money_grant
                                                         time.sleep(2)
                                                         print("\nMoney you currently have: ", money)
@@ -1311,7 +1311,7 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                             if travel_result == "North":
                                                                     time.sleep(1)
                                                                     money_grant = random.randint(2,8)
-                                                                    print("\nYou found" + money_grant + "dollars on the ground!")
+                                                                    print("\nYou found ", money_grant, " dollars on the ground!")
                                                                     money += money_grant
                                                                     time.sleep(2)
                                                                     print("\nMoney you currently have: ", money)
@@ -1338,7 +1338,7 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                             elif travel_result == "South":
                                                                 time.sleep(1)
                                                                 money_grant = random.randint(6,24)
-                                                                print("\nYou found" + money_grant + "dollars on the ground!")
+                                                                print("\nYou found ", money_grant, " dollars on the ground!")
                                                                 money += money_grant
                                                                 time.sleep(2)
                                                                 print("\nMoney you currently have: ", money)
@@ -1361,7 +1361,7 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                                 elif travel_result == "East":
                                                                     time.sleep(1)
                                                                     money_grant = random.randint(5,21)
-                                                                    print("\nYou found" + money_grant + "dollars on the ground!")
+                                                                    print("\nYou found ", money_grant, " dollars on the ground!")
                                                                     money += money_grant
                                                                     time.sleep(2)
                                                                     print("\nMoney you currently have: ", money)
@@ -1388,7 +1388,7 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                                 elif travel_result == "West":
                                                                     time.sleep(1)
                                                                     money_grant = random.randint(7,13)
-                                                                    print("\nYou found" + money_grant + "dollars on the ground!")
+                                                                    print("\nYou found ", money_grant, " dollars on the ground!")
                                                                     money += money_grant
                                                                     time.sleep(2)
                                                                     print("\nMoney you currently have: ", money)
@@ -1426,7 +1426,7 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                     elif travel_result == "West":
                                                         time.sleep(1)
                                                         money_grant = random.randint(7,13)
-                                                        print("\nYou found" + money_grant + "dollars on the ground!")
+                                                        print("\nYou found ", money_grant, " dollars on the ground!")
                                                         money += money_grant
                                                         time.sleep(2)
                                                         print("\nMoney you currently have: ", money)
@@ -1438,7 +1438,7 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                             if travel_result == "North":
                                                                     time.sleep(1)
                                                                     money_grant = random.randint(2,8)
-                                                                    print("\nYou found" + money_grant + "dollars on the ground!")
+                                                                    print("\nYou found ", money_grant, " dollars on the ground!")
                                                                     money += money_grant
                                                                     time.sleep(2)
                                                                     print("\nMoney you currently have: ", money)
@@ -1465,7 +1465,7 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                             elif travel_result == "South":
                                                                 time.sleep(1)
                                                                 money_grant = random.randint(6,24)
-                                                                print("\nYou found" + money_grant + "dollars on the ground!")
+                                                                print("\nYou found ", money_grant, " dollars on the ground!")
                                                                 money += money_grant
                                                                 time.sleep(2)
                                                                 print("\nMoney you currently have: ", money)
@@ -1492,7 +1492,7 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                             elif travel_result == "East":
                                                                 time.sleep(1)
                                                                 money_grant = random.randint(5,21)
-                                                                print("\nYou found" + money_grant + "dollars on the ground!")
+                                                                print("\nYou found ", money_grant, " dollars on the ground!")
                                                                 money += money_grant
                                                                 time.sleep(2)
                                                                 print("\nMoney you currently have: ", money)
@@ -1519,7 +1519,7 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                             elif travel_result == "West":
                                                                 time.sleep(1)
                                                                 money_grant = random.randint(7,13)
-                                                                print("\nYou found" + money_grant + "dollars on the ground!")
+                                                                print("\nYou found ", money_grant, " dollars on the ground!")
                                                                 money += money_grant
                                                                 time.sleep(2)
                                                                 print("\nMoney you currently have: ", money)
