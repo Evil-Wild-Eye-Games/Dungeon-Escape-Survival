@@ -2,7 +2,7 @@ import time, random, webbrowser
 #----Above this line is our imports.----
 
 groupname = "\nEvil Wild Eye Games\n"
-gamebuild = "\nCurrent Build: B-0.1.35\n\nBuild Date: 12/19/2022"
+gamebuild = "\nCurrent Build: B-0.1.37\n\nBuild Date: 12/20/2022"
 debug = False
 debug_enabled_msg = "\nDebugging Tools are Enabled."
 debug_disabled_msg = "\nDebugging Tools are Disabled."
