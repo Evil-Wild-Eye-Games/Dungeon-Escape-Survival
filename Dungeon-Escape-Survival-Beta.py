@@ -2,7 +2,7 @@ import time, random, webbrowser
 #----Above this line is our imports.----
 
 groupname = "\nEvil Wild Eye Games\n"
-gamebuild = "\nCurrent Build: B-0.1.37\n\nBuild Date: 12/20/2022"
+gamebuild = "\nCurrent Build: B-0.1.38\n\nBuild Date: 12/20/2022"
 debug = False
 debug_enabled_msg = "\nDebugging Tools are Enabled."
 debug_disabled_msg = "\nDebugging Tools are Disabled."
@@ -282,6 +282,102 @@ def someone_is_coming_for_you():
         else:
             print(unreconized_statement)
             time.sleep(2)
+def door():
+    print("""@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@J^^J@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@GGG~  ~GGG@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@YJJJJJJJJJ          JJJJJJJJJY@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@G!!! .!!!!!!!!7~      ~7!!!!!!!!. !!!G@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@BBBBB#7:~^.!??JYYYYYYYYY7      7YYYYYYYYYJ??!.^~:7#BBBBB@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@P? :^^^^^^JJJYYYYYYYYYYYYY7      7YYYYYYYYYYYYYJJJ^^^^^^: ?P@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@57 .!?YYYYYYYYYYYYYYYYYYYYYY7      7YYYYYYYYYYYYYYYYYYYYYY?!. 75@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@&P^. 7?YYYYYYYYYYYYYYYYYYYYYYYY7      7YYYYYYYYYYYYYYYYYYYYYYYY?7 .^P&@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@&^..7JYYYYYYYYYYYYYYYYYYYYYYYYYY7      7YYYYYYYYYYYYYYYYYYYYYYYYYYJ7..^&@@@@@@@@@@@@@@
+@@@@@@@@@@@#Y5Y ^YYYYYYYYYYYYYYYYYYYYYYYYYYYJ7^      ^7JYYYYYYYYYYYYYYYYYYYYYYYYYYY^ Y5Y#@@@@@@@@@@@
+@@@@@@@@@@@5    ^YYYYYYYYYYYYYYYYYYYYYYYYYYYJ          JYYYYYYYYYYYYYYYYYYYYYYYYYYY^    5@@@@@@@@@@@
+@@@@@@@@@@@P:..7JYYYYYYYYYYYYYYYYYYYYYYYJ!...          ...!JYYYYYYYYYYYYYYYYYYYYYYYJ7..:P@@@@@@@@@@@
+@@@@@@@@@@@@@! JYYYYYYYYYYYYYYYYYYYYYYYJ^^:::          :::^^JYYYYYYYYYYYYYYYYYYYYYYYJ !@@@@@@@@@@@@@
+@@@@@@@@@@@@@! JYYYYYYYYYYYYYYYYYYYYYYYYYYYYY!^      ^!YYYYYYYYYYYYYYYYYYYYYYYYYYYYYJ !@@@@@@@@@@@@@
+@@@@@@@@@@@@@! JYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY7      7YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYJ !@@@@@@@@@@@@@
+@@@@@@@@@@@@@! JYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY7      7YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYJ !@@@@@@@@@@@@@
+@@@@@@@@@@@@@! JYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY7      7YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYJ !@@@@@@@@@@@@@
+@@@@@@@@@@@@@! JYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY7      7YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYJ !@@@@@@@@@@@@@
+@@@@@@@@@@@@@! JYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY7      7YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYJ !@@@@@@@@@@@@@
+@@@@@@@@@@@@@! JYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY7      7YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYJ !@@@@@@@@@@@@@
+@@@@@@@@@@@@@! JYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY7      7YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYJ !@@@@@@@@@@@@@
+@@@@@@@@@@@@@! JYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY7      7YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYJ !@@@@@@@@@@@@@
+@@@@@@@@@@@@@! JYYYYYYYYYYYYYYYYYYYYYY55YYYYYY7      7YYYYYY55YYYYYYYYYYYYYYYYYYYYYYJ !@@@@@@@@@@@@@
+@@@@@@@@@@@@@! JYYYYYYYYYYYYYYYYYYJ?7~YPYYYYYY7      7YYYYYYPY~7?JYYYYYYYYYYYYYYYYYYJ !@@@@@@@@@@@@@
+@@@@@@@@@@@@@! JYYYYYYYYYYYYYYYYYYYPY^JPYYYYYY7      7YYYYYYPJ^YPYYYYYYYYYYYYYYYYYYYJ !@@@@@@@@@@@@@
+@@@@@@@@@@@@@! JYYYYYYYYYYYYYYYYYYYPJ^JPYYYYYY7      7YYYYYYPJ^JPYYYYYYYYYYYYYYYYYYYJ !@@@@@@@@@@@@@
+@@@@@@@@@@@@@! JYYYYYYYYYYYYYYYYYYYPJ^JPYYYYYY7      7YYYYYYPJ^JPYYYYYYYYYYYYYYYYYYYJ !@@@@@@@@@@@@@
+@@@@@@@@@@@@@! JYYYYYYYYYYYYYYYYYYYPY^JPYYYYYY7      7YYYYYYPJ^YPYYYYYYYYYYYYYYYYYYYJ !@@@@@@@@@@@@@
+@@@@@@@@@@@@@! JYYYYYYYYYYYYYYYYYYY?7~JPYYYYYY7      7YYYYYYPJ~7?YYYYYYYYYYYYYYYYYYYJ !@@@@@@@@@@@@@
+@@@@@@@@@@@@@! JYYYYYYYYYYYYYYYYYYYJJJYYYYYYYYJ?:  :?JYYYYYYYYJJJYYYYYYYYYYYYYYYYYYYJ !@@@@@@@@@@@@@
+@@@@@@@@@@@@@! JYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY^  ^YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYJ !@@@@@@@@@@@@@
+@@@@@@@@@@@@@! JYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY^  ^YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYJ !@@@@@@@@@@@@@
+@@@@@@@@@@@@@! JYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY^  ^YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYJ !@@@@@@@@@@@@@
+@@@@@@@@@@@@@! JYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY^  ^YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYJ !@@@@@@@@@@@@@
+@@@@@@@@@@@@@! JYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY^  ^YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYJ !@@@@@@@@@@@@@
+@@@@@@@@@@@@@! JYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY^  ^YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYJ !@@@@@@@@@@@@@
+@@@@@@@@@@@@@! JYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY^  ^YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYJ !@@@@@@@@@@@@@""")
+def spiked_trap():
+    print("""YYYYYYJJJYYYYYYJJYYYYYYYJJJYYYYYYYYJJYYYYYYYYYYYYYYYYYYYYYYYYYYJJYYYYYYYYJJJYYYYYYYJJYYYYYYJJJYYYYYY
+YYYYYYJJJYYYJJJJJJYYJJJJJJJJJJJJJJJJJJJJJJJJJJJYYYYYYJJJJJJJJJJJJJJJJJJJJJJJJJJJYYJJJJJJYYYJJJYYYYYY
+JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ
+YYYYYYYYJJYYYYYYYYJJJYYYYYJJJJYYYYYJJYYYYYYYYYYYJJJJYYYYYYYYYYYJJYYYYYJJJJYYYYYJJJYYYYYYYYJJYYYYYYYY
+JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ
+JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ
+JJJJJJJJJJYYYYYYYYYYYYYJJYYYYYYYYYYYYYYYJJYYYYYYYYYYYYYYYYJJYYYYYYYYYYYYYYYJJYYYYYYYYYYYYYJJJJJJJJJJ
+JJYYYYYYJJYYYYYYYYYYYJJJYYYYYYYYYYYYYYYYJJYYYYYYYYYYYYYYYYJJYYYYYYYYYYYYYYYYJJJYYYYYYYYYYYJJYYYYYYJJ
+JJJJJYYYJJJJJYYYYYYYYJJJYYYYYYJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJYYYYYYJJJYYYYYYYYJJJJJYYYJJJJJ
+JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ
+YYYYYYYYYYYJJJYYYYYYYYYYYYYYYYYJJJYYYYYYYYYYYYYYJJJJYYYYYYYYYYYYYYJJJYYYYYYYYYYYYYYYYYJJJYYYYYYYYYYY
+YYYYYYYYYYYJJJYYYYYYYYYYYYYYYYYJJJYYYYYYYYYYYYYYJJJJYYYYYYYYYYYYYYJJJYYYYYYYYYYYYYYYYYJJJYYYYYYYYYYY
+YYYYYYYYYYJJJYYYYYYYYYYYYYYYYYYJJJYYYYYYYYYYYYYYJJJJYYYYYYYYYYYYYYJJJYYYYYYYYYYYYYYYYYYJJJYYYYYYYYYY
+YYYYYYYYYYJJYYYYYYYYYYYYYYYYYYYJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJYYYYYYYYYYYYYYYYYYYJJYYYYYYYYYY
+YYYYYYYYYYJJYYYYYYYYYYYYYYYYYYJJYYYYYYJJYYYYYYYYYYYYYYYYYYYYJJYYYYYYJJYYYYYYYYYYYYYYYYYYJJYYYYYYYYYY
+JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJYYYYYYJJYYYYYYYYYYYYYYYYYYYYJJYYYYYYJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ
+JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJYYYYYYJJYYYYYYYYYYYYYYYYYYYYJJYYYYYYJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ
+YYYYYYYYYYYYYYYJJYYYYYYYYJJYYYJJYYYYYYJJJJJJJJJJJYYJJJJJJJJJJJYYYYYYJJYYYJJYYYYYYYYJJYYYYYYYYYYYYYYY
+YYYYYYYYYYYYYYJJJJJJJJJJJJJJJJJJYYYYYYJJYYYJJJJJJJJJJJJJJYYYJJYYYYYYJJJJJJJJJJJJJJJJJJYYYYYYYYYYYYYY
+YYJJJJJJJJJJJJJYYYYYYYYYYJJYYYJJJJJJJJJJYYYJJYYYYYYYYYYJJYYYJJJJJJJJJJYYYJJYYYYYYYYYYJJJJJJJJJJJJJYY
+JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJYYYYYYYYYYJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ
+YYYYYYYYYYYYYYJJJYYYYYYYYYYYYYYYYJJYYYYYYYYJJJJJJYYJJJJJJYYYYYYYYJJYYYYYYYYYYYYYYYYJJJYYYYYYYYYYYYYY
+YYYYYYYYYYYYYYYJJYYYYYYYYYYYYYYYYJJYYYYYYYYYYYJJJJJJJJYYYYYYYYYYYJJYYYYYYYYYYYYYYYYJJYYYYYYYYYYYYYYY
+YYYYYYYYJJJJJJJJJYYYYYYYYYYYYYYYYJJYYYYYYYYYYYYJJJJJJYYYYYYYYYYYYJJYYYYYYYYYYYYYYYYJJJJJJJJJYYYYYYYY
+JJJJJJJJJJJJJJJJYYYYYYYYYYYYYYYYYJJYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYJJYYYYYYYYYYYYYYYYYJJJJJJJJJJJJJJJJ
+YYYYYYYYYYYJJJJJJJJJJJJJYYYYYYYYYJJJYYYYYYYYYYYYYYYYYYYYYYYYYYYYJJJYYYYYYYYYJJJJJJJJJJJJJYYYYYYYYYYY
+YYYYYYYYYYYYYYYYYYYYYJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJYYYYYYYYYYYYYYYYYYYYY
+YYYYYYYYYYYYYYYYYYYYYJJJYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYJJJYYYYYYYYYYYYYYYYYYYYY
+JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJYYYYYYYYYYYYYYYYYYYYYYJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ
+YYYYYYYYYYYYYYYJJJJYYJJJYYYYYYYYYYYYJJJJJJJJYYYYYYYYYYYYJJJJJJJJYYYYYYYYYYYYJJJYYJJJJYYYYYYYYYYYYYYY
+YYYYYYYYYYYYYYYYYYYYYJJJYYYYYYYYYYYYYYYYYYJJJJJJJJJJJJJJJJYYYYYYYYYYYYYYYYYYJJJYYYYYYYYYYYYYYYYYYYYY
+JJJJJJJJJJJJJJJJJJYYYJJJJYYYYYYYYYYYYYYYYYYYJJJJJJJJJJJJYYYYYYYYYYYYYYYYYYYJJJJYYYJJJJJJJJJJJJJJJJJJ
+YYYYYYYYYYYYYYYYYYJJJJJJYJJJJJJJYYYYYYYYYYYYYYJJJJJJJJYYYYYYYYYYYYYYJJJJJJJYJJJJJJYYYYYYYYYYYYYYYYYY
+YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYJJJJJJJJJJJJJJJJJJYYYYJJJJJJJJJJJJJJJJJJYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
+YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYJJYYYJJJJJJJJJJYYYYYYYYYYJJJJJJJJJJYYYJJYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
+YYYYYYYYYYYYYYYYYYYYYYYYYYYYJJJJJYYYYYYYYYYYYYYY~::~YYYYYYYYYYYYYYYJJJJJYYYYYYYYYYYYYYYYYYYYYYYYYYYY
+YYYYYYYYYYYYYYYYYYYYYYYJJJJJJJYJ7JJJJJJYYYYYYYYY^  ^YYYYYYYYYJJJJJJ7JYJJJJJJJYYYYYYYYYYYYYYYYYYYYYYY
+JJJJJJJJJJJJJJJJJJJJJJJJJYYYYYY7 7YYYJJJJJJJJJJY^  ^YJJJJJJJJJJYYY7 7YYYYYYJJJJJJJJJJJJJJJJJJJJJJJJJ
+YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY7 7YYYYYYYYYYYYYY^  ^YYYYYYYYYYYYYY7 7YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
+YYYYYJJYYYYYY~:JYYYYYYYJJYYYYYY7 7YYYY~:JYYYYYYY^  ^YYYYYYYJ:~YYYY7 7YYYYYYJJYYYYYYYJ:~YYYYYYJJYYYYY
+YYYYJ.^YYYYYY^ JYYYYJJY^.JYJYYY7 7YYYY^ JYYYYYYY^  ^YYYYYYYJ ^YYYY7 7YYYJYJ.^YJJYYYYJ ^YYYYYY^.JYYYY
+JJJJJ ^YJJJJY^ JJJJJJJY^ JJJJJY7 7YJJY^ JYYYYYYY^  ^YYYYYYYJ ^YJJY7 7YJJJJJ ^YJJJJJJJ ^YJJJJY^ JJJJJ
+JJJYJ ^YJJJJY^ JYJJJYYY^ JYJJJY7 7YJJJ^ JJJJJJJJ^  ^JJJJJJJJ ^JJJY7 7YJJJYJ ^YYYJJJYJ ^YJJJJY^ JYJJJ
+YYYYJ ^YYYYYY^ JYYYYYYY^ JYYYYY7 7YYYY^ JYYYYYYY^  ^YYYYYYYJ ^YYYY7 7YYYYYJ ^YYYYYYYJ ^YYYYYY^ JYYYY
+JJJYJ :YJJJJY: JYJJJJJY: JYJJJY7 7YJJY^ JYJJJJJY^  ^YJJJJJYJ ^YJJY7 7YJJJYJ :YJJJJJYJ :YJJJJY: JYJJJ
+GGGGGY5GGGGGG5YGGGGGGGG5YGGGGGBJ JBGGB~.PBGGGGGB~  ~BGGGGGBP.~BGGBJ JBGGGGGY5GGGGGGGGY5GGGGGG5YGGGGG
+&&&&&@@&&&&&&@@&&&&&&&&@@&&&&&@#P#@&&@BG&@&&&&&@!  !@&&&&&@&GB@&&@#P#@&&&&&@@&&&&&&&&@@&&&&&&@@&&&&&""")
 #----End Functions----
 print("""????????????????????????????????????????????????????????????????????????????????????????????????????
 ????????????????????????????????????????????????????????????????????????????????????????????????????
@@ -382,6 +478,12 @@ while True: #----This while loop will keep the game alive & run until is told to
                     time.sleep(2)
                     print("\nAfter finding stairs and reaching the top of them, you find yourself seeing 4 different hallways but, which one will you take?")
                     time.sleep(4)
+                    print("")
+                    time.sleep(2)
+                    door()
+                    time.sleep(4)
+                    print("")
+                    time.sleep(1)
                     while True:
                         travel_result = travel() #----This will run the function and take returns if there are any----
                         if travel_result == "North":
@@ -458,6 +560,12 @@ while True: #----This while loop will keep the game alive & run until is told to
                                         while True:
                                             travel_result = travel() #----This will run the function and take returns if there are any----
                                             if travel_result == "North": #----Main North-----
+                                                print("")
+                                                time.sleep(2)
+                                                spiked_trap()
+                                                time.sleep(4)
+                                                print("")
+                                                time.sleep(1)
                                                 rng_trap = random.randint(1,4)
                                                 if rng_trap > 0 and rng_trap <= 3:
                                                     print(trap_passed_msg)
@@ -471,10 +579,22 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                         time.sleep(2)
                                                         print("\nMoney you currently have: ", money)
                                                         time.sleep(2)
+                                                        print("")
+                                                        time.sleep(2)
+                                                        spiked_trap()
+                                                        time.sleep(4)
+                                                        print("")
+                                                        time.sleep(1)
                                                         rng_trap = random.randint(1,4)
                                                         if rng_trap > 0 and rng_trap <= 3:
                                                             print(trap_passed_msg)
                                                             time.sleep(3)
+                                                            print("")
+                                                            time.sleep(2)
+                                                            spiked_trap()
+                                                            time.sleep(4)
+                                                            print("")
+                                                            time.sleep(1)
                                                             rng_trap = random.randint(1,4)
                                                             if rng_trap > 0 and rng_trap <= 3:
                                                                 print(trap_passed_msg)
@@ -488,6 +608,12 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                                     time.sleep(2)
                                                                     print("\nMoney you currently have: ", money)
                                                                     time.sleep(2)
+                                                                    print("")
+                                                                    time.sleep(2)
+                                                                    spiked_trap()
+                                                                    time.sleep(4)
+                                                                    print("")
+                                                                    time.sleep(1)
                                                                     rng_trap = random.randint(1,4)
                                                                     if rng_trap > 0 and rng_trap <= 3:
                                                                         print(trap_passed_msg)
@@ -515,6 +641,12 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                                     time.sleep(2)
                                                                     print("\nMoney you currently have: ", money)
                                                                     time.sleep(2)
+                                                                    print("")
+                                                                    time.sleep(2)
+                                                                    spiked_trap()
+                                                                    time.sleep(4)
+                                                                    print("")
+                                                                    time.sleep(1)
                                                                     rng_trap = random.randint(1,4)
                                                                     if rng_trap > 0 and rng_trap <= 3:
                                                                         print(trap_passed_msg)
@@ -538,6 +670,12 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                                     time.sleep(2)
                                                                     print("\nMoney you currently have: ", money)
                                                                     time.sleep(2)
+                                                                    print("")
+                                                                    time.sleep(2)
+                                                                    spiked_trap()
+                                                                    time.sleep(4)
+                                                                    print("")
+                                                                    time.sleep(1)
                                                                     rng_trap = random.randint(1,4)
                                                                     if rng_trap > 0 and rng_trap <= 3:
                                                                         print(trap_passed_msg)
@@ -561,6 +699,12 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                                     time.sleep(2)
                                                                     print("\nMoney you currently have: ", money)
                                                                     time.sleep(2)
+                                                                    print("")
+                                                                    time.sleep(2)
+                                                                    spiked_trap()
+                                                                    time.sleep(4)
+                                                                    print("")
+                                                                    time.sleep(1)
                                                                     rng_trap = random.randint(1,4)
                                                                     if rng_trap > 0 and rng_trap <= 3:
                                                                         print(trap_passed_msg)
@@ -610,6 +754,12 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                         time.sleep(2)
                                                         print("\nMoney you currently have: ", money)
                                                         time.sleep(2)
+                                                        print("")
+                                                        time.sleep(2)
+                                                        spiked_trap()
+                                                        time.sleep(4)
+                                                        print("")
+                                                        time.sleep(1)
                                                         rng_trap = random.randint(1,4)
                                                         if rng_trap > 0 and rng_trap <= 3:
                                                             print(trap_passed_msg)
@@ -622,6 +772,12 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                                     time.sleep(2)
                                                                     print("\nMoney you currently have: ", money)
                                                                     time.sleep(2)
+                                                                    print("")
+                                                                    time.sleep(2)
+                                                                    spiked_trap()
+                                                                    time.sleep(4)
+                                                                    print("")
+                                                                    time.sleep(1)
                                                                     rng_trap = random.randint(1,4)
                                                                     if rng_trap > 0 and rng_trap <= 3:
                                                                         print(trap_passed_msg)
@@ -649,6 +805,12 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                                 time.sleep(2)
                                                                 print("\nMoney you currently have: ", money)
                                                                 time.sleep(2)
+                                                                print("")
+                                                                time.sleep(2)
+                                                                spiked_trap()
+                                                                time.sleep(4)
+                                                                print("")
+                                                                time.sleep(1)
                                                                 rng_trap = random.randint(1,4)
                                                                 if rng_trap > 0 and rng_trap <= 3:
                                                                     print(trap_passed_msg)
@@ -672,6 +834,12 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                                     time.sleep(2)
                                                                     print("\nMoney you currently have: ", money)
                                                                     time.sleep(2)
+                                                                    print("")
+                                                                    time.sleep(2)
+                                                                    spiked_trap()
+                                                                    time.sleep(4)
+                                                                    print("")
+                                                                    time.sleep(1)
                                                                     rng_trap = random.randint(1,4)
                                                                     if rng_trap > 0 and rng_trap <= 3:
                                                                         print(trap_passed_msg)
@@ -699,6 +867,12 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                                     time.sleep(2)
                                                                     print("\nMoney you currently have: ", money)
                                                                     time.sleep(2)
+                                                                    print("")
+                                                                    time.sleep(2)
+                                                                    spiked_trap()
+                                                                    time.sleep(4)
+                                                                    print("")
+                                                                    time.sleep(1)
                                                                     rng_trap = random.randint(1,4)
                                                                     if rng_trap > 0 and rng_trap <= 3:
                                                                         print(trap_passed_msg)
@@ -733,6 +907,12 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                         time.sleep(2)
                                                         print("\nMoney you currently have: ", money)
                                                         time.sleep(2)
+                                                        print("")
+                                                        time.sleep(2)
+                                                        spiked_trap()
+                                                        time.sleep(4)
+                                                        print("")
+                                                        time.sleep(1)
                                                         rng_trap = random.randint(1,4)
                                                         if rng_trap > 0 and rng_trap <= 3:
                                                             print(trap_passed_msg)
@@ -745,6 +925,12 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                                     time.sleep(2)
                                                                     print("\nMoney you currently have: ", money)
                                                                     time.sleep(2)
+                                                                    print("")
+                                                                    time.sleep(2)
+                                                                    spiked_trap()
+                                                                    time.sleep(4)
+                                                                    print("")
+                                                                    time.sleep(1)
                                                                     rng_trap = random.randint(1,4)
                                                                     if rng_trap > 0 and rng_trap <= 3:
                                                                         print(trap_passed_msg)
@@ -772,6 +958,12 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                                 time.sleep(2)
                                                                 print("\nMoney you currently have: ", money)
                                                                 time.sleep(2)
+                                                                print("")
+                                                                time.sleep(2)
+                                                                spiked_trap()
+                                                                time.sleep(4)
+                                                                print("")
+                                                                time.sleep(1)
                                                                 rng_trap = random.randint(1,4)
                                                                 if rng_trap > 0 and rng_trap <= 3:
                                                                     print(trap_passed_msg)
@@ -795,6 +987,12 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                                     time.sleep(2)
                                                                     print("\nMoney you currently have: ", money)
                                                                     time.sleep(2)
+                                                                    print("")
+                                                                    time.sleep(2)
+                                                                    spiked_trap()
+                                                                    time.sleep(4)
+                                                                    print("")
+                                                                    time.sleep(1)
                                                                     rng_trap = random.randint(1,4)
                                                                     if rng_trap > 0 and rng_trap <= 3:
                                                                         print(trap_passed_msg)
@@ -822,6 +1020,12 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                                     time.sleep(2)
                                                                     print("\nMoney you currently have: ", money)
                                                                     time.sleep(2)
+                                                                    print("")
+                                                                    time.sleep(2)
+                                                                    spiked_trap()
+                                                                    time.sleep(4)
+                                                                    print("")
+                                                                    time.sleep(1)
                                                                     rng_trap = random.randint(1,4)
                                                                     if rng_trap > 0 and rng_trap <= 3:
                                                                         print(trap_passed_msg)
@@ -860,6 +1064,12 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                         time.sleep(2)
                                                         print("\nMoney you currently have: ", money)
                                                         time.sleep(2)
+                                                        print("")
+                                                        time.sleep(2)
+                                                        spiked_trap()
+                                                        time.sleep(4)
+                                                        print("")
+                                                        time.sleep(1)
                                                         rng_trap = random.randint(1,4)
                                                         if rng_trap > 0 and rng_trap <= 3:
                                                             print(trap_passed_msg)
@@ -899,6 +1109,12 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                                 time.sleep(2)
                                                                 print("\nMoney you currently have: ", money)
                                                                 time.sleep(2)
+                                                                print("")
+                                                                time.sleep(2)
+                                                                spiked_trap()
+                                                                time.sleep(4)
+                                                                print("")
+                                                                time.sleep(1)
                                                                 rng_trap = random.randint(1,4)
                                                                 if rng_trap > 0 and rng_trap <= 3:
                                                                     print(trap_passed_msg)
@@ -926,6 +1142,12 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                                 time.sleep(2)
                                                                 print("\nMoney you currently have: ", money)
                                                                 time.sleep(2)
+                                                                print("")
+                                                                time.sleep(2)
+                                                                spiked_trap()
+                                                                time.sleep(4)
+                                                                print("")
+                                                                time.sleep(1)
                                                                 rng_trap = random.randint(1,4)
                                                                 if rng_trap > 0 and rng_trap <= 3:
                                                                     print(trap_passed_msg)
@@ -953,6 +1175,12 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                                 time.sleep(2)
                                                                 print("\nMoney you currently have: ", money)
                                                                 time.sleep(2)
+                                                                print("")
+                                                                time.sleep(2)
+                                                                spiked_trap()
+                                                                time.sleep(4)
+                                                                print("")
+                                                                time.sleep(1)
                                                                 rng_trap = random.randint(1,4)
                                                                 if rng_trap > 0 and rng_trap <= 3:
                                                                     print(trap_passed_msg)
@@ -1026,6 +1254,12 @@ while True: #----This while loop will keep the game alive & run until is told to
                                         while True:
                                             travel_result = travel() #----This will run the function and take returns if there are any----
                                             if travel_result == "North": #----Main North-----
+                                                print("")
+                                                time.sleep(2)
+                                                spiked_trap()
+                                                time.sleep(4)
+                                                print("")
+                                                time.sleep(1)
                                                 rng_trap = random.randint(1,4)
                                                 if rng_trap > 0 and rng_trap <= 3:
                                                     print(trap_passed_msg)
@@ -1039,10 +1273,22 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                         time.sleep(2)
                                                         print("\nMoney you currently have: ", money)
                                                         time.sleep(2)
+                                                        print("")
+                                                        time.sleep(2)
+                                                        spiked_trap()
+                                                        time.sleep(4)
+                                                        print("")
+                                                        time.sleep(1)
                                                         rng_trap = random.randint(1,4)
                                                         if rng_trap > 0 and rng_trap <= 3:
                                                             print(trap_passed_msg)
                                                             time.sleep(3)
+                                                            print("")
+                                                            time.sleep(2)
+                                                            spiked_trap()
+                                                            time.sleep(4)
+                                                            print("")
+                                                            time.sleep(1)
                                                             rng_trap = random.randint(1,4)
                                                             if rng_trap > 0 and rng_trap <= 3:
                                                                 print(trap_passed_msg)
@@ -1056,6 +1302,12 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                                     time.sleep(2)
                                                                     print("\nMoney you currently have: ", money)
                                                                     time.sleep(2)
+                                                                    print("")
+                                                                    time.sleep(2)
+                                                                    spiked_trap()
+                                                                    time.sleep(4)
+                                                                    print("")
+                                                                    time.sleep(1)
                                                                     rng_trap = random.randint(1,4)
                                                                     if rng_trap > 0 and rng_trap <= 3:
                                                                         print(trap_passed_msg)
@@ -1083,6 +1335,12 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                                     time.sleep(2)
                                                                     print("\nMoney you currently have: ", money)
                                                                     time.sleep(2)
+                                                                    print("")
+                                                                    time.sleep(2)
+                                                                    spiked_trap()
+                                                                    time.sleep(4)
+                                                                    print("")
+                                                                    time.sleep(1)
                                                                     rng_trap = random.randint(1,4)
                                                                     if rng_trap > 0 and rng_trap <= 3:
                                                                         print(trap_passed_msg)
@@ -1106,6 +1364,12 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                                     time.sleep(2)
                                                                     print("\nMoney you currently have: ", money)
                                                                     time.sleep(2)
+                                                                    print("")
+                                                                    time.sleep(2)
+                                                                    spiked_trap()
+                                                                    time.sleep(4)
+                                                                    print("")
+                                                                    time.sleep(1)
                                                                     rng_trap = random.randint(1,4)
                                                                     if rng_trap > 0 and rng_trap <= 3:
                                                                         print(trap_passed_msg)
@@ -1129,6 +1393,12 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                                     time.sleep(2)
                                                                     print("\nMoney you currently have: ", money)
                                                                     time.sleep(2)
+                                                                    print("")
+                                                                    time.sleep(2)
+                                                                    spiked_trap()
+                                                                    time.sleep(4)
+                                                                    print("")
+                                                                    time.sleep(1)
                                                                     rng_trap = random.randint(1,4)
                                                                     if rng_trap > 0 and rng_trap <= 3:
                                                                         print(trap_passed_msg)
@@ -1178,6 +1448,12 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                         time.sleep(2)
                                                         print("\nMoney you currently have: ", money)
                                                         time.sleep(2)
+                                                        print("")
+                                                        time.sleep(2)
+                                                        spiked_trap()
+                                                        time.sleep(4)
+                                                        print("")
+                                                        time.sleep(1)
                                                         rng_trap = random.randint(1,4)
                                                         if rng_trap > 0 and rng_trap <= 3:
                                                             print(trap_passed_msg)
@@ -1190,6 +1466,12 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                                     time.sleep(2)
                                                                     print("\nMoney you currently have: ", money)
                                                                     time.sleep(2)
+                                                                    print("")
+                                                                    time.sleep(2)
+                                                                    spiked_trap()
+                                                                    time.sleep(4)
+                                                                    print("")
+                                                                    time.sleep(1)
                                                                     rng_trap = random.randint(1,4)
                                                                     if rng_trap > 0 and rng_trap <= 3:
                                                                         print(trap_passed_msg)
@@ -1217,6 +1499,12 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                                 time.sleep(2)
                                                                 print("\nMoney you currently have: ", money)
                                                                 time.sleep(2)
+                                                                print("")
+                                                                time.sleep(2)
+                                                                spiked_trap()
+                                                                time.sleep(4)
+                                                                print("")
+                                                                time.sleep(1)
                                                                 rng_trap = random.randint(1,4)
                                                                 if rng_trap > 0 and rng_trap <= 3:
                                                                     print(trap_passed_msg)
@@ -1240,6 +1528,12 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                                     time.sleep(2)
                                                                     print("\nMoney you currently have: ", money)
                                                                     time.sleep(2)
+                                                                    print("")
+                                                                    time.sleep(2)
+                                                                    spiked_trap()
+                                                                    time.sleep(4)
+                                                                    print("")
+                                                                    time.sleep(1)
                                                                     rng_trap = random.randint(1,4)
                                                                     if rng_trap > 0 and rng_trap <= 3:
                                                                         print(trap_passed_msg)
@@ -1267,6 +1561,12 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                                     time.sleep(2)
                                                                     print("\nMoney you currently have: ", money)
                                                                     time.sleep(2)
+                                                                    print("")
+                                                                    time.sleep(2)
+                                                                    spiked_trap()
+                                                                    time.sleep(4)
+                                                                    print("")
+                                                                    time.sleep(1)
                                                                     rng_trap = random.randint(1,4)
                                                                     if rng_trap > 0 and rng_trap <= 3:
                                                                         print(trap_passed_msg)
@@ -1301,6 +1601,12 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                         time.sleep(2)
                                                         print("\nMoney you currently have: ", money)
                                                         time.sleep(2)
+                                                        print("")
+                                                        time.sleep(2)
+                                                        spiked_trap()
+                                                        time.sleep(4)
+                                                        print("")
+                                                        time.sleep(1)
                                                         rng_trap = random.randint(1,4)
                                                         if rng_trap > 0 and rng_trap <= 3:
                                                             print(trap_passed_msg)
@@ -1313,6 +1619,12 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                                     time.sleep(2)
                                                                     print("\nMoney you currently have: ", money)
                                                                     time.sleep(2)
+                                                                    print("")
+                                                                    time.sleep(2)
+                                                                    spiked_trap()
+                                                                    time.sleep(4)
+                                                                    print("")
+                                                                    time.sleep(1)
                                                                     rng_trap = random.randint(1,4)
                                                                     if rng_trap > 0 and rng_trap <= 3:
                                                                         print(trap_passed_msg)
@@ -1340,6 +1652,12 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                                 time.sleep(2)
                                                                 print("\nMoney you currently have: ", money)
                                                                 time.sleep(2)
+                                                                print("")
+                                                                time.sleep(2)
+                                                                spiked_trap()
+                                                                time.sleep(4)
+                                                                print("")
+                                                                time.sleep(1)
                                                                 rng_trap = random.randint(1,4)
                                                                 if rng_trap > 0 and rng_trap <= 3:
                                                                     print(trap_passed_msg)
@@ -1363,6 +1681,12 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                                     time.sleep(2)
                                                                     print("\nMoney you currently have: ", money)
                                                                     time.sleep(2)
+                                                                    print("")
+                                                                    time.sleep(2)
+                                                                    spiked_trap()
+                                                                    time.sleep(4)
+                                                                    print("")
+                                                                    time.sleep(1)
                                                                     rng_trap = random.randint(1,4)
                                                                     if rng_trap > 0 and rng_trap <= 3:
                                                                         print(trap_passed_msg)
@@ -1390,6 +1714,12 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                                     time.sleep(2)
                                                                     print("\nMoney you currently have: ", money)
                                                                     time.sleep(2)
+                                                                    print("")
+                                                                    time.sleep(2)
+                                                                    spiked_trap()
+                                                                    time.sleep(4)
+                                                                    print("")
+                                                                    time.sleep(1)
                                                                     rng_trap = random.randint(1,4)
                                                                     if rng_trap > 0 and rng_trap <= 3:
                                                                         print(trap_passed_msg)
@@ -1428,6 +1758,12 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                         time.sleep(2)
                                                         print("\nMoney you currently have: ", money)
                                                         time.sleep(2)
+                                                        print("")
+                                                        time.sleep(2)
+                                                        spiked_trap()
+                                                        time.sleep(4)
+                                                        print("")
+                                                        time.sleep(1)
                                                         rng_trap = random.randint(1,4)
                                                         if rng_trap > 0 and rng_trap <= 3:
                                                             print(trap_passed_msg)
@@ -1467,6 +1803,12 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                                 time.sleep(2)
                                                                 print("\nMoney you currently have: ", money)
                                                                 time.sleep(2)
+                                                                print("")
+                                                                time.sleep(2)
+                                                                spiked_trap()
+                                                                time.sleep(4)
+                                                                print("")
+                                                                time.sleep(1)
                                                                 rng_trap = random.randint(1,4)
                                                                 if rng_trap > 0 and rng_trap <= 3:
                                                                     print(trap_passed_msg)
@@ -1494,6 +1836,12 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                                 time.sleep(2)
                                                                 print("\nMoney you currently have: ", money)
                                                                 time.sleep(2)
+                                                                print("")
+                                                                time.sleep(2)
+                                                                spiked_trap()
+                                                                time.sleep(4)
+                                                                print("")
+                                                                time.sleep(1)
                                                                 rng_trap = random.randint(1,4)
                                                                 if rng_trap > 0 and rng_trap <= 3:
                                                                     print(trap_passed_msg)
@@ -1521,6 +1869,12 @@ while True: #----This while loop will keep the game alive & run until is told to
                                                                 time.sleep(2)
                                                                 print("\nMoney you currently have: ", money)
                                                                 time.sleep(2)
+                                                                print("")
+                                                                time.sleep(2)
+                                                                spiked_trap()
+                                                                time.sleep(4)
+                                                                print("")
+                                                                time.sleep(1)
                                                                 rng_trap = random.randint(1,4)
                                                                 if rng_trap > 0 and rng_trap <= 3:
                                                                     print(trap_passed_msg)
